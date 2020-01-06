@@ -1,0 +1,100 @@
+<!-- 导入秘钥 -->
+<!DOCTYPE html>
+<html style="background-color: #fff;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <link href="../css/mui.min.css" rel="stylesheet" />
+	<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        p{
+            font-size: 0.9375rem;
+            line-height: 3.5vh;
+        }
+        
+        .wrapper_30X1 {
+            width: 341px;
+            height: 28px;
+            left: 17px;
+            top: 560px;
+            overflow: hidden;
+            overflow-y: scroll;
+        }
+        
+        .but_next {
+            background-color: #3776fa;
+            width: 92vw;
+            border-radius: 20px;
+            color: white;
+            font-size: 1.25rem;
+        }
+        
+        .ima {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+        
+        .view {
+            padding: 4vw;
+        }
+        
+        .btn {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 6vw;
+        }
+        
+        .ZTsi {
+            margin-top: 5vw;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 头部 -->
+    <header class="mui-bar mui-bar-nav">
+        <a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+        <h1 class="mui-title">导入私钥</h1>
+    </header>
+    <article class="mui-content" style="background-color: #fff;">
+        <div class="view">
+            <!-- 导入密钥 -->
+            <div class="possworld">
+                <h4>导入EAC私钥</h4>
+                <!-- 私钥 -->
+                <div class="ZTsi">
+                    <span>
+                        <input style="width: 90%;text-align: center; height: 115px !important;padding: 38px 38px;" type="text" placeholder="粘贴或输入EAC私钥">
+                    </span>
+
+                    <span>
+                      <img class="ima" src="./images/text.png" alt="">
+                    </span>
+                </div>
+            </div>
+            <!-- 友情提示 -->
+            <div class="friendship">
+                <p>友情提示：EACPay.com不保存您的私钥（私钥保存在你本机EACPay上 ）, EACPay.com不保存您的私钥（私钥保存在你本机EACPay上）, EACPay.com不保存您的私钥（私钥保存在你本机EACPay上）, EACPay.com不保存您的私钥（私钥保存在你本机EACPay上）,EACPay.com。
+                </p>
+            </div>
+            <!-- 按钮 -->
+            <div class="btn">
+                <img src="./images/cancel.png" alt="">
+                <img src="./images/Import.png" alt="">
+            </div>
+        </div>
+    </article>
+    <script src="../js/mui.min.js"></script>
+    <script src="../js/jquery-3.3.1.js"></script>
+    <script type="text/javascript" charset="utf-8">
+        mui.init();
+        $("#go").on("click", function() {
+            var goTo = document.getElementById("goTo");
+            goTo.style.display = "block";
+        })
+    </script>
+</body>
+
+</html>

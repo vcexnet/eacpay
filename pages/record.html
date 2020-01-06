@@ -1,0 +1,72 @@
+<!-- 交易记录 -->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>交易记录</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/color.css" />
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/page/record.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			.th{
+				border: solid 2px;
+				border-bottom-color:rgba(0,0,0,0) ;
+				border-left-color: ;
+			}
+			
+			
+		</style>
+	</head>
+
+	<body style="background-color: #FFFFFF;">
+		<header class="mui-bar mui-bar-nav">
+			<a style="color: #FFFFFF;" class="mui-icon mui-icon-left-nav mui-pull-left" href="e_wallet.html"></a>
+			<h1 class="mui-title">交易记录</h1>
+		</header>
+		
+		<div class="mui-content" style="margin-top: 1px; background-color: #FFFFFF;">		
+				<center>
+					<table width="100%" class="table" id="tablevalue" style="font-size: 15px; text-align: center;">
+						<tr style="background-color:#FFFFFF;font-size: 13px; height: 35px;">
+							<th width=15% style=" border: solid #ccc 1px; border-top: none; ">状态</th>
+							<th width=60% style=" border: solid #ccc 1px; border-top: none; ">交易详情</th>
+							<th width=15% style=" border: solid #ccc 1px; border-top: none; ">金额</th>
+						</tr>				
+						
+						<tbody id="showDatas">
+						
+						</tbody>
+						
+					</table>
+				</center>
+				<div id="details" class="mui-popover mui-popover-action mui-popover-bottom" style="height: auto;">
+					<ul  class="mui-table-view">
+						<li class="mui-table-view-cell" style="font-size: 5vw;color: black;">
+							当前交易记录
+							<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeDetails()"></span>
+						</li>
+						<li class="mui-table-view-cell" style="height: 30vh; overflow: auto;">
+							<p>总额：<input style="border: none; background-color: rgb(247,247,247);" id="amount" value="" /></p>
+							<p>状态：<input style="border: none; background-color: rgb(247,247,247);" id="confirmations" value="" /></p>
+							<p>日期：<input style="border: none; background-color: rgb(247,247,247);" id="time" value="" /></p>
+							<p>交易ID：<input style="border: none; width: 70vw; background-color: rgb(247,247,247);" id="txid" value="" /></p>
+							<p>到：<input style="border: none; width: 70vw; background-color: rgb(247,247,247);" id="toAdress" value="" /></p>
+							<p>输出索引：<input style="border: none; background-color: rgb(247,247,247);" id="vout" value="" /></p>
+						</li>
+					</ul>
+				</div>
+		</div>
+		<script src="../js/mui.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

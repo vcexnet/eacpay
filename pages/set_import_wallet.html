@@ -1,0 +1,76 @@
+<!-- 导入私钥 -->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/set_import_wallet.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body{
+				background: #FFFFFF;
+			}
+			
+			.font_Tips{
+				margin-top: 20px;
+				font-size: 18px;
+				color: #000000;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav title">
+			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
+			<h1 class="mui-title">导入私钥</h1>
+		</header>
+		<div class="mui-content" style="background-color: #FFFFFF;">
+			<form>
+			<div  style="margin: 10px;">
+					<p style="margin-top: 10px;" class="font_Tips">导入EAC私钥</p>
+				<div  style="height: 100px;">
+					<textarea id="myKey" class="output" style="width:84%;height: 100%; float: left;text-align: center; " placeholder="粘贴或输入EAC私钥" onfocus="this.placeholder=''" onblur="this.placeholder='粘贴或输入EAC私钥'"></textarea>
+				</div>
+
+			<br />
+			</div>
+			</form>
+		</div>
+		<div style="margin: 10px; font-size: 16px; color: #999999;">
+			提示：申请的前提条件是贵站或者app支持EACPay支付，因为我们只展示支持EACPay支付的网站，展示排名与网站和app的大小规模影响力无关。但是如果贵站支持EACPay审核展示后，取消EACPay支付，将永不收录展示，请勿侥幸！
+		</div>
+		<div style="text-align:center; margin-top: 20px;">
+			<button id="cancle1" type="reset" class="mui-btn mui-btn-blue mui-btn-outlined"  style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px;">取消</button>
+			<button id="import1"  class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px; margin-left: 20px;" onclick="ImportSecretKey()">导入</button>
+		</div>
+		<div style="position: absolute; left: 87%; top: 20%;">
+			<div  id="changeFile" style=" width: 30px; height: 33px; background-image:  url(../images/text.png); background-size: 30px 33px;">
+				<input id="" style="opacity: 0; font-size: 14px; margin-left: 0px;" type="file" onchange='openFile(event)'/>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript" charset="UTF-8">
+			
+		</script>
+		<script>
+			var openFile = function(event) {
+			            var input = event.target;
+			            var reader = new FileReader();
+			            reader.onload = function() {
+			                if(reader.result) {
+			                    //显示文件内容
+			                    $(".output").html(reader.result);
+			                } 
+			            };
+			            reader.readAsText(input.files[0]);
+			        };
+		</script>
+	</body>
+
+</html>

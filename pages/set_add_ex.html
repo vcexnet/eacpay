@@ -1,0 +1,87 @@
+<!--添加交易场所  -->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/color.css" />
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<!-- <script type="text/javascript" charset="utf-8">
+			mui.init();
+			<script src = "https://how2j.cn/study/js/jquery/2.0.0/jqxuery.min.js" >
+		</script>
+		<link href="https://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+		<script src="https://how2j.cn/study/js/bootstrap/3.3.6/bootstrap.min.js"></script> -->
+	<style>
+		.fonts_distance{
+			font-size: 16px;
+		}
+		.font_distance{
+			font-size:13px;
+		}
+		.distance{
+			margin-top: 6px;
+		}
+		body{
+			background-color:#FFFFFF;
+		}
+		button{
+			background:#50A3FD;
+			width: 30%;
+			color: #FFFFFF;
+			border: none;
+			height: 42px;
+		}
+	</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
+			<h1 class="mui-title" style="font-size: 18px; text-emphasis-color: #ff333333;">添加交易场所</h1>
+		</header>
+	
+		<div class="mui-content">
+			<form action="" method="">
+			<div style="background-color: #FFFFFF">
+				<div style="border-bottom: 1px #efeff4 solid; margin-top: 2px; height: 46px;" class="mui-input-row ">
+					<label class="fonts_distance">交易所名称：</label>
+					<input required="required" type="text" class="mui-input-clear font_distance" placeholder="输入交易所名称" >
+				</div>
+				<div style="border-bottom: 1px #efeff4 solid;" class="mui-input-row distance">
+					<label class="fonts_distance">交易所网址：</label>
+					<input required="required" type="text" class="mui-input-clear font_distance" placeholder="输入交易所网址">
+				</div>
+				<div style="border-bottom: 1px #efeff4 solid;" class="mui-input-row distance">
+					<label class="fonts_distance">交易对名称：</label>
+					<input required="required" type="text" class="mui-input-clear font_distance" placeholder="输入交易所的EAC交易对网址" >
+				</div>
+				<div style="border-bottom: 1px #efeff4 solid;" class="mui-input-row distance">
+					<label class="fonts_distance">EAC交易对：</label>
+					<input required="required" type="text" class="mui-input-clear font_distance" placeholder="输入交易所的EAC交易对网址" >
+				</div>
+				<div style="border-bottom: 1px #efeff4 solid;" class="mui-input-row distance">
+					<label class="fonts_distance">&nbsp;交易所API ：</label>
+					<input type="text" class="mui-input-clear font_distance" placeholder="输入交易所API网址(选填)" >
+				</div>
+				<div style="border-bottom: 1px #efeff4 solid;" class="mui-input-row distance">
+					<label class="fonts_distance">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;API密钥：</label>
+					<input type="text" class="mui-input-clea font_distance" placeholder="输入API密钥(选填)" >
+				</div>
+				
+		<div class="mui-button-row distance" style="margin-top: 5px;">
+			<button style="background-color: #2a82e4;" type="reset">取消</button>
+			<button style="background-color: #2a82e4;"  type="submit" style="margin-left: 50px;">确定</button>
+		</div>
+		</form>
+		</div>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,193 @@
+<!-- 发送（付款） -->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>发送（付款）</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/color.css" />
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/page/e_send.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/common_1.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript" charset="utf-8">
+
+
+		</script>
+		<style type="text/css">
+			.table {
+				color: #666;
+				text-align: center;
+			}
+			/* 单选改变样式 */
+			.change .mui-radio input[type='radio']:checked:before {
+				content: '\e442';
+				color: #15D655;
+			}
+			/* 多选改变样式 */
+			.change .mui-checkbox input[type='checkbox']:checked:before {
+				content: '\e442';
+				color: #15D655;
+			}
+
+			.table td {
+				font-size: 0.8rem;
+				text-align: center;
+			}
+
+			.table th {
+				background-repeat: repeat-x;
+				height: 30px;
+				font-size: 0.8rem;
+				border-right: 1px solid #cad9ea;
+				padding: 0 1em 0;
+			}
+
+			.table tr {
+				height: 40px;
+				/*把table标签的行高设定为固定值*/
+				border-bottom: 1px solid #3333;
+			}
+
+			.table tr.alter {
+				background-color: #f5fafe;
+			}
+
+			.scanq {
+				position: absolute;
+				left: 0;
+				z-index: 5;
+				background-image: url(../images/sweepcode.png);
+				/*引入图片图片*/
+				background-repeat: no-repeat;
+				/*设置图片不重复*/
+				background-position: 0px 0px;
+				/*图片显示的位置*/
+				/* width: 28px; */
+				/*设置图片显示的宽*/
+				/* height: 28px; */
+				/*图片显示的高*/
+			}
+
+			.color {
+				color: #50A3FD;
+			}
+
+			body div {
+				text-align: left;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="e_wallet.html"></a>
+			<h1 class="mui-title">发送(付款)</h1>
+		</header>
+		<div style="margin-top: 10px;" class="mui-content">
+			<div style="margin-bottom: 10px;">
+				<div style="margin-top: 2px;">
+					<p class="d">重要：请不要向不确定的地址转账，EAC是区块链货币，EACPay仅仅是工具，无法为您找回错误转账！！！</p>
+				</div>
+			</div>
+			<div class="mui-input-row " style="background-color: #FFFFFF; margin-bottom: 1px;width: 100%;">
+				
+				<label>对方地址：</label>
+				<input id="my_address" size="30" name="address" style="font-size: 12px;width: 40%; position: absolute; left: 30%; top: 2%;"
+				 type="text" class="mui-input-clear" placeholder="核实对方EAC地址，建议直接扫描地址码" onfocus="this.placeholder=''" onblur="this.placeholder='核实对方EAC地址，建议直接扫描地址码'">
+				<span style="margin-left:52%; vertical-align: middle;">
+				<img src="../images/sweepcode_two.png" style="margin-top: 6px; height: 30px;" onclick="openBarcode()"/>
+				</span>
+			</div>
+			<div class="mui-input-row mui-select" style="background-color: #FFFFFF; margin-bottom: 1px;">
+				<label>付款金额：</label>
+				<input id="my_amount" size="30" name="mony" style="font-size: 12px;width: 40%; position: absolute; left: 30%; top: 2%;"
+				 type="number" class="mui-input-clear" placeholder="核实付款金额，不可撤销" onfocus="this.placeholder=''" onblur="this.placeholder='核实付款金额，不可撤销'">
+
+				<select required="required" style="background-color:rgb(230,230,230);border-radius: 10px; color: #007AFF; width: 20% ; height: 30px; margin-top: 5px;margin-bottom: 5px;margin-right: 20px;padding-left: 10px;">
+					<option value="">EAC</option>
+					<option value="1">1</option>
+
+				</select>	
+			</div>
+			<div class="mui-input-row " style="background-color: #FFFFFF; margin-bottom: 1px;">
+				<label>标签：</label>
+				<input name="biaoQ" style="font-size: 12px;position: absolute; left: 20%; top: 2%;" type="text" class="mui-input-clear"
+				 placeholder="为这个地址输入一个标签，存入地址本，用于识别，选填" onfocus="this.placeholder=''" onblur="this.placeholder='为这个地址输入一个标签，存入地址本，用于识别，选填'">
+			</div>
+			<!-- 交易费用 -->
+			<div class="mui-input-row " style="background-color: #FFFFFF;">
+				<label>交易费用：</label>
+			</div>
+			<div class="mui-input-row mui-radio change" style="border-bottom: 1px #E6E6E6 solid; background-color: #FFFFFF;">
+				<span style="vertical-align:middle; float: left; width:100%" class="mui-radio mui-left mui-select">
+					<label style="font-size: 13px;width: 60%;">
+					<input id="Gender_male" name="gender" class="gender" type="radio" checked />
+					0.00010000 EAC/KB,确认时间目标
+					</label>
+					<select style="width: 32%;font-size: 15px; background-color: rgb(230,230,230); color: #007AFF;padding-left:5px; margin-right: 20px;height: 30px;border-radius: 10px;">
+						<option>6 minute(6个块)</option>
+						<option>1</option>
+						<option>2</option>
+					</select>
+				</span>	
+			
+				<span style="margin-top: 10px;float: left; width: 100% ; font-size: 12px;" class="mui-radio mui-left mui-select">
+					<label style="font-size: 13px;width: 38%;float: left;">
+					<input id="Gender_male" name="gender" class="gender" type="radio" checked />
+					自定义，每KB
+					</label>
+					<input type="number" value="0.11111" style="float: left; width: 20%;border:solid 1px rgb(207,207,207);height: 30px;"/>
+					<select style="width: 20%;font-size: 15px; background-color: rgb(230,230,230); color: #007AFF;padding-left:20px; margin-right: 20px;height: 30px;border-radius: 10px;">
+						<option>EAC</option>
+						<option>1</option>
+						<option>2</option>
+					</select>
+				</span>
+			</div>
+			<div class="mui-input-row change " style="background-color: #FFFFFF; margin-bottom: 10px; height: 100px;">
+				<div style=" width: 64%; position: absolute; top:8%;">
+					<span style="float: left; width: 100% ; font-size: 12px;" class="mui-checkbox mui-left">
+					<label style="font-size: 13px;width: 100%;float: left;">
+					<input id="#" name="#"  type="checkbox"  style="" />
+					从金额中减去交易额
+					</label>
+					</span>
+				</div>
+				<button class="mui-btn" style="border: none; width: 38%;background-color: #2a82e4;color: #FFFFFF;border-radius: 20px;  position: absolute; top: 8%; left:57%;" id="toastBtn">使用全部可用余额</button>
+				<button class=" mui-btn" style="border: none; width: 60%;background-color: #2a82e4;color: #FFFFFF;margin-top: 10px;  position: absolute; top: 50%;left:20% ;" id="sendBtn" onclick="my_sendBtn()">发送</button>
+			</div>
+			<div style="margin-bottom: 20px; background-color: #FFFFFF;">
+				<div class="mui-table-view-cell hong">
+					<label style="font-size: 18px;">近期发送(付款记录)</label>
+
+				</div>
+				<center>
+					<table width="100%" class="table" id="tablevalue">
+						<tr>
+							<th width=30% style=" border: solid rgb:(228.227,230) 1px; border-top: none; border-bottom: none; border-left: none;">日期</th>
+							<th width=15% style=" border: solid rgb:(228.227,230) 1px; border-top: none; border-bottom: none; ">标签</th>
+							<th width=15% style=" border: solid rgb:(228.227,230) 1px; border-top: none; border-bottom: none;">消息</th>
+							<th width=20% style=" border: solid rgb:(228.227,230) 0px; border-top: none; border-bottom: none; border-right: none;">总额(EAC)</th>
+
+						</tr>
+						<tbody id="showDatas">
+
+						</tbody>
+
+					</table>
+				</center>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/page/e_send.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>

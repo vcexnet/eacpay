@@ -1,0 +1,135 @@
+<!-- 付款地址本 -->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>付款地址本</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/color.css" />
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/set_address_book.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<script sr></script>
+		<style type="text/css">
+			 *{
+			    -webkit-user-select:all;
+			    -moz-user-select:all;
+			    -ms-user-select:text;
+			    user-select:text;
+			} 
+			body {
+				background-color: #FFFFFF;
+			}
+			.border1{
+				border-top-width: 1px;
+				border-right-width: 1px;
+				border-bottom-width: 0px;
+				border-left-width: 1px;
+				border-top-style: solid;
+				border-right-style: solid;
+				border-bottom-style: solid;
+				border-left-style: solid;
+				border-top-color: #999;
+				border-right-color: #999;
+				border-bottom-color: #999;
+				border-left-color: #999;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
+			<h1 class="mui-title">付款地址本</h1>
+		</header>
+		<div class="mui-content" style="background-color: #FFFFFF;">
+			
+				<div>
+					<p class="d" style="color: red;">声明：为了EACPay良性可持续发展，请自愿支付一定手续费，非强制性。手续费率与转账速度无关。</p>
+				</div>
+			    <div style="width: 100%; height: 8px; background-color: #E6E6E6;"></div>
+			<div class="mui-content-padded" style="margin: 20px;">
+				<div class="mui-button-row" style="margin-top: 10px;">
+					<div class="mui-input-row mui-search">
+						<input type="search" class="mui-input-clear" placeholder="输入地址或者标签来搜索">
+					</div>
+			<center>
+			<div style="margin-top: 20px;">
+					<table id="tbUser" width="100%" class="table" style="line-height: 30px;" >
+						<tr  style="font-size: 16px;">
+							<th  width=20% style=" border: solid #ccc 1px;  border-left: none; border-right: ;">标签</th>
+							<th  width=70% style=" border: solid #ccc 1px;  border-right: none;" >地址</th>
+							<th  width=10% style=" border: solid #ccc 1px; border-right: none;" >编辑</th>
+						</tr>
+						<!-- <a href="#familyData">
+							<button>点击</button>
+						</a> -->
+						<tr style="border: solid 1px;">
+							<tbody id="showDatas">
+
+							</tbody>
+						</tr>
+						
+					</table>
+				</div>
+				</center>
+				<div style="text-align: center; margin-top: 20px; word-spacing:20px;">
+						<button id="" type="button" style="border: none; background-color: #2a82e4; color: #FFFFFF;" id="btn1" onclick="huoqu()">新建地址</button>
+						<!-- <button id="" type="button" class="mui-btn mui-btn-grey" onclick="return false;">复制</button> -->
+						<button id="removeBtn" type="button" style="background-color: #2a82e4; border: none; color: #FFFFFF;"  >全部删除</button>
+						<!-- <button id="choiceBtn"  type="button" class="mui-btn mui-btn-primary" >选择</button> -->
+					</div>
+						
+		</div>
+		<div id="tiShi" class="mui-popover mui-popover-action mui-popover-bottom" style="width: 94%; margin-left: -9px; height: auto; margin-bottom: 8px; border-radius: 10px;">
+				<div style="background-color: #FFFFFF; border-radius: 10px 10px 10px 10px;">
+					<p style="text-align: center; padding-top: 10px; font-size: 5vw;color: black;">
+						新建地址
+<!-- 						<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeTiShi()"></span> -->					</p>
+					<div style="text-align: center;">
+						
+						<label>标签:</label>
+						<input type="text" style="background-color: #E6E6E6;border: none; padding: 0rem;height: 5vh;width: 80%;font-size: 1.0rem;"  >
+						<br />
+						<label>地址:</label>
+						<input type="text" id="newAdress" style="background-color: #E6E6E6;border: none; padding: 0rem;height: 5vh;width: 80%;font-size: 1.0rem;"  >
+					<div style="margin-top: 6px;">
+					<button type="button"  style=" border-left: none; width: 50%;height: 44px; float: left; color:grey ;font-size: 16px; border-radius: 0 0 0 10px;"  onclick="copyUrl()">复制</button>
+					 <button type="button" style=" border-right: none; width: 50%; height: 44px;border-left: none; color: #0062CC; font-size: 16px; border-radius: 0 0 10px 0;" onclick="closeTiShi();">确定</button>
+					</div>
+					</div>
+					
+					<!-- <div style="margin-top: 6px;">
+					<button type="reset"  style=" width: 50%;height: 50px; float: left; color:grey ;font-size: 16px;" class="mui-btn mui-btn mui-action-back" onclick="copyUrl()">取消</button>
+					 <button type="submit" style=" width: 50%; height: 50px;border-left: none; color: #0062CC; font-size: 16px;" class="mui-btn mui-btn- content_btn" onclick="closeTiShi();">确定</button>
+					</div> -->
+					
+				</div>
+			</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		<script type="text/javascript">
+					function deleteRow(r)
+					{
+						var i=r.parentNode.parentNode.rowIndex
+						document.getElementById('#myTable').deleteRow(i)
+					}
+					$(document).ready(function(){
+					
+					//  删除
+					  $("#tbUser").on('click', '.btnDelete', function () {
+					    $(this).closest('tr').remove();
+					  });
+					
+					});
+				</script>
+		
+	</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!-- 导出私钥 -->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>导出私钥</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/color.css" rel="stylesheet" />
+		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/export_private_key.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+			body {
+				background-color: #FFFFFF;
+			}
+			
+			select:required:invalid {
+			
+			  color: gray;
+			
+			}
+			
+			option[value=""][disabled] {
+			
+			  display: none;
+			
+			}
+			
+			option {
+			
+			  color: black;
+			
+			}
+		</style>
+	</head>
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
+			<h1 class="mui-title">导出私钥</h1>
+		</header>
+		<div class="mui-content">
+			<div class="d">
+				<label>提示：我们不会保护您的私钥，私钥是EAC资产的证明，建议用纸笔记下，妥善保管</label>
+			</div>
+		<div style="width: 100%; height: 1px;"></div>
+		</div>
+		<form class="mui-input-row " style="margin-top: 20px; margin-left: 8px; margin-right: 8px;">
+				<center>
+
+					<div class=" mui-select" style="width: 95%;">
+						<select id="showDatas" required style=" background: #F3F3F3; font-size: 15px;" />
+							<option  value="" disabled selected>&nbsp;&nbsp;请选择要导出的地址</option>
+
+						</select>
+					</div>
+
+				<button class="button" onclick="exportFile()" style="background-color: #2a82e4; font-size: 16px; border: none;">导出</button>	
+					<textarea id="copy" style="margin-top: 30px;border-radius: 10px; background: #F3F3F3; height: 100px;"></textarea>
+				<div style="margin-top: 20px; text-align: center;">
+					<input type="button"  onclick="copyUrl()" value="复制" style="background:#2a82e4; border: none; color: #FFFFFF; border-radius: 30px; width: 20%;">
+					<input type="button" value="确定"  style="margin-left: 60px; background:#2a82e4; border: none; color: #FFFFFF; border-radius: 30px; width: 20%;">
+				</div>
+			
+
+			</center>
+		</form>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+		
+		
+	</body>
+
+</html>

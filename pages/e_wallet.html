@@ -1,0 +1,271 @@
+<!-- 我的余额 -->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../css/mdui.min.css">
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/common_1.js" type="text/javascript" charset="utf-8"></script>
+<!-- 		<script src="../js/page/e_wallet.js" type="text/javascript" charset="utf-8"></script> -->
+		<!-- <script src="../js/page/use_web_site.js" type="text/javascript" charset="utf-8"></script> -->
+		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
+
+		<style type="text/css">
+			body {
+				background: #FFFFFF;
+			}
+
+			.table {
+				color: #666;
+				text-align: center;
+			}
+
+			.table td {
+				font-size: 0.8rem;
+				text-align: center;
+			}
+
+			.table th {
+				background-repeat: repeat-x;
+				height: 30px;
+				font-size: 0.8rem;
+				border-right: 1px solid #cad9ea;
+				padding: 0 1em 0;
+			}
+
+			.table tr {
+				height: 40px;
+				/*把table标签的行高设定为固定值*/
+				border-bottom: 1px solid #3333;
+			}
+
+			.table tr.alter {
+				background-color: #f5fafe;
+			}
+
+			.mui-content input {
+				background: none;
+				outline: none;
+				border: none;
+			}
+
+			.mui-input-row {
+				height: 5vh;
+				font-size: 1rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<span class="mui-icon-lef-nav  mui-pull-left" style="margin-top: 7px;" onclick="openBarcode()">
+				<img style="height: 30px;" src="../images/sweepcode.png" />
+				<!-- <span class="mui-media-body">扫一扫</span> -->
+			</span>
+			<h1 class="mui-title" style=" font-size: 18px;">我的余额</h1>
+			<a href="set_import_wallet.html" class="mui-btn mui-btn-link mui-pull-right mui-btn-blue " style="margin-right: 2px; font-size: 16px; color: #FFFFFF;">导入钱包</a>
+		</header>
+		<nav style="background-color: #FFFFFF;" class="mui-bar mui-bar-tab">
+			<a class="mui-tab-item mui-active" href="e_wallet.html">
+				<span class="mui-icon mui-icon-money"></span>
+				<span class="mui-tab-label">钱包</span>
+			</a>
+			<a class="mui-tab-item" href="use_web_site.html">
+				<span class="mui-icon mui-icon-yingyong"></span>
+				<span class="mui-tab-label">行情应用</span>
+			</a>
+			<a class="mui-tab-item" href="set.html">
+				<span class="mui-icon mui-icon-set"></span>
+				<span class="mui-tab-label">设置</span>
+			</a>
+		</nav>
+		
+		<div style="background-color: #FFFFFF;" class="mui-content">
+			
+				<div class="mui-card-media" style="height:40vw;background-image: url(../images/dataBlue.png);font-size: 15px;">
+					<div class="mui-input-row" style="z-index: 999;" readonly="readonly">
+						<label style="width:35vw;">可使用余额:</label>
+						<input id="isBalance" onclick="showWallet()"  type="text" style="width:54vw;" readonly="readonly" style="z-index: 999;">
+					</div>
+					
+					<div class="mui-input-row" style="border-bottom:solid 1px #FFFFFF;">
+						<label style="width:35vw;">待确认余额:</label>
+						<input id="unconfirmed_balance" type="text" style="width:54vw;" readonly="readonly" style="z-index: 999;">
+					</div>
+					
+					<div class="mui-input-row">
+						<label style="width:35vw;">总额:</label>
+						<input id="balance" type="text" style="width:54vw;" readonly="readonly">
+					</div>
+					
+					<div class="mui-input-row">
+						<label style="width:35vw;">资产:</label>
+						<input id="assets" type="text" style="width:54vw;" readonly="readonly">
+					</div>
+					
+					</div>
+
+<!-- 					<p style="color: #FFFFFF; font-size: 20px; position: absolute; left: 0%; top: 8%;  padding-left: 10px;">可使用余额：</p> 
+					<p style="color: #FFFFFF; font-size: 20px; margin-bottom: 26px; position: absolute; left: 0%; top: 30%;  padding-left: 10px;">待确认余额：</p>
+					<p style="color: #FFFFFF; font-size: 20px; position: absolute; left: 0%; top: 60%;  padding-left: 10px;">总额：<span></span></p>
+ -->
+		
+			<div style=" margin-bottom: 20px;margin-top: 5px; text-align: center;">
+					<a href="e_received.html"><button style="border: none; width: 50%; height: 60px; background-color: #2a82e4; color: #FFFFFF; font-size: 22px;">收款</button></a>
+					<a href="send.html"><button style="border: none; border-left: #FFFFFF 1px solid; width:50%;margin-left: -4px; height: 60px;margin-right: 0px; background-color: #2a82e4; color: #FFFFFF; font-size: 22px;">付款</button></a>
+			</div>
+			
+			<div style="margin-bottom: 20px;">
+				<div class="mui-table-view-cell">
+					<b style="font-size: 16px; margin-left: -6px;">最近交易记录</b>
+					<a href="record.html" class="mui-pull-right">
+						更多>>
+					</a>
+				</div>
+				
+					<table width="100%" class="table" id="tablevalue">
+						<tr style="font-size: 1.2rem;border:0.01rem solid rgb:255,255,255">
+
+							<th width=15% style=" border: solid #ccc 1px; border-top: none;">状态</th>
+							<th width=60% style=" border: solid #ccc 1px; border-top: none;">交易详情</th>
+							<th width=15% style=" border: solid #ccc 1px; border-top: none;">金额</th>
+
+						</tr>
+						<tbody id="showDatas">
+
+						</tbody>
+
+					</table>
+				</center>
+			</div>
+			<div style="margin-bottom: 20px;">
+				<div class="mui-table-view-cell hong">
+					<b style="font-size: 16px; margin-left: -6px;">交易所行情</b>
+					<a href="excange.html" class="mui-pull-right ">
+						更多>>
+					</a>
+				</div>
+				<center>
+					<table width="100%" class="table" id="tablevalue">
+						<tr>
+							<th width=20%>名称</th>
+							<th width=30%>交易对</th>
+							<th width=25%>价格</th>
+							<th width=25%>涨幅</th>
+						</tr>
+						<tbody id="showExchanges">
+
+						</tbody>
+						<!-- 						<tr>
+							<td style="color: #1EB032;font-size: 1.2rem;">√</td>
+							<td style="text-align: center;">EAC/CNC</td>
+							<td style="text-align: center;">0.0000000008</td>
+							<td style="color: #1EB032;">2345667</td>
+						</tr> -->
+					</table>
+				</center>
+				<div id="details" class="mui-popover mui-popover-action mui-popover-bottom" style="height: auto;">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell" style="font-size: 5vw;color: black;">
+							当前交易详情
+							<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeDetails()"></span>
+						</li>
+						<li class="mui-table-view-cell" style=" height: 30vh; overflow: auto;">
+							<p>总额：<input id="amount" value="" /></p>
+							<p>状态：<input id="confirmations" value="" /></p>
+							<p>日期：<input id="time" value="" /></p>
+							<p>交易ID：<input style="width: 70vw;" id="txid" value="" /></p>
+							<p>到：<input style="width: 70vw;" id="toAdress" value="" /></p>
+							<p>输出索引：<input id="vout" value="" /></p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div id="inputWalletName" class="mui-popover mui-popover-action mui-popover-bottom" style="height: auto;">
+				<div class="mui-table-view">
+					<p class="mui-table-view-cell" style="font-size: 4vw;color: black;">
+						请注意保存您的钱包编码,以后做身份验证时将会用到。<span style="color: red;">（该编码不可转币）</span>
+						<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeInputWalletName()"></span>
+					</p>
+					<input type="text" class="" style="background-color: #f1f1f1;border: 0.0625rem #295bb1 solid;padding: 0rem;height: 5vh;width: 90vw;font-size: 1.0rem;"
+					 id="walletName">
+					<div id="changeFile" style="display: none;">
+						<input type="file" id="files" name="files[]" multiple />
+						<output id="list"></output>
+					</div>
+
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" onclick="copyUrl()">复制</button>
+						<button type="button" class="btn btn-default" onclick="closeInputWalletName()">取消</button>
+						<button type="button" class="btn btn-default" onclick="confirmName();">确认</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="saoTiShi" class="mui-popover mui-popover-action mui-popover-bottom" style="height: auto;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell" style="font-size: 5vw;color: black;">
+					当前交易详情
+					<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeDetails()"></span>
+				</li>
+				<li class="mui-table-view-cell" style=" height: 30vh; overflow: auto;">
+					<p>总额：<input id="amount" value="" /></p>
+					<p>状态：<input id="confirmations" value="" /></p>
+					<p>日期：<input id="time" value="" /></p>
+					<p>交易ID：<input style="width: 70vw;" id="txid" value="" /></p>
+					<p>到：<input style="width: 70vw;" id="toAdress" value="" /></p>
+					<p>输出索引：<input id="vout" value="" /></p>
+				</li>
+			</ul>
+		</div>
+		</div>
+
+
+
+		<!-- 			<div class="modal fade" id="inputWalletName" tabindex="-1" role="dialog" >
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+							<h4 class="modal-title" id="exampleModalLabel">请输入钱包名字</h4>
+						</div>
+						<div class="modal-body">
+							<form>
+								<div class="form-group">
+									<label for="recipient-name" class="control-label">名字 ：</label>
+									<input type="text" class="form-control" id="walletName" >
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+							<button type="button" class="btn btn-primary" onclick="confirmName();">确认</button>
+						</div>
+					</div>
+				</div>
+			</div>	 -->
+
+
+		</div>
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/mui.js"></script>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_wallet.js" type="text/javascript" charset="utf-8"></script>
+<!-- 		<script type="text/javascript" src="../js/page/barcodeUtil.js"></script> -->
+		<script type="text/javascript">
+			mui.init();
+		</script>
+
+
+
+	</body>
+
+</html>

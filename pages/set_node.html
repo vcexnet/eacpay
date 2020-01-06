@@ -1,0 +1,63 @@
+<!-- 选择节点 -->
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet"  href="../css/color.css"/>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_node.js" type="text/javascript" charset="utf-8"></script>
+	    <style type="text/css">
+			body{
+				background-color: #FFFFFF;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
+			<h1 class="mui-title">设置节点</h1>
+		</header>
+		<div class="mui-content">
+			<div class="d">
+				<label>提示：为了您的EAC资产安全，请选择自己信任的节点连接，最佳方案是自建节点，自建节点教程参见EACPay.com</label>
+			</div>
+			<div class=" mui-table-view-cell" style="background-color: #ffffff;">
+				<label style="font-size: 16px;">当前API节点：182.151.14.132</label>
+				<br />
+				<label style="font-size: 16px;"> 该节点高度：<span id="node_hight"></span></label>
+				<br />
+				<label style="font-size: 16px;">区块最新高度：<span id="block_hight"></span></label>
+			</div>
+		</div>
+		<div class="mui-input-row mui-select" style="position: relative; margin-left: 16px; margin-right: 16px;">
+			<select style="width: 100%;font-size: 15px; background-color: #F0F0F0; color: #999999;padding-left:20px; margin-right: 20px;margin-top: 5px;">
+				<option>切换可用API节点列表</option>
+				<option>42.164.234:35677</option>
+				<option>210.23.46:35677</option>
+				<option>40.223.46:35677</option>
+			</select>
+		</div>
+		<label style="margin-left: 20px; font-size: 16px; margin: 15px;">自定义API节点</label>
+		<div style="background-color: #ffffff; text-align:center;">
+			<input type="text" style="margin-top: 6px; border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" value="输入节点ip地址" onfocus="this.value=''"  onblur="this.value='输入节点ip地址'" />
+			<input type="text" style="border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" value="节点端口号" onfocus="this.value=''"  onblur="this.value='节点端口号'" />
+		    <input style="width: 30%; background-color: #2a82e4; color: #FFFFFF; border: none ;" type="button" value="添加" />
+			<br />
+			<br />
+		    <input style="width: 60%; background-color: #2a82e4; color: #FFFFFF; border: none ;" type="button" value="确认" />
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+		</script>
+	</body>
+
+</html>
