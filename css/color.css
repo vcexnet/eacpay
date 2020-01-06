@@ -1,0 +1,44 @@
+.q{
+	width: 20px;
+	height: 20px;
+	margin-right: 10px;
+}
+.hong{
+	background-color: #FFFFFF;
+	height: 42px; 
+}
+.tapeface{
+	font-family: "SourceHanSansCN-Regular";
+}
+.d{
+        	background-color: #FEFEFE;
+        	        	color:#FF0000;
+        	        	font-size: 0.9em;
+						margin-bottom: 10px;
+						padding: 10px;
+        }
+        .iInput{
+        	position: absolute;
+        	width: 99px;  
+            height: 16px;  
+            left: 1px;  
+            top: 2px;  
+            border-bottom: 0px;  
+            border-right: 0px;  
+            border-left: 0px;  
+            border-top: 0px;  
+
+        }
+        .button{
+        	width: 250px; height: 35px; margin-top: 10px; background-color: #50a3fd; color: #FFFFFF;
+        }
+.center{
+	background::plum;
+		display:table-cell;
+		color::#fff;
+		font-size:20px;
+		line-height:14px;
+		vertical-align:middle;
+		text-align:center;
+
+}
