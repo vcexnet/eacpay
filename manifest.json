@@ -1,0 +1,341 @@
+{
+    "@platforms" : [ "android", "iPhone", "iPad" ],
+    "id" : "H51EA978B", /*应用的标识，创建应用时自动生成，勿手动修改*/
+    "name" : "EACPAY", /*应用名称，程序桌面图标名称*/
+    "version" : {
+        "name" : "1.0.1", /*应用版本名称*/
+        "code" : 83
+    },
+    "description" : "", /*应用描述信息*/
+    "icons" : {
+        "72" : "icon.png"
+    },
+    "launch_path" : "pages/e_agreement.html", /*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+    "developer" : {
+        "name" : "", /*开发者名称*/
+        "email" : "", /*开发者邮箱地址*/
+        "url" : "http://www.dcloud.io"
+    },
+    "permissions" : {
+        "Cache" : {
+            "description" : "管理应用缓存"
+        },
+        "Console" : {
+            "description" : "跟踪调试输出日志"
+        },
+        "Contacts" : {
+            "description" : "访问系统联系人信息"
+        },
+        "Events" : {
+            "description" : "应用扩展事件"
+        },
+        "Messaging" : {
+            "description" : "访问通讯能力"
+        },
+        "Maps" : {
+            "description" : "管理地图插件"
+        },
+        "Speech" : {
+            "description" : "管理语音识别插件"
+        },
+        "Payment" : {}
+    },
+    "plus" : {
+        "splashscreen" : {
+            "autoclose" : true, /*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
+            "waiting" : true
+        },
+        "runmode" : "liberate", /*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
+        "signature" : "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==", /*可选，保留给应用签名，暂不使用*/
+        "distribute" : {
+            "apple" : {
+                "appid" : "", /*iOS应用标识，苹果开发网站申请的appid，如io.dcloud.HelloH5*/
+                "mobileprovision" : "", /*iOS应用打包配置文件*/
+                "password" : "", /*iOS应用打包个人证书导入密码*/
+                "p12" : "", /*iOS应用打包个人证书，打包配置文件关联的个人证书*/
+                "devices" : "universal", /*iOS应用支持的设备类型，可取值iphone/ipad/universal*/
+                "frameworks" : []
+            },
+            "google" : {
+                "packagename" : "", /*Android应用包名，如io.dcloud.HelloH5*/
+                "keystore" : "", /*Android应用打包使用的密钥库文件*/
+                "password" : "", /*Android应用打包使用密钥库中证书的密码*/
+                "aliasname" : "", /*Android应用打包使用密钥库中证书的别名*/
+                "permissions" : [
+                    "<uses-feature android:name=\"android.hardware.camera\"/>",
+                    "<uses-feature android:name=\"android.hardware.camera.autofocus\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.ACCESS_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CALL_PHONE\"/>",
+                    "<uses-permission android:name=\"android.permission.CAMERA\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_NETWORK_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.CHANGE_WIFI_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.FLASHLIGHT\"/>",
+                    "<uses-permission android:name=\"android.permission.GET_ACCOUNTS\"/>",
+                    "<uses-permission android:name=\"android.permission.INTERNET\"/>",
+                    "<uses-permission android:name=\"android.permission.MODIFY_AUDIO_SETTINGS\"/>",
+                    "<uses-permission android:name=\"android.permission.MOUNT_UNMOUNT_FILESYSTEMS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_LOGS\"/>",
+                    "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\"/>",
+                    "<uses-permission android:name=\"android.permission.RECORD_AUDIO\"/>",
+                    "<uses-permission android:name=\"android.permission.VIBRATE\"/>",
+                    "<uses-permission android:name=\"android.permission.WAKE_LOCK\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_CONTACTS\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\"/>",
+                    "<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
+                ]
+            },
+            "orientation" : [ "portrait-primary", "portrait-secondary" ], /*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+            "icons" : {
+                "ios" : {
+                    "prerendered" : true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
+                    "auto" : "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
+                    "iphone" : {
+                        "normal" : "", /*iPhone普通屏幕程序图标，分辨率：57x57*/
+                        "retina" : "", /*iPhone高分屏程序图标，分辨率：114x114*/
+                        "retina7" : "", /*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+                        "spotlight-normal" : "", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+                        "spotlight-retina" : "", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+                        "spotlight-retina7" : "", /*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal" : "", /*iPhone设置页面程序图标，分辨率：29x29*/
+                        "settings-retina" : "",
+                        "app@2x" : "unpackage/res/icons/120x120.png",
+                        "app@3x" : "unpackage/res/icons/180x180.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "notification@3x" : "unpackage/res/icons/60x60.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "settings@3x" : "unpackage/res/icons/87x87.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png",
+                        "spotlight@3x" : "unpackage/res/icons/120x120.png"
+                    },
+                    "ipad" : {
+                        "normal" : "", /*iPad普通屏幕程序图标，分辨率：72x72*/
+                        "retina" : "", /*iPad高分屏程序图标，分辨率：144x144*/
+                        "normal7" : "", /*iPad iOS7程序图标，分辨率：76x76*/
+                        "retina7" : "", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+                        "spotlight-normal" : "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+                        "spotlight-retina" : "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+                        "spotlight-normal7" : "", /*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+                        "spotlight-retina7" : "", /*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+                        "settings-normal" : "", /*iPad设置页面程序图标，分辨率：29x29*/
+                        "settings-retina" : "",
+                        "app" : "unpackage/res/icons/76x76.png",
+                        "app@2x" : "unpackage/res/icons/152x152.png",
+                        "notification" : "unpackage/res/icons/20x20.png",
+                        "notification@2x" : "unpackage/res/icons/40x40.png",
+                        "proapp@2x" : "unpackage/res/icons/167x167.png",
+                        "settings" : "unpackage/res/icons/29x29.png",
+                        "settings@2x" : "unpackage/res/icons/58x58.png",
+                        "spotlight" : "unpackage/res/icons/40x40.png",
+                        "spotlight@2x" : "unpackage/res/icons/80x80.png"
+                    },
+                    "appstore" : "unpackage/res/icons/1024x1024.png"
+                },
+                "android" : {
+                    "mdpi" : "", /*普通屏程序图标，分辨率：48x48*/
+                    "ldpi" : "", /*大屏程序图标，分辨率：48x48*/
+                    "hdpi" : "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+                    "xhdpi" : "unpackage/res/icons/96x96.png", /*720P高分屏程序图标，分辨率：96x96*/
+                    "xxhdpi" : "unpackage/res/icons/144x144.png",
+                    "xxxhdpi" : "unpackage/res/icons/192x192.png"
+                }
+            },
+            "splashscreen" : {
+                "ios" : {
+                    "iphone" : {
+                        "default" : "", /*iPhone3启动图片选，分辨率：320x480*/
+                        "retina35" : "", /*3.5英寸设备(iPhone4)启动图片，分辨率：640x960*/
+                        "retina40" : ""
+                    },
+                    "ipad" : {
+                        "portrait" : "", /*iPad竖屏启动图片，分辨率：768x1004*/
+                        "portrait-retina" : "", /*iPad高分屏竖屏图片，分辨率：1536x2008*/
+                        "landscape" : "", /*iPad横屏启动图片，分辨率：1024x748*/
+                        "landscape-retina" : "", /*iPad高分屏横屏启动图片，分辨率：2048x1496*/
+                        "portrait7" : "", /*iPad iOS7竖屏启动图片，分辨率：768x1024*/
+                        "portrait-retina7" : "", /*iPad iOS7高分屏竖屏图片，分辨率：1536x2048*/
+                        "landscape7" : "", /*iPad iOS7横屏启动图片，分辨率：1024x768*/
+                        "landscape-retina7" : ""
+                    }
+                },
+                "android" : {
+                    "mdpi" : "", /*普通屏启动图片，分辨率：240x282*/
+                    "ldpi" : "", /*大屏启动图片，分辨率：320x442*/
+                    "hdpi" : "", /*高分屏启动图片，分辨率：480x762*/
+                    "xhdpi" : "", /*720P高分屏启动图片，分辨率：720x1242*/
+                    "xxhdpi" : ""
+                }
+            },
+            "plugins" : {
+                "speech" : {
+                    "ifly" : {}
+                },
+                "payment" : {
+                    "alipay" : {}
+                }
+            }
+        },
+        "screenOrientation" : [ "portrait-primary", "portrait-secondary" ]
+    },
+    "dependencies" : {
+        "pages" : {
+            "pages/e_wallet.html" : {
+                "resources" : [],
+                "refer" : [
+                    "pages/e_barcode_scan.html",
+                    "pages/received.html",
+                    "pages/use_web_site.html",
+                    "pages/set_import_wallet.html"
+                ],
+                "priority" : 0
+            },
+            "index.html" : {
+                "resources" : [],
+                "refer" : [ "pages/e_wallet.html" ],
+                "priority" : 0
+            },
+            "pages/received.html" : {
+                "resources" : [ "/js/mui.min.js" ],
+                "refer" : [ "pages/received.html", "pages/hong.html" ],
+                "priority" : 0
+            },
+            "pages/use_web_site.html" : {
+                "resources" : [],
+                "refer" : [ "pages/e_wallet.html", "pages/set.html" ],
+                "priority" : 0
+            },
+            "pages/set_import_wallet.html" : {
+                "resources" : [],
+                "refer" : [ "pages/e_wallet.html" ],
+                "priority" : 0
+            },
+            "pages/set.html" : {
+                "resources" : [],
+                "refer" : [ "pages/e_wallet.html" ],
+                "priority" : 0
+            },
+            "pages/hong.html" : {
+                "resources" : [],
+                "refer" : [ "pages/use_web_site.html" ],
+                "priority" : 0
+            }
+        },
+        "idle" : {
+            "resources" : [
+                "images/Import.png",
+                "js/page/barcodeUtil.js",
+                "images/ps/xinyun.png",
+                "images/ps/apple.png",
+                "pages/e_help_center.html",
+                "images/set up.png",
+                "pages/images/money.png",
+                "js/bootstrap.min.js",
+                "images/submit.png",
+                "js/mui.js",
+                "pages/images/setUp.png",
+                "fonts/glyphicons-halflings-regular.eot",
+                "pages/e_ lead_private_key.html",
+                "pages/set_node.html",
+                "css/page/barcode_scan.css",
+                "images/application.png",
+                "images/earth.png",
+                "fonts/mui.ttf",
+                "pages/set_select_money.html",
+                "fonts/glyphicons-halflings-regular.woff",
+                "css/color.css",
+                "js/Common.js",
+                "images/exchange.png",
+                "images/dataBlue.png",
+                "images/submission.png",
+                "pages/set-add-ex.html",
+                "images/legal.png",
+                "images/ps/dongyi.png",
+                "fonts/glyphicons-halflings-regular.svg",
+                "pages/set-app-web.html",
+                "images/applicationZ.png",
+                "fonts/glyphicons-halflings-regular.ttf",
+                "images/add.png",
+                "images/cancle1.png",
+                "css/mdui.min.css",
+                "images/scan.png",
+                "pages/send.html",
+                "images/ps/phpoms.png",
+                "images/money.png",
+                "images/ps/wp.png",
+                "pages/set_connact.html",
+                "pages/images/setUpZ.png",
+                "js/mui.min.js",
+                "css/common.css",
+                "images/cancle2.png",
+                "images/appl.png",
+                "images/moneyZ.png",
+                "images/setUp.png",
+                "pages/images/applicationZ.png",
+                "pages/images/application.png",
+                "css/mui.min.css",
+                "images/Exhibition.png",
+                "images/ps/diguo.png",
+                "pages/e_agreement.html",
+                "images/wallet.png",
+                "images/ps/discuz.png",
+                "pages/e_received.html",
+                "images/service.png",
+                "images/ps/destoon.png",
+                "images/text.png",
+                "images/bgcolor.png",
+                "images/new.png",
+                "images/address.png",
+                "images/address1.png",
+                "pages/set-cooperation.html",
+                "images/language.png",
+                "pages/set_cooperation.html",
+                "images/contact.png",
+                "images/ps/thinkphp.png",
+                "images/ps/phpwind.png",
+                "js/jquery-3.3.1.js",
+                "images/ps/dede.png",
+                "images/cancel.png",
+                "pages/set_address_book.html",
+                "images/export.png",
+                "pages/images/dataBlue.png",
+                "pages/images/text.png",
+                "images/save.png",
+                "pages/scan.html",
+                "pages/images/Import.png",
+                "pages/Agreement.html",
+                "css/mui.css",
+                "pages/e_privacy.html",
+                "pages/e_set_language.html",
+                "images/help.png",
+                "pages/images/cancel.png",
+                "pages/images/moneyZ.png",
+                "pages/export_private_key.html",
+                "images/operation.png",
+                "images/determine.png",
+                "fonts/glyphicons-halflings-regular.woff2",
+                "images/ps/qibo.png",
+                "images/ps/jieqi.png",
+                "pages/set-default-ex.html",
+                "pages/e_index.html",
+                "images/background.png",
+                "images/qw.png",
+                "images/node.png",
+                "images/ps/ecs.png",
+                "images/ps/mah.png",
+                "pages/Privacy.html",
+                "pages/set-connact.html",
+                "pages/set_fee.html",
+                "images/back.png",
+                "pages/e_set_password.html",
+                "css/app.css",
+                "images/setUpZ.png",
+                "images/password.png",
+                "images/Blockchain.png"
+            ]
+        }
+    },
+    "fullscreen" : false
+}
