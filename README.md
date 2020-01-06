@@ -4,7 +4,7 @@ eacpay针对wordpress的支付插件，eacpay是基于eac的跨境互联网区�
 项目网址：http://eacpay.com
 
 ![Watch the video](https://github.com/vcexnet/eacpay/blob/master/eac.mp4)
-<video src="https://github.com/vcexnet/eacpay/blob/master/eac.mp4" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video>
+<iframe height=498 width=510 src="https://github.com/vcexnet/eacpay/blob/master/eac.mp4">
 
 # 2020-1-6更新
 eacpay 1.0.6版本发布，基本上可用
