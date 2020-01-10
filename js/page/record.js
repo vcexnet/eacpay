@@ -39,7 +39,17 @@ function showTransactions() {
 		data: JSON.stringify(datadata),
 		success: function(data) {
 			console.log(data.result);
-			var dataList = data.result;
+			var dataList =data.result.sort(function(a,b){
+        return a.time < b.time ? 1 : -1
+    });;	
+			// var dataList=[];
+			// for(var i=0;i<dataLists.length;i++){
+			
+			// 	if(!dataLists[i].fee){
+			// 			console.log("我看看");
+			// 		dataList.push(dataLists[i]);
+			// 	}
+			// }
 			var forTime=0;
 			var htmls;
 			if (dataList.length != 0) {
@@ -51,13 +61,16 @@ function showTransactions() {
 				for (var i = 0;i < dataList.length; i++) {
 					htmls += '<tr style="border-bottom: #ccc solid 1px;" data-id="' + dataList[i].txid +'" id="showData">' +
 						'<td  style="color: #1EB032;font-size: 1.2rem;">√</td>'
-					htmls += '<td style="text-align: left;font-size: 0.8rem;">收款自：' + dataList[i].address + '\n时间:' + Common.formatDate(dataList[i].time*1000) +
-						'</td>'
+
 					if(dataList[i].amount>0){
+						htmls += '<td style="text-align: left;font-size: 0.8rem;">收款自：' + dataList[i].address + '\n时间:' + Common.formatDate(dataList[i].time*1000) +
+							'</td>'
 						htmls += '<td style="color: #1EB032;">' + dataList[i].amount + '</td></tr>'
 						
 						
 					}else{
+						htmls += '<td style="text-align: left;font-size: 0.8rem;">付款到：' + dataList[i].address + '\n时间:' + Common.formatDate(dataList[i].time*1000) +
+							'</td>'
 						htmls += '<td style="color: red;">' + dataList[i].amount + '</td></tr>'
 					}
 					
@@ -67,8 +80,7 @@ function showTransactions() {
 				$('#showDatas').append(htmls);
 				$("#showDatas").on("click", "#showData", function(event) {
 					console.log($(this))
-					var txId = $(this)[0].dataset.id
-;
+					var txId = $(this)[0].dataset.id;
 
 					showTransaction(txId);
 
@@ -111,10 +123,10 @@ function showTransaction(txId) {
 			var walletInfo = data.result;
 			$("#amount").val(walletInfo.amount + " Earthcoins");
 			$("#confirmations").val(walletInfo.confirmations + " 个确认");
-			$("#time").val(Common.formatDate(walletInfo.time));
+			$("#time").val(Common.formatDate(walletInfo.time*1000));
 			$("#txid").val(walletInfo.txid);
-			// $("#toAdress").val(walletInfo.amount);
-			$("#toAdress").val(walletInfo.details[0].label + "  " + walletInfo.details[0].address);
+			// $("#toaddress").val(walletInfo.amount);
+			$("#toaddress").val(walletInfo.details[0].label + "  " + walletInfo.details[0].address);
 			$("#vout").val(walletInfo.details[0].vout);
 			showDetails();
 			// alert(data.result.walletversion);

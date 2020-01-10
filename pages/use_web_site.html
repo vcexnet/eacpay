@@ -4,7 +4,7 @@
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>EAC行情应用</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
@@ -43,6 +43,13 @@
 			td {
 				font-size: 0.8rem;
 			}
+			.mui-bar-tab .mui-tab-item .mui-icon {
+			    top: 3px;
+			    width: auto;
+			    height: 24px;
+			    padding-top: 0;
+			    padding-bottom: 0;
+			}
 		</style>
 	</head>
 
@@ -52,15 +59,15 @@
 		</header>
 		<nav style="background-color: #FFFFFF;" class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item " href="e_wallet.html">
-				<span class="mui-icon mui-icon-money"></span>
+				<span class="mui-icon mui-icon-money1"></span>
 				<span class="mui-tab-label">钱包</span>
 			</a>
 			<a class="mui-tab-item mui-active" href="use_web_site.html">
-				<span class="mui-icon mui-icon-yingyong"></span>
+				<span class="mui-icon mui-icon-yingyong2"></span>
 				<span class="mui-tab-label">行情应用</span>
 			</a>
 			<a class="mui-tab-item" href="set.html">
-				<span class="mui-icon mui-icon-set"></span>
+				<span class="mui-icon mui-icon-set1"></span>
 				<span class="mui-tab-label">设置</span>
 			</a>
 		</nav>
@@ -77,14 +84,14 @@
 					<p style="color: #FFFFFF; font-size: 16px; position: absolute; left: 52%; top: 80%;  padding-left: 10px;">买二：￥<span id="buy_2"></span></p>
 				</div>
 			</div>
-			<div style="margin-bottom: 20px;">
+			<div style="margin-top: 20px; margin-bottom: 20px;">
 				<center>
 					<table style="width: 100%;">
 						<tr>
 							<th style=" border: solid #ccc 1px; ">名称</th>
 							<th style=" border: solid #ccc 1px; ">交易对</th>
 							<th style=" border: solid #ccc 1px; ">价格</th>
-							<th style=" border: solid #ccc 1px; ">单笔成交金额(万元)</th>
+							<th style=" border: solid #ccc 1px; ">单笔成交金额(元)</th>
 						</tr>
 						<tbody id="showExchanges">
 							

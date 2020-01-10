@@ -1,7 +1,20 @@
 var walletName = localStorage.getItem("walletName");
 //导入私钥
 $(function() {
+
+	
 	// ImportSecretKey();
+	$("#cancle1").click(function() {
+		var text1;  // 全局变量用于保存文本框的内容	
+		$("#text1").val('');
+		mui.toast('取消成功')
+	});
+	
+	
+	
+	$("#img1").click(function(){
+		$("text1").file
+	});
 });
 	
 
@@ -12,7 +25,7 @@ function ImportSecretKey() {
 	var datadata = {
 		"jsonrpc": "1.0",
 		"method": "importprivkey",
-		"params": [myKey, "testing", false] 
+		"params": [myKey, "手动导入", false] 
 	};
 	$.ajax({
 		// 请求方式
@@ -30,7 +43,10 @@ function ImportSecretKey() {
 		data: JSON.stringify(datadata),
 		success: function(data) {
 			console.log(data.result);
-
+			if(data.result){
+				mui.alert("私钥导入成功");
+			}
+				
 			
 		
 					// alert(id);
@@ -41,23 +57,18 @@ function ImportSecretKey() {
 		
 		},
 		error: function(jqXHR) {
+			$(".key").click(function() {
+				var text1;  // 全局变量用于保存文本框的内容	
+				$("#text1").val('');
+				mui.toast('请输入EAC私钥')
+			});
+			mui.alert("私钥导入失败");
 			console.log("发生错误：" + jqXHR.status);
+			
 		}
 
 	});
-	$("#cancle1").click(function() {
-		var text1;  // 全局变量用于保存文本框的内容	
-		$("#text1").val('');
-		mui.toast('取消成功')
-	});
-	
-	$("#import1").click(function() {
-		mui.alert("私钥导入成功")
-	});
-	
-	$("#img1").click(function(){
-		$("text1").file
-	});
+
 	
 	
 

@@ -3,7 +3,7 @@
     "id" : "H51EA978B", /*应用的标识，创建应用时自动生成，勿手动修改*/
     "name" : "EACPAY", /*应用名称，程序桌面图标名称*/
     "version" : {
-        "name" : "1.0.1", /*应用版本名称*/
+        "name" : "1.0.7", /*应用版本名称*/
         "code" : 83
     },
     "description" : "", /*应用描述信息*/
@@ -337,5 +337,5 @@
             ]
         }
     },
-    "fullscreen" : false
+    "fullscreen" : true
 }

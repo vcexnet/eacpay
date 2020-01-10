@@ -31,29 +31,29 @@
 			<h1 class="mui-title">导入私钥</h1>
 		</header>
 		<div class="mui-content" style="background-color: #FFFFFF;">
-			<form>
+			<div style="height: 33px; position: absolute; margin-top: 70px; width: 100%; ">
+				<div id="changeFile" style="float: right; margin-right: 34px; width: 30px; height: 34px; background-image: url(../images/text.png); background-repeat: no-repeat; background-size: 30px 33px;">
+					<input style="opacity: 0; width: 30px; height: 34px; font-size: 0.1px;" type="file" onchange='openFile(event)'/>
+				</div>
+			</div>
 			<div  style="margin: 10px;">
 					<p style="margin-top: 10px;" class="font_Tips">导入EAC私钥</p>
 				<div  style="height: 100px;">
-					<textarea id="myKey" class="output" style="width:84%;height: 100%; float: left;text-align: center; " placeholder="粘贴或输入EAC私钥" onfocus="this.placeholder=''" onblur="this.placeholder='粘贴或输入EAC私钥'"></textarea>
+					<textarea id="myKey" class="output" style="width:80%;height: 100%; text-align: center; " placeholder="粘贴或输入EAC私钥" onfocus="this.placeholder=''" onblur="this.placeholder='粘贴或输入EAC私钥'"></textarea>
 				</div>
 
 			<br />
 			</div>
-			</form>
 		</div>
+	
 		<div style="margin: 10px; font-size: 16px; color: #999999;">
-			提示：申请的前提条件是贵站或者app支持EACPay支付，因为我们只展示支持EACPay支付的网站，展示排名与网站和app的大小规模影响力无关。但是如果贵站支持EACPay审核展示后，取消EACPay支付，将永不收录展示，请勿侥幸！
+			<p>友情提示：EACPay.com不保存您的私钥(私钥保存在你本机EACPay上)，请自行妥善保管私钥，私钥是您资产的证明和钥匙，请勿丢失或者交由他人保管。EACPay是一款真正的去中心化并完全由使用者掌控的支付工具。可以做到完全脱离开发者，即使我们不再对其提供支持了，依然能够自我运行（自建节点即可）。</p>
 		</div>
 		<div style="text-align:center; margin-top: 20px;">
 			<button id="cancle1" type="reset" class="mui-btn mui-btn-blue mui-btn-outlined"  style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px;">取消</button>
-			<button id="import1"  class="mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px; margin-left: 20px;" onclick="ImportSecretKey()">导入</button>
+			<button id="import1"  class="key mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px; margin-left: 20px;" onclick="ImportSecretKey()">导入</button>
 		</div>
-		<div style="position: absolute; left: 87%; top: 20%;">
-			<div  id="changeFile" style=" width: 30px; height: 33px; background-image:  url(../images/text.png); background-size: 30px 33px;">
-				<input id="" style="opacity: 0; font-size: 14px; margin-left: 0px;" type="file" onchange='openFile(event)'/>
-			</div>
-		</div>
+		
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript" charset="UTF-8">
 			

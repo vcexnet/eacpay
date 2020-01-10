@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
 		<link href="../css/color.css" rel="stylesheet" />
+		<link href="../css/list.css" rel="stylesheet" cha />
 		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
@@ -17,23 +18,23 @@
 			body {
 				background-color: #FFFFFF;
 			}
-			
+
 			select:required:invalid {
-			
-			  color: gray;
-			
+
+				color: gray;
+
 			}
-			
+
 			option[value=""][disabled] {
-			
-			  display: none;
-			
+
+				display: none;
+
 			}
-			
+
 			option {
-			
-			  color: black;
-			
+
+				color: black;
+
 			}
 		</style>
 	</head>
@@ -46,34 +47,92 @@
 			<div class="d">
 				<label>提示：我们不会保护您的私钥，私钥是EAC资产的证明，建议用纸笔记下，妥善保管</label>
 			</div>
-		<div style="width: 100%; height: 1px;"></div>
+			<div style="width: 100%; height: 1px;"></div>
 		</div>
-		<form class="mui-input-row " style="margin-top: 20px; margin-left: 8px; margin-right: 8px;">
+		<form class="mui-input-row " style="margin-top:20px; margin: ;">
+			<!-- 请选择要导出的地址 -->
+			  
 				<center>
-
-					<div class=" mui-select" style="width: 95%;">
-						<select id="showDatas" required style=" background: #F3F3F3; font-size: 15px;" />
-							<option  value="" disabled selected>&nbsp;&nbsp;请选择要导出的地址</option>
-
-						</select>
+					<div style="width: 90%;">
+						<input style="background-image:url(../images/list_.png);background-position:right;    background-repeat:no-repeat; font-size: 13px; padding-left: 10px;  border-radius: 4px; height: 34px; border: none; background-color: #e6e6e6;" type="text" id="lang_b" class="input_b" placeholder="请选择你要导出的地址" readonly="readonly"/>
+						<div style="float: left; border-radius: 20px; z-index: 99999; width:90%;margin-top: -27px; border-radius: 4px; position: absolute; display: none" id="huangbiao_b">
+							<ul id="ul_li" style="padding-left: 4px; border: #999999 solid 1px; overflow-x: hidden;  overflow-y: auto; height: 140px; font-size: 12px; border-radius: 4px; background-color: #FFFFFF; list-style: none;" onclick="fuzhi()">
+<!-- 								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">EAC</li>
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">miliEAC</li>
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">microEAC</li>
+								<li style="height: 34px; padding: 10px;" class="asd">satoEAC</li> -->
+							</ul>
+						</div>
 					</div>
+				</center>
+				<!-- <div id="Ddlt" onclick="click_ul();">
+					<input style="background-color: #F0F0F0; font-size: 13px;" value="请选择要导出的地址" type="text" id="lite">
+					<ul style="text-align: left; position: fixed;  float:right; margin-top: 38px; " id="ul_list" onclick="s_li_click()">
 
-				<button class="button" onclick="exportFile()" style="background-color: #2a82e4; font-size: 16px; border: none;">导出</button>	
-					<textarea id="copy" style="margin-top: 30px;border-radius: 10px; background: #F3F3F3; height: 100px;"></textarea>
-				<div style="margin-top: 20px; text-align: center;">
-					<input type="button"  onclick="copyUrl()" value="复制" style="background:#2a82e4; border: none; color: #FFFFFF; border-radius: 30px; width: 20%;">
-					<input type="button" value="确定"  style="margin-left: 60px; background:#2a82e4; border: none; color: #FFFFFF; border-radius: 30px; width: 20%;">
+					</ul>
 				</div>
-			
+ -->
+				<!-- 请选择要导出的地址 -->
+
+				<!-- <div class="" style="width: 95%;">
+					<select required style=" background: #F3F3F3; font-size: 15px;" />
+					<option value="" disabled selected>&nbsp;&nbsp;请选择要导出的地址</option>
+
+					</select>
+				</div> -->
+			<center>
+				<button class="button" onclick="exportFile()" style="background-color: #2a82e4; font-size: 16px; border: none;">导出</button>
+				<input id="copy" type="text" style="width: 90%; margin-top: 30px;border-radius: 10px; font-size: 13px; background: #F3F3F3; height: 100px;"/>
+				<div style="margin-top: 20px; text-align: center;">
+					<input type="button" onclick="copyUrl()" value="复制" style="background:#2a82e4; border: none; color: #FFFFFF; border-radius: 30px; width: 20%;">
+					<input type="button" value="确定" style="margin-left: 60px; background:#2a82e4; border: none; color: #FFFFFF; border-radius: 30px; width: 20%;">
+				</div>
+
 
 			</center>
 		</form>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/list.js" type="text/javascript" charset="UTF-8"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
-		
-		
+		<script>
+			$(function(){
+					$("#lang_b").click(function(){
+						if("block" == $("#huangbiao_b").css("display")){
+							hideLi_b();
+						}else{
+							showLi_b();
+						}
+					
+					
+					});
+					
+					$(".asd").each(function(i,v){
+						$(this).click(function(){
+							$("#lang_b").val($(this).html());
+							hideLi_b();
+						});
+					});
+					
+					$("#lang_b").blur(function(){
+						setTimeout(hideLi_b,200);
+					});
+					
+				}
+				
+			);
+			 
+			 
+			 
+			function showLi_b(){
+				$("#huangbiao_b").show();
+			}
+			function hideLi_b(){
+				$("#huangbiao_b").hide();
+			}
+		</script>
+
 	</body>
 
 </html>

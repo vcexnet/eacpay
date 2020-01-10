@@ -40,6 +40,72 @@
 				color: black;
 
 			}
+			#Ddlt {
+			            width: 70%;
+						/* color: #999999; */
+			            height: 40px;
+			            /*background: url("../images/qietu/module/xjt.png") right no-repeat;*/
+			            /*下拉框的下拉图标*/
+			            
+			        }
+			
+			        #lite {
+						top: -90%;
+						margin-left: 46%;
+						width: 86%;
+			            height: 40px;
+			            font-size: 12px;
+			            /* color: #727068; */
+			            font-weight: lighter;
+			            float: left;
+			            line-height: 26px;
+			            position: relative;
+			            z-index: 9999999;
+			            background: white;
+			            border: 0px;
+			            cursor: pointer;
+			        }
+			
+			        #lite:focus {
+			            outline: none;
+			        }
+			
+			        #Ddlt ul {
+						width: 60%;
+						margin-left: -66px;
+			            list-style: none;
+			            padding: 0px;
+			            border: 1px solid #333333;
+			            background-color: #fafaf9;
+			            z-index: 9999;
+			            position: relative;
+			            border: 0px solid #333333;
+			            box-shadow: 0px 10px 15px #e1dfda;
+			        }
+			
+			        #Ddlt ul ::-moz-selection {
+			            background: none;
+			        }
+			
+			        #Ddlt ul ::selection {
+			            background: none;
+			        }
+			
+			        #Ddlt ul li {
+			            /*border: 1px gray solid;*/
+			            height: 36px;
+			            line-height: 29px;
+			            margin-left: 16px;
+			            font-size: 12px;
+			            color: #727068;
+			            font-weight: lighter;
+			            border-top: #e7e5e2 1px solid;
+			            cursor: pointer;
+			        }
+			
+			        #Ddlt ul li:hover {
+			            background: #cccccc;
+			        }
 		</style>
 	</head>
 
@@ -48,38 +114,40 @@
 			<a style="color: #FFFFFF;" class=" mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
 			<h1 class="mui-title" style="font-size: 18px; text-emphasis-color: #ff333333;">网站或App展示申请</h1>
 		</header>
-		<div class="mui-content" style="background: #FFFFFF; width: 95%;">
+		<div class="mui-content" style="background: #FFFFFF; ">
 			<form>
-				<div class="mui-input-row mui-select" style="margin-top: 10px;">
+				<div class="mui-input-row" style="margin-top: 2%;">
 					<label style="font-size: 13px; width:35%;">网站/app类别:</label>
-					<select required style="background-color: #F0F0F0; padding-left: 10px; font-size: 12px;height: 45px;">
-						<option value="" disabled selected>请选择合作类别</option>
-						<option value="2">棋牌</option>
-						<option value="3">影视</option>
-						<option value="4">游戏</option>
-						<option value="2">破解</option>
-						<option value="3">直播</option>
-						<option value="4">小说</option>
-						<option value="2">视频</option>
-						<option value="3">播客</option>
-						<option value="4">开发</option>
-						<option value="4">服务</option>
-					</select>
+						<div id="Ddlt" onclick="click_ul();">
+						    <input disabled="disabled" style="background-image:url(../images/list_.png);background-position:right;    background-repeat:no-repeat; background-color: #F0F0F0; margin-right: 10px; " placeholder="请选择网站/app类别" type="text" id="lite">
+						    <ul id="ul_list" style="overflow-x: hidden; overflow-y: auto; height: 108px; text-align: left; left: 50%; position: fixed;  float:right; margin-top: 38px;">
+						        <li con_key="select2" onclick="s_li_click();">棋牌</li>
+						        <li con_key="select3" onclick="s_li_click();">影视</li>
+						        <li con_key="select4" onclick="s_li_click();">动漫</li>
+								<li con_key="select4" onclick="s_li_click();">游戏</li>
+								<li con_key="select5" onclick="s_li_click();">破解</li>
+								<li con_key="select6" onclick="s_li_click();">直播</li>
+								<li con_key="select7" onclick="s_li_click();">小说</li>
+								<li con_key="select8" onclick="s_li_click();">播客</li>
+								<li con_key="select9" onclick="s_li_click();">开发</li>
+								<li con_key="select10" onclick="s_li_click();">服务</li>
+						    </ul>
+						</div>
 				</div>
 
-				<div class="mui-input-row" style="padding-top: 15px;">
+				<div class="mui-input-row" style=" margin-top: -36px; margin-right: 8%; padding-top: ;">
 					<label style="font-size: 13px;">网站名/app名:</label>
-					<input class="mui-input-clear" type="text" maxlength="5" placeholder="输入网站名称或APP名称,不超过5个字" style="background: #F0F0F0; font-size:12px; padding-left: 10px; height: 45px;">
+					<input class="mui-input-clear" type="text" maxlength="5" placeholder="输入网站名称或APP名称,不超过5个字" style="background: #F0F0F0; font-size:12px; padding-left: 16px; height: 45px;">
 				</div>
 
-				<div class="mui-input-row" style="padding-top:15px; margin-bottom: 15px;">
+				<div class="mui-input-row" style=" margin-right: 8%; padding-top:15px; margin-bottom: 15px;">
 					<label style="font-size: 13px;width: 45%;">网址/app下载地址:</label>
-					<input class="mui-input-clear" type="text" placeholder="输入网址或App下载地址" style="font-size: 12px; padding-left: 10px; background: #F0F0F0; height: 45px;width: 55%;">
+					<input class="mui-input-clear" type="text" placeholder="输入网址或App下载地址" style="font-size: 12px; padding-left: 16px; background: #F0F0F0; height: 45px;width: 55%;">
 				</div>
 
 				<div class="mui-input-row change">
 					<label style="font-size: 13px; width:40%;">是否支持EACPay</label>
-					<span style="float: left; width: 30%; font-size: 11px;" class=" mui-radio mui-left">
+					<span style="float: left; width: 30%; font-size: 13px;" class=" mui-radio mui-left">
 						<input id="Gender_male" name="gender" class="gender" type="radio" checked />
 						<label>已支持</label>
 					</span>
@@ -89,21 +157,39 @@
 					</span> 
 				</div>  
 				<div class="mui-button-row" style="margin-top: -30px;">
-					<input  type="reset" value="取消" style="background:#50A3FD; border-radius: 30px; border:none; color:#FFFFFF;  width: 80px;"/>
-					<input  type="submit" value="提交" style="background:#50A3FD; border-radius:30px; border: none; width: 80px; margin-left: 50px;"/>
+					<input  type="reset" value="取消" style="background:#2a82e4; border-radius: 4px; border:none; color:#FFFFFF;  width: 80px;"/>
+					<input  type="submit" value="提交" style="background:#2a82e4; border-radius:4px; border: none; width: 80px; margin-left: 50px;"/>
 				</div>
 		</form>
-
-		<div style="margin-top: 10px;">
-			<p class="mui-table-view-cell">
+		</div>
+		<div style="margin-top: 20px;">
+			<p style="margin: 10px;">
 				提示：申请的前提条件是贵站或者app支持EACPay支付，因为我们只展示支持EACPay支付的网站，展示排名与网站和app的大小规模影响力无关。但是如果贵站支持EACPay审核展示后，取消EACPay支付，将用不收录展示，请勿侥幸！
 			</p>
-		</div>
-		
 		</div>
 		<script src="../js/mui.min.js "></script>
 		<script type="text/javascript ">
 			mui.init()
+		</script>
+		<script>
+			document.getElementById('ul_list').style.display = 'none';
+			
+			   function click_ul() {                //  点击展开
+			       document.getElementById('ul_list').style.display = 'block';
+			   }
+			   function s_li_click() {
+			       var t_obj = event.target;
+			       document.getElementById('lite').value = t_obj.innerHTML;
+			       setTimeout(function () {
+			           document.getElementById('ul_list').style.display = 'none';
+			       }, 1);
+			   }
+			   document.onclick = function () {
+			       var cur_obj = event.target;
+			       if ('lite' != cur_obj.id && 'Ddlt' != cur_obj.id) {
+			           document.getElementById('ul_list').style.display = 'none';
+			       }
+			   }
 		</script>
 	</body>
 

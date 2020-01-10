@@ -29,7 +29,7 @@ function readXuZhi() {
 				if (e.index == 1) {
 					mui.toast('已经同意');
 			
-						creatNewAdress();	
+						creatNewaddress();	
 			
 						
 				} else {
@@ -44,7 +44,7 @@ function readXuZhi() {
 	}
 
 }
-function creatNewAdress() {
+function creatNewaddress() {
 	var parm="钱包";
 
 

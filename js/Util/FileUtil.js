@@ -1,6 +1,15 @@
 //公共JS（封装公共方法）
 function FileUtil() {}
 
+/** 
+ * 现有文件:
+ *address(新建地址本)  格式:address:ekQJLfq4PYGa9bbYRTGyag2v1KLDKLkhi4,data:2020-1-6 17:29:38,lable:(无标签),message:(无消息),amount:(无请求金额)|
+ *paymentAddress(付款地址)  格式:address:eaVC8bsGAMC8ba6fRzmvJBJqvGP1zhr3rF,lable:我再测试存地址|
+ *nodeBook(节点文本)  格式:
+ *addressKey(地址以及对应的私钥)  格式:
+ * 
+ * 
+ */
 
 
 FileUtil.prototype = {
@@ -9,7 +18,7 @@ FileUtil.prototype = {
 	parent:null,
 	pitem:null,
 	list:null,
-	readContent:"",
+	readContent:"",//用于读出来的数据赋值
 	plusRead:function(){
    		document.addEventListener('plusready', function(){
    			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
@@ -73,8 +82,9 @@ FileUtil.prototype = {
 			read.onloadend=function(res){//读取文件内容成功后的回调事件
 			//res.target.result读取到的文件内容信息
 
-			console.log(res.target.result);
-					FileUtil.readContent=res.target.result;
+
+			FileUtil.readContent=res.target.result;
+			console.log(FileUtil.readContent);
 			}
 			})
 		});
@@ -122,8 +132,19 @@ FileUtil.prototype = {
 			
 			})
 		},
+		showData:function(){
+			var items = $("#_downloads")[0];
+			console.log(items.id);
+		    var self = items;  
+			console.log(self) ;   // 当前目录的 DirectoryEntry  
+		    var parent = self.entry; 
+			// alert(self);
+			console.log(parent.fullPath);
+			// alert(parent.fullPath);
+			
+		
+		}
 }
 
 
 var FileUtil = new FileUtil();
-FileUtil.plusRead();

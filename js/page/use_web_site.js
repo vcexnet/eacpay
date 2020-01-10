@@ -19,7 +19,7 @@ function showEAC() {
 		success: function(datas) {
 
 			var dataList = datas.data;
-					console.log(dataList);
+					// console.log(dataList);
 					
 			$("#eacMoney").text(dataList[0].price);
 			

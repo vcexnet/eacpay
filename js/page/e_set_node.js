@@ -45,3 +45,66 @@ function showNode() {
 	});
 }
 
+
+function addNode(){
+	var nodeIp= $("#node_ip").val();
+	var nodePort= $("#node_port").val();
+	var act= $("#act").val();
+	var pwd= $("#pwd").val();
+	var writeContent;
+	var datadata = {
+		"jsonrpc": "1.0",
+		"method": "createwallet",
+		"params": [name]
+	};
+	$.ajax({
+		// 请求方式
+		type: "post",
+		contentType: "application/json",
+		url: nodeIp+":"+nodePort+"/wallet/" + name,
+		username: act,
+		password: pwd,
+		dataType: "json",
+		crossDomain: true,
+		jsonpCallback: "jsonpCallbackFun",
+		jsonp: "callback",
+		// 把JS的对象或数组序列化一个json 字符串
+		async: false,
+		data: JSON.stringify(datadata),
+		success: function(data) {
+			console.log(data);
+	
+			if (data.result) {
+				// Common.saveLocalData("walletName", name);
+
+
+			}
+			
+	
+	
+		},
+		error: function(jqXHR) {
+			mui.alert('该名字已存在,请重新填写', function() {
+				console.log(jqXHR.status);
+			});
+	
+		}
+	});
+	
+	
+	
+
+	
+	
+	writeContent=nodeIp+":"+nodePort+"/wallet/~"+act+"~"+pwd+"|"
+	
+	console.log(writeContent);
+}
+
+
+
+
+
+ // setTimeout(function(){  
+	//  FileUtil.readFile("EAC/nodeBook");
+	//   }, 200);

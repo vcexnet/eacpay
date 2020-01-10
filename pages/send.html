@@ -11,7 +11,6 @@
 		<script src="../js/jquery-3.3.1.js"></script>
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="UTF-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="UTF-8"></script>
-		<script src="../js/page/e_send.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/common_1.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8">
@@ -97,8 +96,8 @@
 			<div class="mui-input-row " style="background-color: #FFFFFF; margin-bottom: 1px;width: 100%;">
 				
 				<label>对方地址：</label>
-				<input id="my_address" size="30" name="address" style="font-size: 12px;width: 40%; position: absolute; left: 30%; top: 2%;"
-				 type="text" class="mui-input-clear" placeholder="核实对方EAC地址，建议直接扫描地址码" onfocus="this.placeholder=''" onblur="this.placeholder='核实对方EAC地址，建议直接扫描地址码'">
+				<input id="my_address" size="30" name="address" style="font-size: 12px;width: 60%; position: absolute; left: 30%; top: 2%;"
+				 type="text" class="mui-input-clear" placeholder="核实对方EAC地址，建议扫描地址码"  >
 				<span style="margin-left:52%; vertical-align: middle;">
 				<img src="../images/sweepcode_two.png" style="margin-top: 6px; height: 30px;" onclick="openBarcode()"/>
 				</span>
@@ -106,50 +105,87 @@
 			<div class="mui-input-row mui-select" style="background-color: #FFFFFF; margin-bottom: 1px;">
 				<label>付款金额：</label>
 				<input id="my_amount" size="30" name="mony" style="font-size: 12px;width: 40%; position: absolute; left: 30%; top: 2%;"
-				 type="number" class="mui-input-clear" placeholder="核实付款金额，不可撤销" onfocus="this.placeholder=''" onblur="this.placeholder='核实付款金额，不可撤销'">
-
-				<select required="required" style="background-color:rgb(230,230,230);border-radius: 10px; color: #007AFF; width: 20% ; height: 30px; margin-top: 5px;margin-bottom: 5px;margin-right: 20px;padding-left: 10px;">
-					<option value="">EAC</option>
-					<option value="1">1</option>
-
-				</select>	
+				 type="number" class="mui-input-clear" placeholder="核实付款金额，不可撤销">
+				<!-- <select required="required" style="background-color:rgb(230,230,230);border-radius: 10px; color: #007AFF; width: 20% ; height: 30px; margin-top: 5px;margin-bottom: 5px;margin-right: 2
+					<option value="microEAC">microEAC</option>
+					<option value="satoEAC">satoEAC</option>
+				</select>	 -->
+				<div style="height:20px ; margin-top: 3px; margin-left: 72%; width: 23%;">
+					<input style="font-size: 13px; padding-left: 10px; color: #007AFF; border-radius: 20px; height: 34px; border: none; background-color: #e6e6e6;" type="text" id="lang_a" class="input_a" value="EAC" readonly="readonly"/>
+					<DIV style="z-index: ; border-radius: 20px; z-index:999999; width: 40%;margin-top: -27px; border-radius: 4px; position: fixed; display: none;" id="huangbiao_a">
+						<ul style="z-index: 999999; overflow-x: hidden; overflow-y: auto; height: 101px; font-size: 12px; padding-left: 4px; border-radius: 20px; background-color: #F4F5F6; width: 58%; list-style: none;">
+							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">EAC</li>
+							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">miliEAC</li>
+							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">microEAC</li>
+							<li style="height: 34px; padding: 10px;" class="qwx">satoEAC</li>
+					
+						</ul>
+					</div>
+				</div>
 			</div>
+			
 			<div class="mui-input-row " style="background-color: #FFFFFF; margin-bottom: 1px;">
-				<label>标签：</label>
-				<input name="biaoQ" style="font-size: 12px;position: absolute; left: 20%; top: 2%;" type="text" class="mui-input-clear"
-				 placeholder="为这个地址输入一个标签，存入地址本，用于识别，选填" onfocus="this.placeholder=''" onblur="this.placeholder='为这个地址输入一个标签，存入地址本，用于识别，选填'">
+				<label style="width: 25%;">标签：</label>
+				<input id="my_label" name="biaoQ" style="font-size: 12px;position: absolute; left: 20%;width: 80%; top: 2%;" type="text" class="mui-input-clear"
+				 placeholder="为地址输入一个标签，存入地址本，用于识别，选填" onfocus="this.placeholder=''" onblur="this.placeholder='为这个地址输入一个标签，存入地址本，用于识别，选填'">
 			</div>
 			<!-- 交易费用 -->
 			<div class="mui-input-row " style="background-color: #FFFFFF;">
 				<label>交易费用：</label>
 			</div>
-			<div class="mui-input-row mui-radio change" style="border-bottom: 1px #E6E6E6 solid; background-color: #FFFFFF;">
+			<div class="mui-input-row mui-radio change" style="z-index: 9999; border-bottom: 1px #E6E6E6 solid; background-color: #FFFFFF;">
 				<span style="vertical-align:middle; float: left; width:100%" class="mui-radio mui-left mui-select">
 					<label style="font-size: 13px;width: 60%;">
-					<input id="Gender_male" name="gender" class="gender" type="radio" checked />
-					0.00010000 EAC/KB,确认时间目标
+					<input id="my_cost" name="gender" class="gender" type="radio" checked />
+					<span id="freeMoney"></span> EAC/KB,确认时间目标
 					</label>
-					<select style="width: 32%;font-size: 15px; background-color: rgb(230,230,230); color: #007AFF;padding-left:5px; margin-right: 20px;height: 30px;border-radius: 10px;">
+					<div style="margin-top: -34px; margin-left: 65%; width: 30%;">
+						<input style="font-size: 13px; padding-left: 10px; color: #007AFF; border-radius: 20px; height: 34px; border: none; background-color: #e6e6e6;" type="text" id="lang" class="input" value="6 minute(6个块)" readonly="readonly"/>
+						<DIV style="border-radius: 20px; z-index: 9999; width: 40%;margin-top: -27px; border-radius: 4px; position: absolute; display: none" id="huangbiao">
+							<ul style="overflow-x: hidden; overflow-y: auto; font-size: 12px; padding-left: 4px; border-radius: 20px; height: 101px; background-color: #F4F5F6; width: 78%; list-style: none;">
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">2 minute(2个块)</li>
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">4 minute(4个块)</li>
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">6 minute(6个块)</li>
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">12 minute(12个块)</li>
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">24 minute(24个块)</li>
+								<li style="height: 34px; padding: 10px;" class="zxcv">48 minute(48个块)</li>
+							</ul>
+						</DIV>
+					</div>
+					<!-- <select style="width: 32%;font-size: 15px; background-color: #e6e6e6; color: #007AFF;padding-left:5px; margin-right: 20px;height: 30px;border-radius: 10px;">
+						<option>2 minute(2个块)</option>
+						<option>4 minute(4个块)</option>
 						<option>6 minute(6个块)</option>
-						<option>1</option>
-						<option>2</option>
-					</select>
+						<option>12 minute(12个块)</option>
+						<option>24 minute(24个块)</option>
+						<option>48 minute(48个块)</option>
+						<option>2 hour(144个块)</option>
+						<option>8 hour(504个块)</option>
+						<option>16 hour(1008个块)</option>
+					</select> -->
 				</span>	
 			
 				<span style="margin-top: 10px;float: left; width: 100% ; font-size: 12px;" class="mui-radio mui-left mui-select">
 					<label style="font-size: 13px;width: 38%;float: left;">
-					<input id="Gender_male" name="gender" class="gender" type="radio" checked />
+					<input style="font-size: 1.25rem;" id="my_costInput" name="gender" class="gender" type="radio" />
 					自定义，每KB
 					</label>
-					<input type="number" value="0.11111" style="float: left; width: 20%;border:solid 1px rgb(207,207,207);height: 30px;"/>
-					<select style="width: 20%;font-size: 15px; background-color: rgb(230,230,230); color: #007AFF;padding-left:20px; margin-right: 20px;height: 30px;border-radius: 10px;">
-						<option>EAC</option>
-						<option>1</option>
-						<option>2</option>
-					</select>
+					<input type="number"  style="margin-top: 4px; float: left; width: 20%;border:solid 1px rgb(207,207,207);height: 28px;font-size: 0.9rem;"/>
+					<div style="margin-left: 72%; width: 23%;">
+						<input style="font-size: 13px; padding-left: 10px; color: #007AFF; border-radius: 20px; height: 34px; border: none; background-color: #e6e6e6;" type="text" id="lang_b" class="input_b" value="EAC" readonly="readonly"/>
+						<DIV style="border-radius: 20px; z-index: 99999; width: 40%;margin-top: -27px; border-radius: 4px; position: fixed; display: none" id="huangbiao_b">
+							<ul style="overflow-x: hidden; overflow-y: auto; height: 101px; font-size: 12px; padding-left: 4px; border-radius: 20px; background-color: #F4F5F6; width: 58%; list-style: none;">
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">EAC</li>
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">miliEAC</li>
+								<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">microEAC</li>
+								<li style="height: 34px; padding: 10px;" class="asd">satoEAC</li>
+							</ul>
+						</DIV>
+					</div>
+					
 				</span>
 			</div>
-			<div class="mui-input-row change " style="background-color: #FFFFFF; margin-bottom: 10px; height: 100px;">
+			<div class="mui-input-row change " style="z-index: 9; background-color: #FFFFFF; margin-bottom: 10px; height: 100px;">
 				<div style=" width: 64%; position: absolute; top:8%;">
 					<span style="float: left; width: 100% ; font-size: 12px;" class="mui-checkbox mui-left">
 					<label style="font-size: 13px;width: 100%;float: left;">
@@ -159,7 +195,7 @@
 					</span>
 				</div>
 				<button class="mui-btn" style="border: none; width: 38%;background-color: #2a82e4;color: #FFFFFF;border-radius: 20px;  position: absolute; top: 8%; left:57%;" id="toastBtn">使用全部可用余额</button>
-				<button class=" mui-btn" style="border: none; width: 60%;background-color: #2a82e4;color: #FFFFFF;margin-top: 10px;  position: absolute; top: 50%;left:20% ;" id="sendBtn" onclick="my_sendBtn()">发送</button>
+				<button class=" mui-btn" style="border: none; width: 60%;background-color: #2a82e4;color: #FFFFFF;margin-top: 10px;  position: absolute; top: 50%;left:20% ;"  onclick="my_sendBtn()">发送</button>
 			</div>
 			<div style="margin-bottom: 20px; background-color: #FFFFFF;">
 				<div class="mui-table-view-cell hong">
@@ -170,8 +206,7 @@
 					<table width="100%" class="table" id="tablevalue">
 						<tr>
 							<th width=30% style=" border: solid rgb:(228.227,230) 1px; border-top: none; border-bottom: none; border-left: none;">日期</th>
-							<th width=15% style=" border: solid rgb:(228.227,230) 1px; border-top: none; border-bottom: none; ">标签</th>
-							<th width=15% style=" border: solid rgb:(228.227,230) 1px; border-top: none; border-bottom: none;">消息</th>
+							<th width=15% style=" border: solid rgb:(228.227,230) 1px; border-top: none; border-bottom: none; ">标签</th><strong></strong>
 							<th width=20% style=" border: solid rgb:(228.227,230) 0px; border-top: none; border-bottom: none; border-right: none;">总额(EAC)</th>
 
 						</tr>
@@ -183,10 +218,162 @@
 				</center>
 			</div>
 		</div>
+<div id="tiShi" class="mui-popover mui-popover-action mui-popover-bottom" style="height:auto;">
+				<div style="background: #FFFFFF;">
+					<p class="mui-table-view-cell" style="font-size: 18px; color: black;">
+						您确定要发出吗？
+					<span class="mui-icon mui-icon-closeempty" style=" float: right;" onclick="closeTiShi()"></span>
+					</p>
+					
+					<div style="margin-left: 10px;" >
+						<p id="qrcode" style="margin-top:15px;text-align: center;"></p>
+						<!-- <p style="color: #007aff;font-size: 1.25rem;">付款信息</p> -->
+						<!-- <p style="color: #000000;">URL:<span id="url_0"></span> </p> -->
+						<p style="color: #000000;">付款金额:<input class="input"id="money_1" style="border: none;width:auto;margin-left: 10px;" readonly="readonly"/> </p>
+						<p style="color: #000000;">地址:<input id="newaddress" style="border: none;width: auto;margin-left: 10px;" readonly="readonly"  /> </p>
+						<p style="color: #000000;">标签:<input class="input" id="label_1" style="border: none;width: auto;margin-left: 10px;" readonly="readonly"/></p>
+						<p style="color: #000000;">交易费用:<input class="input" id="cost_1" style="border: none;width: auto;margin-left: 10px;" readonly="readonly"/></p>
+						<!-- <p style="color: #000000;">消息:<input class="input" id="messages" style="border: none;" readonly="readonly"/> </p> -->
+					</div>	
+
+					
+					<div class="modal-footer" style="text-align: center; ">
+						<button type="button" class="btn mui-btn-grey" style="border-radius: 20px; margin-bottom: 10px; width: 100px;" onclick="closeTiShi();">取消</button>
+
+						<button type="button" class="btn mui-btn-blue" style="border-radius: 20px; margin-left: 30px; margin-bottom: 10px; width: 100px;" disabled="disabled" id="send" onclick="sendTo()">发送</button>
+					</div>
+				</div>
+			</div>
+			<!-- 文件 -->
+			<div  hidden="hidden" id="_downloads" class="fitem" >
+				<img class="ficon" src="../img/fdisk.png"/>
+				<div>
+					<span class="fname">downloads</span><br/>
+					<span class="finf">...</span>
+				</div>
+			</div>
+			
+
 		<script src="../js/mui.min.js"></script>
-		<script src="../js/page/e_send.js"></script>
+		<script src="../js/Util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_send.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+			var root=[];
+				document.addEventListener("plusready", function(){
+				var items = $("#_downloads")[0];	
+				console.log(items);
+				plus.io.resolveLocalFileSystemURL("_downloads", function ( entry ) {
+					root.push( entry );
+					items.entry = entry;
+				}, function ( e ) {
+					console.log( "Update "+items.id+" information failed: "+e.message );
+				} );
+			}, false);
+		</script>
+		<script>
+			$(
+				function(){
+					$("#lang").click(function(){
+						if("block" == $("#huangbiao").css("display")){
+							hideLi();
+						}else{
+							showLi();
+						}
+					});
+					
+					$(".zxcv").each(function(i,v){
+						$(this).click(function(){
+							$("#lang").val($(this).html());
+							hideLi();
+						});
+					});
+					
+					$("#lang").blur(function(){
+						setTimeout(hideLi,200);
+					});
+					
+				}
+				
+			);
+			 
+			 
+			 
+			function showLi(){
+				$("#huangbiao").show();
+			}
+			function hideLi(){
+				$("#huangbiao").hide();
+			}
+			
+			
+			$(
+				function(){
+					$("#lang_a").click(function(){
+						if("block" == $("#huangbiao_a").css("display")){
+							hideLi_a();
+						}else{
+							showLi_a();
+						}
+					});
+					
+					$(".qwx").each(function(i,v){
+						$(this).click(function(){
+							$("#lang_a").val($(this).html());
+							hideLi_a();
+						});
+					});
+					
+					$("#lang_a").blur(function(){
+						setTimeout(hideLi_a,200);
+					});
+					
+				}
+				
+			);
+			 
+			 
+			 
+			function showLi_a(){
+				$("#huangbiao_a").show();
+			}
+			function hideLi_a(){
+				$("#huangbiao_a").hide();
+			}
+			
+			$(
+				function(){
+					$("#lang_b").click(function(){
+						if("block" == $("#huangbiao_b").css("display")){
+							hideLi_b();
+						}else{
+							showLi_b();
+						}
+					});
+					
+					$(".asd").each(function(i,v){
+						$(this).click(function(){
+							$("#lang_b").val($(this).html());
+							hideLi_b();
+						});
+					});
+					
+					$("#lang_b").blur(function(){
+						setTimeout(hideLi_b,200);
+					});
+					
+				}
+				
+			);
+			 
+			 
+			 
+			function showLi_b(){
+				$("#huangbiao_b").show();
+			}
+			function hideLi_b(){
+				$("#huangbiao_b").hide();
+			}
 		</script>
 	</body>
 

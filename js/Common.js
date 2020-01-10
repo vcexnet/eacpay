@@ -450,14 +450,14 @@ Common.prototype = {
 	    return bytes;
 	},
 	codeResolver: function(url){
-		var adress="", newLable=0, amount=0, typeText;
+		var address="", newLable=0, amount=0, typeText;
 		
 
 		var data=url.split('?');
 		console.log(data);
 		if (data.length>1) {
 			var earthcoin = url.split('?')[0];
-			adress = earthcoin.split(':')[1];
+			address = earthcoin.split(':')[1];
 			var remaining = url.split('?')[1];
 			var each = remaining.split("&");
 			if (each.length > 1) {
@@ -468,7 +468,7 @@ Common.prototype = {
 							amount = each[i].split('=')[1];
 							break;
 						case 'label':
-							newLable = decodeURIComponent(each[i].split('=')[1]);
+							newLable = decodeURI(each[i].split('=')[1]);
 							break;
 						default:
 							console.log("其他");
@@ -482,7 +482,7 @@ Common.prototype = {
 						amount = each[0].split('=')[1];
 						break;
 					case 'label':
-						newLable = decodeURIComponent(each[0].split('=')[1]);
+						newLable = decodeURI(each[0].split('=')[1]);
 						break;
 					default:
 						console.log("其他");
@@ -493,12 +493,50 @@ Common.prototype = {
 			
 		}else{
 			console.log(data);
-			adress=data[0].split(":")[1];
+			address=data[0].split(":")[1];
 		}
-		console.log("余额:" + amount + "   地址:  " + adress + "   标签:    " + newLable);
-		var datas={"adress":adress,"newLable":newLable,"amount":amount};
-		 return adress+","+amount+","+newLable;
-	}
+		console.log("余额:" + amount + "   地址:  " + address + "   标签:    " + newLable);
+		var datas={"address":address,"newLable":newLable,"amount":amount};
+		 return address+","+amount+","+newLable;
+	},
+	utf16to8:function(str) {  
+	    var out, i, len, c;  
+	    out = "";  
+	    len = str.length;  
+	    for(i = 0; i < len; i++) {  
+	    c = str.charCodeAt(i);  
+	    if ((c >= 0x0001) && (c <= 0x007F)) {  
+	        out += str.charAt(i);  
+	    } else if (c > 0x07FF) {   
+	        out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));  
+	        out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));  
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+	    } else {  
+	        out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));  
+	        out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));  
+	    }  
+	    }  
+	    return out;  
+	},
+	  toUtf8:function(str) {   
+	      var out, i, len, c;   
+	      out = "";   
+	      len = str.length;   
+	      for(i = 0; i < len; i++) {   
+	          c = str.charCodeAt(i);   
+	          if ((c >= 0x0001) && (c <= 0x007F)) {   
+	              out += str.charAt(i);   
+	          } else if (c > 0x07FF) {   
+	              out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));   
+	              out += String.fromCharCode(0x80 | ((c >>  6) & 0x3F));   
+	              out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));   
+	          } else {   
+	              out += String.fromCharCode(0xC0 | ((c >>  6) & 0x1F));   
+	              out += String.fromCharCode(0x80 | ((c >>  0) & 0x3F));   
+	          }   
+	      }   
+	      return out;   
+	  }
 	
 
 }

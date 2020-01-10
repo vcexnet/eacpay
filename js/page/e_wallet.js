@@ -6,11 +6,11 @@ var file_content = [];
 var price;
 
 $(function() {
-// Common.saveLocalData("walletName", "eVAr93C9FZQw4bMaXpU5hSK894WCwPdRBa");
+ // Common.saveLocalData("walletName", "eVAr93C9FZQw4bMaXpU5hSK894WCwPdRBa");
 	showEAC();
+	//创建对应的文件
 
-
-
+	setTimeout(function(){createFileAll();}, 500);
 	if (walletName) {
 
 		showTransactions();
@@ -32,8 +32,8 @@ $(function() {
 });
 
 
-					// var data={"adress":"adress","newLable":"newLable","amount":"amount"};
-					// console.log(data.adress);
+					// var data={"address":"address","newLable":"newLable","amount":"amount"};
+					// console.log(data.address);
 			function scaned(t, r, f) {
 				console.log("t:" + t + "r:" + r + "f:" + f);
 				var data= Common.codeResolver(r);
@@ -104,8 +104,20 @@ function showTransactions() {
 		async: false,
 		data: JSON.stringify(datadata),
 		success: function(data) {
-			console.log(data.result);
-			var dataList = data.result;
+			// console.log(data.result);
+
+			var dataList =data.result.sort(function(a,b){
+        return a.time < b.time ? 1 : -1
+    });;	
+			// var dataList=[];
+			// for(var i=0;i<dataLists.length;i++){
+			
+			// 	if(!dataLists[i].fee){
+			// 			// console.log("我看看");
+			// 		dataList.push(dataLists[i]);
+			// 	}
+			// }
+
 			var forTime=0;
 			var htmls;
 			if (dataList.length != 0) {
@@ -115,9 +127,8 @@ function showTransactions() {
 					forTime=dataList.length
 				}
 				for (var i = 0; i < forTime; i++) {
-					htmls += '<tr data-id="' + dataList[i].txid +'" id="showData">' +
-						'<td  style="color: #1EB032;font-size: 1.2rem;"><input type="button" class="show" value="√"/></td>'
-					console.log(i);
+					htmls += '<tr style="border-top: solid #ccc 1px;" data-id="' + dataList[i].txid +'" id="showData">' +
+						'<td  style="color: #1EB032;font-size: 1.5rem;">√</td>'
 					if(dataList[i].amount>0){
 						htmls += '<td style="text-align: left;">收款自：' + dataList[i].address + '\n时间:' + Common.formatDate(dataList[i].time*1000) +
 							'</td>'
@@ -178,10 +189,10 @@ function showTransaction(txId) {
 			var walletInfo = data.result;
 			$("#amount").val(walletInfo.amount + " Earthcoins");
 			$("#confirmations").val(walletInfo.confirmations + " 个确认");
-			$("#time").val(Common.formatDate(walletInfo.time));
+			$("#time").val(Common.formatDate(walletInfo.time*1000));
 			$("#txid").val(walletInfo.txid);
-			// $("#toAdress").val(walletInfo.amount);
-			$("#toAdress").val(walletInfo.details[0].label + "  " + walletInfo.details[0].address);
+			// $("#toaddress").val(walletInfo.amount);
+			$("#toaddress").val(walletInfo.details[0].label + "  " + walletInfo.details[0].address);
 			$("#vout").val(walletInfo.details[0].vout);
 			showDetails();
 			// alert(data.result.walletversion);
@@ -272,8 +283,8 @@ function showWallet() {
 				/* 总额 */
 			var c=document.getElementById("balance").value=a + b;
 				/* 资产 */
-			var d=document.getElementById("assets").value="≈¥"+(c*price).toFixed(8);
-			console.log(c+"+++++++++++"+price);
+			var d=document.getElementById("assets").value="≈¥"+(c*price).toFixed(4);
+			// console.log(c+"+++++++++++"+price);
 			}
 		},
 		
@@ -294,7 +305,7 @@ function showDTransactions() {
 			"coinname": "all"
 		},
 		success: function(datas) {
-			console.log(datas);
+			// console.log(datas);
 			var dataList = datas.data;
 			var htmls;
 			var arr=[];
@@ -305,7 +316,7 @@ function showDTransactions() {
 				arr.push(dataList[item]);
 				++i;
 				if(i<=3){
-				htmls += "<tr> <td style='color: #1EB032;font-size: 1rem;'>"+item.toUpperCase()+"</td>"
+				htmls += "<tr style='border-top: solid #ccc 1px;'> <td style='color: #1EB032;font-size: 1rem;'>"+item.toUpperCase()+"</td>"
 				htmls += "<td style='text-align: center;'>"+item.toUpperCase()+"/CNC</td>"
 				htmls += "<td style='text-align: center;'>" + dataList[item].ticker.buy + "</td>",
 				htmls += "<td style='color: #1EB032;'>" + dataList[item].ticker.range + "</td></tr>"
@@ -423,4 +434,29 @@ function copyUrl() {
 		});
 	}
 	
+}
+
+function createFileAll(){
+
+	var createFileAll= localStorage.getItem("createFileAll");
+	// FileUtil.showData();
+	// 	FileUtil.removeFile('EAC');
+		// Common.saveLocalData("createFileAll",1);
+	console.log(createFileAll);
+	if(createFileAll!=0){
+		FileUtil.creatDirectory('EAC');
+
+		setTimeout(function(){
+			 FileUtil.creatFile('EAC/address');
+			 FileUtil.creatFile('EAC/paymentAddress');
+			 FileUtil.creatFile('EAC/nodeBook');
+			 FileUtil.creatFile('EAC/addressKey');
+			 Common.saveLocalData("createFileAll", 0);
+			 
+			 // console.log("创建完毕");
+			 }, 300);
+		
+
+
+	}
 }

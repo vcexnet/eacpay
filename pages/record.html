@@ -15,11 +15,37 @@
 		<script src="../js/page/record.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
-			.th{
-				border: solid 2px;
-				border-bottom-color:rgba(0,0,0,0) ;
-				border-left-color: ;
+			.table {
+				color: #666;
+				text-align: center;
 			}
+
+			.table td {
+				font-size: 0.8rem;
+				text-align: center;
+				word-wrap:break-word;
+				word-break:break-all;
+				font-size: 0.75rem;
+			}
+
+			.table th {
+				background-repeat: repeat-x;
+				height: 30px;
+				font-size: 0.8rem;
+				border-right: 1px solid #cad9ea;
+				padding: 0 1em 0;
+			}
+
+			.table tr {
+				height: 40px;
+				/*把table标签的行高设定为固定值*/
+				border-bottom: 1px solid #3333;
+			}
+
+			.table tr.alter {
+				background-color: #f5fafe;
+			}
+
 			
 			
 		</style>
@@ -46,6 +72,7 @@
 						
 					</table>
 				</center>
+				
 				<div id="details" class="mui-popover mui-popover-action mui-popover-bottom" style="height: auto;">
 					<ul  class="mui-table-view">
 						<li class="mui-table-view-cell" style="font-size: 5vw;color: black;">
@@ -57,7 +84,7 @@
 							<p>状态：<input style="border: none; background-color: rgb(247,247,247);" id="confirmations" value="" /></p>
 							<p>日期：<input style="border: none; background-color: rgb(247,247,247);" id="time" value="" /></p>
 							<p>交易ID：<input style="border: none; width: 70vw; background-color: rgb(247,247,247);" id="txid" value="" /></p>
-							<p>到：<input style="border: none; width: 70vw; background-color: rgb(247,247,247);" id="toAdress" value="" /></p>
+							<p>到：<input style="border: none; width: 70vw; background-color: rgb(247,247,247);" id="toaddress" value="" /></p>
 							<p>输出索引：<input style="border: none; background-color: rgb(247,247,247);" id="vout" value="" /></p>
 						</li>
 					</ul>

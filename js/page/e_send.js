@@ -1,69 +1,97 @@
-	var walletName = localStorage.getItem("walletName");
-	var url=JSON.stringify(ChangeEnv.getRequest());
 
-
+var walletName = localStorage.getItem("walletName");
+var url = JSON.stringify(ChangeEnv.getRequest());
+var amountMoney;
+var i=4;
+var timehwnd;
+var isWrite=0;
 //付款
-	$(function() {
+$(function() {
+
+		setTimeout(function(){FileUtil.readFile("EAC/paymentAddress"); }, 200); 
 		
-		
-	
-		if(url.split(":")[1]){
-				console.log(url.split(":")[1]);
-			var newData=url.split(":")[1]
-			var adress=newData.split(",")[0].replace('"', '');
-			var amount=newData.split(",")[1];
-			var newLable=decodeURIComponent(newData.split(",")[2].replace('"}', ''));
-			console.log(newData+"++++++++"+newLable);
+		// setTimeout(function(){
 			
-			if(amount!=0){
-							$("input[name=mony]").val(amount);
-			}
-			if(newLable!=0){
+		// 	FileUtil.showData(); }, 300);
+		if (url) {
+			if (url.split(":")[1]) {
+
+
+				if (url.split(":")[0] == '{"address"') {
+					// console.log(url.split(':"')[1].split('"}')[0]);
+					var address = url.split(':"')[1].split('"}')[0];
+					$("input[name=address]").val(address);
+					isWrite=1;
+				} else {
+					var newData = url.split(":")[1]
+					var address = newData.split(",")[0].replace('"', '');
+					var amount = newData.split(",")[1];
+					var newLable = decodeURIComponent(newData.split(",")[2].replace('"}', ''));
+					console.log(newData + "++++++++" + newLable);
+
+					if (amount != 0) {
+						$("input[name=mony]").val(amount);
+					}
+					if (newLable != 0) {
 						$("input[name=biaoQ]").val(newLable);
-				
+
+					}
+					if (address) {
+						$("input[name=address]").val(address);
+					}
+				}
+
+
 			}
-			if(adress){
-						$("input[name=address]").val(adress);
-			}
-			
 		}
-		// listReceivedByAddress();
+
 		showTransactions();
+		showWallet();
 	});
-	
+
 	//判断付款地址是否为空
-	function my_sendBtn(){
+	function my_sendBtn() {
 		//获取表单对象
-		var address=document.getElementById("my_address");
-		var amount=document.getElementById("my_amount");
-		var sed_Btn=document.getElementById("sendBtn");
+		var address = $("#my_address").val();
+		var amount = $("#my_amount").val();
+		console.log(address);
 		//验证项目是否为空
-		if(address.value==='' ||address.value===null){
-			mui.alert("请填写对方地址!",function(){
-				
+		if (!address) {
+			mui.alert("请填写对方地址!", function() {
+
 			});
 			return;
 		}
-		if(amount.value===''||amount.value===null){
-			mui.alert("请填写付款金额",function(){
-				
+		if (!amount) {
+			mui.alert("请填写付款金额", function() {
+
 			});
 			return;
 		}
+
+
+		var label = $("#my_label").val();
+		var cost = $("#my_costInput").val();
+		$("#newaddress").val(address);
+		$("#money_1").val(amount);
+		$("#label_1").val(label);
+		$("#cost_1").val(cost);
+
+				showTiShi();
+
 		
-			var btnArray = ['取消', '发送'];
-			mui.confirm('您确定要发送出吗?', '付款提示', btnArray, function(e) {
-				
-			})
-		
-		
+
 	};
 
+
+
+
+
 	
+//转账
 		
-	//显示交易记录
-	// function showTransactions() {
-	$("#sendBtn").on("click", function() {
+	function sendTo(){
+		var writeContent;
 	    //获取输入框的值
 	    var address = $("input[name=address]").val();
 	    var mony = $("input[name=mony]").val();
@@ -71,6 +99,13 @@
 	    // console.log("address:" + address)
 	    // console.log("mony:" + mony)
 	    // console.log("biaoQ:" + biaoQ)
+		showPaymentaddress(address);//判断是否存在
+		if(amountMoney<mony){
+			mui.alert("有效余额不足",function(){
+				closeTiShi();
+			});
+			return;
+		}
 	    var datadata = {
 	        "jsonrpc": "1.0",
 	        "method": "sendtoaddress",
@@ -99,92 +134,50 @@
 	            console.log(data.result);
 				if(data.result){
 					mui.alert('转账成功', function() {
+	
+						
+						if(isWrite==0){
+							if(!biaoQ){
+								biaoQ="无"
+							}
+							writeContent="address:"+address+",lable:"+biaoQ+"|";
+							FileUtil.writeFile("EAC/paymentAddress",writeContent);//给地址本添加记录
+							
+						}
+
+						closeTiShi();
 					});
+					
 				}else{
 					mui.alert('网络繁忙请稍后重试!', function() {
+						closeTiShi();
 					});
+
 				}
 
-	        },
-	        error: function(jqXHR) {
-				
-	            console.log("发生错误：" + jqXHR.status);
-	        }
-	    });
-	})
-	
+			},
+			error: function(jqXHR) {
+					mui.alert('请输入人正确的地址!', function() {
+										console.log("发生错误：" + jqXHR.status);
+					});
+
+			}
+		});
+	}
+
+
 function showTransactions() {
 
-    var datadata = {
-        "jsonrpc": "1.0",
-        "method": "listtransactions",
-        "params": []
-    };
-    $.ajax({
-        // 请求方式
-        type: "post",
-        contentType: "application/json",
-        url: ChangeEnv.path+walletName,
-        username: ChangeEnv.username,
-        password: ChangeEnv.password,
-        dataType: "json",
-        crossDomain: true,
-        jsonpCallback: "jsonpCallbackFun",
-        jsonp: "callback",
-        // 把JS的对象或数组序列化一个json 字符串
-        async: false,
-        data: JSON.stringify(datadata),
-        success: function(data) {
-            console.log(data.result);
-            var dataList = data.result;
-            var htmls;
-			var label;
-			var news;
-			if(data.result){
-				for (var i = 0; i < dataList.length; i++) {
-				    if (dataList[i].label) {
-				        label=dataList[i].label;
-				    } else {
-				        label="无";
-				    }
-					if(dataList[i].news){
-						news=dataList[i].news;
-					}else{
-						news="无";
-					}
-				    htmls += '<tr >' + '<td data-id="' + dataList[i].txid + '" style="color: #1EB032;font-size: 16px; text-align:center; ">日期:' + Common.formatDate(dataList[i].time) + '</td>'
-				    htmls += '<td data-id="' + dataList[i].txid + '" style=" font-size:13px; ">' + label + '</td>'
-				    htmls += '<td data-id="' + dataList[i].txid + '">' + news + '</td>'
-				    htmls += '<td  style="color: #1EB032; ">' + dataList[i].amount + '</td></tr>'
-				
-				};
-				$('#showDatas').append(htmls);
-			}else{
-				console.log("没有交易数据");
-			}
-
-        },
-        error: function(jqXHR) {
-            console.log("发生错误：" + jqXHR.status);
-        }
-    });
-
-
-}
-
-	
-	function listReceivedByAddress() {
-	
 		var datadata = {
 			"jsonrpc": "1.0",
-			"method": "listreceivedbyaddress",
+			"method": "listtransactions",
 			"params": []
 		};
 		$.ajax({
 			// 请求方式
 			type: "post",
 			contentType: "application/json",
-			url: ChangeEnv.path+walletName,
+			url: ChangeEnv.path + walletName,
 			username: ChangeEnv.username,
 			password: ChangeEnv.password,
 			dataType: "json",
@@ -195,56 +188,86 @@ function showTransactions() {
 			async: false,
 			data: JSON.stringify(datadata),
 			success: function(data) {
-				console.log(data.result);
-				var dataList = data.result;
+				// console.log(data.result);
+		var dataLists =data.result.sort(function(a,b){
+        return a.time < b.time ? 1 : -1
+    });;	
+			var dataList=[];
+			for(var i=0;i<dataLists.length;i++){
+			
+				if(dataLists[i].category=="send"){
+						// console.log("我看看");
+					dataList.push(dataLists[i]);
+				}
+			}
+				// console.log(dataList);
 				var htmls;
-				var cont;
-				for (var i = 0; i < dataList.length; i++) {
-					htmls += '<tr >'+'<td  style="color: #1EB032;font-size: 16px; text-align:center; ">成功</td>'
-					htmls += '<td style="text-align: left; font-size:13px; ">收款自：' + dataList[i].address + '\n时间:' + Common.formatDate(dataList[i].time) +'</td>'
-					htmls += '<td style="color: #1EB032; ">' + dataList[i].amount + '</td></tr>'
-				};
-				$('#showDatas').append(htmls);
+				var label;
+				if (data.result) {
+					for (var i = 0; i < 5; i++) {
+						if (dataList[i].comment) {
+							label = dataList[i].comment;
+						} else {
+							label = "无";
+						}
+
+						htmls += '<tr style="border-top: solid #ccc 1px;">' + '<td data-id="' + dataList[i].txid +
+							'" style="color: #1EB032;font-size: 16px; text-align:center; ">' + Common.formatDate(dataList[i].time * 1000) +
+							'</td>'
+						htmls += '<td data-id="' + dataList[i].txid + '" style=" font-size:13px; ">' + label + '</td>'
+							htmls += '<td style="color: red;">' + dataList[i].amount + '</td></tr>'
+
+
+					};
+					$('#showDatas').append(htmls);
+				} else {
+					console.log("没有交易数据");
+				}
+
 			},
 			error: function(jqXHR) {
-				alert("发生错误：" + jqXHR.status);
+				console.log("发生错误：" + jqXHR.status);
 			}
 		});
-	
-	
+
+
+
 	}
-	
+
+
+
+
 	function scaned(t, r, f) {
-				console.log("t:" + t + "r:" + r + "f:" + f);
-				var data= Common.codeResolver(r);
-							console.log(data);
-	
-					var adress=data.split(",")[0];
-					var amount=data.split(",")[1];
-					var newLable=decodeURIComponent(data.split(",")[2]);
-					console.log(data+"++++++++"+newLable);
-					
-					if(amount!=0){
-									$("input[name=mony]").val(amount);
-					}
-					if(newLable!=0){
-								$("input[name=biaoQ]").val(newLable);
-						
-					}
-					if(adress){
-								$("input[name=address]").val(adress);
-					}
-					
-	
-				// window.location.href="send.html?data="+data;
-							
-			}
-	
-	
+		console.log("t:" + t + "r:" + r + "f:" + f);
+		var data = Common.codeResolver(r);
+		console.log(data);
+
+		var address = data.split(",")[0];
+		var amount = data.split(",")[1];
+		var newLable = decodeURIComponent(data.split(",")[2]);
+		console.log(data + "++++++++" + newLable);
+
+		if (amount != 0) {
+			$("input[name=mony]").val(amount);
+		}
+		if (newLable != 0) {
+			$("input[name=biaoQ]").val(newLable);
+
+		}
+		if (address) {
+			$("input[name=address]").val(address);
+		}
+
+
+		// window.location.href="send.html?data="+data;
+
+	}
+
+
 	// 打开二维码扫描界面 
-	function openBarcode(){
+	function openBarcode() {
 		createWithoutTitle('barcode_scan.html', {
-			titleNView:{                                                                                                                                           
+			titleNView: {
 				type: 'float',
 				backgroundColor: 'rgba(215,75,40,0.3)',
 				titleText: '扫一扫',
@@ -259,9 +282,9 @@ function showTransactions() {
 			}
 		});
 	}
-	
+
 	function showWallet() {
-	
+
 		var datadata = {
 			"jsonrpc": "1.0",
 			"method": "getwalletinfo",
@@ -271,7 +294,7 @@ function showTransactions() {
 			// 请求方式
 			type: "post",
 			contentType: "application/json",
-			url: ChangeEnv.path+walletName,
+			url: ChangeEnv.path + walletName,
 			username: ChangeEnv.username,
 			password: ChangeEnv.password,
 			dataType: "json",
@@ -282,18 +305,74 @@ function showTransactions() {
 			async: false,
 			data: JSON.stringify(datadata),
 			success: function(data) {
-	
+
 				if (data.result) {
 					var datas = data.result;
+				
+				amountMoney=datas.balance;
+				$("#freeMoney").text(datas.paytxfee)								
 
-				$("input[name=mony]").val(datas.balance);
+							
+							
 				}
+
+		 $("#toastBtn").click(function() {		
+			 $("input[name=mony]").val(datas.balance);
+			 
+				})
 	
-	
-	
+
 			},
 			error: function(jqXHR) {
 				console.log("发生错误：" + jqXHR.status);
 			}
 		});
 	}
+
+
+
+	function showTiShi() {
+		mui("#tiShi").popover("toggle");
+		i=4;
+		$('#send').attr("disabled","disabled");
+		 timehwnd=setInterval('Countdown();',1000);
+		
+	}
+
+	function closeTiShi() {
+
+		mui("#tiShi").popover("toggle");
+		// sendTo();
+	}
+
+	//发送延迟
+	
+	function Countdown() {
+		i--;
+		if (i == 0) {
+			$("#send").html("发送");
+			$("#send").removeAttr("disabled");
+			clearInterval(timehwnd);
+		} else {
+			$("#send").html("发送(" + i + ")");
+		}
+	}
+
+function showPaymentaddress(adress){
+	paymentaddressData=FileUtil.readContent;
+	var paymentaddressDatas=paymentaddressData.split('|');
+	var paymentaddressDataNext='';
+
+	for(var i=0;i<paymentaddressDatas.length-1;i++){
+		paymentaddressDataNext=paymentaddressDatas[i].split(',');
+
+
+		if(paymentaddressDataNext[1].split(":")[1]==adress) {
+			isWrite=1;
+		}
+
+
+		
+	} 
+
+}

@@ -11,7 +11,7 @@
 		<script src="../js/jquery-3.3.1.js"></script>
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/set_address_book.js" type="text/javascript" charset="UTF-8"></script>
+
 		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
 		<script sr></script>
 		<style type="text/css">
@@ -24,20 +24,38 @@
 			body {
 				background-color: #FFFFFF;
 			}
-			.border1{
-				border-top-width: 1px;
-				border-right-width: 1px;
-				border-bottom-width: 0px;
-				border-left-width: 1px;
-				border-top-style: solid;
-				border-right-style: solid;
-				border-bottom-style: solid;
-				border-left-style: solid;
-				border-top-color: #999;
-				border-right-color: #999;
-				border-bottom-color: #999;
-				border-left-color: #999;
+			.table {
+				color: #666;
+				text-align: center;
 			}
+			
+			.table td {
+				font-size: 0.8rem;
+				text-align: center;
+				word-wrap:break-word;
+				word-break:break-all;
+				font-size: 0.75rem;
+			}
+			
+			.table th {
+				background-repeat: repeat-x;
+				height: 30px;
+				font-size: 0.8rem;
+				border-right: 1px solid #cad9ea;
+				padding: 0 1em 0;
+				border-top: solid #ccc 1px;
+			}
+			
+			.table tr {
+				height: 40px;
+				/*把table标签的行高设定为固定值*/
+				border-bottom: 1px solid #3333;
+			}
+			
+			.table tr.alter {
+				background-color: #f5fafe;
+			}
+
 		</style>
 	</head>
 
@@ -49,7 +67,7 @@
 		<div class="mui-content" style="background-color: #FFFFFF;">
 			
 				<div>
-					<p class="d" style="color: red;">声明：为了EACPay良性可持续发展，请自愿支付一定手续费，非强制性。手续费率与转账速度无关。</p>
+					<p class="d" style="color: red;">提示：这些是你要付款过去的地球币地址，在付款前，务必要检查金额和地址是否正确，区块链是不可逆交易！</p>
 				</div>
 			    <div style="width: 100%; height: 8px; background-color: #E6E6E6;"></div>
 			<div class="mui-content-padded" style="margin: 20px;">
@@ -59,26 +77,24 @@
 					</div>
 			<center>
 			<div style="margin-top: 20px;">
-					<table id="tbUser" width="100%" class="table" style="line-height: 30px;" >
-						<tr  style="font-size: 16px;">
-							<th  width=20% style=" border: solid #ccc 1px;  border-left: none; border-right: ;">标签</th>
-							<th  width=70% style=" border: solid #ccc 1px;  border-right: none;" >地址</th>
-							<th  width=10% style=" border: solid #ccc 1px; border-right: none;" >编辑</th>
+					<table id="tbUser" width="100%" class="table" >
+						<tr>
+							<th  width=15% style=" ">标签</th>
+							<th  width=60% style=" " >地址</th>
+							<th  width=15% style=" " >操作</th>
+							<!-- <th  width=10% style=" border: solid #ccc 1px; border-right: none;" >编辑</th> -->
 						</tr>
-						<!-- <a href="#familyData">
-							<button>点击</button>
-						</a> -->
-						<tr style="border: solid 1px;">
+
 							<tbody id="showDatas">
 
 							</tbody>
-						</tr>
+	
 						
 					</table>
 				</div>
 				</center>
 				<div style="text-align: center; margin-top: 20px; word-spacing:20px;">
-						<button id="" type="button" style="border: none; background-color: #2a82e4; color: #FFFFFF;" id="btn1" onclick="huoqu()">新建地址</button>
+						<button id="promptBtn" type="button" style="border: none; background-color: #2a82e4; color: #FFFFFF;" id="btn1" onclick="huoqu()">新建地址</button>
 						<!-- <button id="" type="button" class="mui-btn mui-btn-grey" onclick="return false;">复制</button> -->
 						<button id="removeBtn" type="button" style="background-color: #2a82e4; border: none; color: #FFFFFF;"  >全部删除</button>
 						<!-- <button id="choiceBtn"  type="button" class="mui-btn mui-btn-primary" >选择</button> -->
@@ -93,10 +109,10 @@
 					<div style="text-align: center;">
 						
 						<label>标签:</label>
-						<input type="text" style="background-color: #E6E6E6;border: none; padding: 0rem;height: 5vh;width: 80%;font-size: 1.0rem;"  >
+						<input id="lable_1" type="text" style="background-color: #E6E6E6;border: none; padding: 0rem;height: 5vh;width: 80%;font-size: 1.0rem;"  >
 						<br />
 						<label>地址:</label>
-						<input type="text" id="newAdress" style="background-color: #E6E6E6;border: none; padding: 0rem;height: 5vh;width: 80%;font-size: 1.0rem;"  >
+						<input id="address_1" type="text" id="newaddress" style="background-color: #E6E6E6;border: none; padding: 0rem;height: 5vh;width: 80%;font-size: 1.0rem;"  >
 					<div style="margin-top: 6px;">
 					<button type="button"  style=" border-left: none; width: 50%;height: 44px; float: left; color:grey ;font-size: 16px; border-radius: 0 0 0 10px;"  onclick="copyUrl()">复制</button>
 					 <button type="button" style=" border-right: none; width: 50%; height: 44px;border-left: none; color: #0062CC; font-size: 16px; border-radius: 0 0 10px 0;" onclick="closeTiShi();">确定</button>
@@ -110,11 +126,31 @@
 					
 				</div>
 			</div>
+			<!-- 文件 -->
+			<div  hidden="hidden" id="_downloads" class="fitem" >
+				<img class="ficon" src="../img/fdisk.png"/>
+				<div>
+					<span class="fname">downloads</span><br/>
+					<span class="finf">...</span>
+				</div>
+			</div>
 		<script src="../js/mui.min.js"></script>
+		<script src="../js/page/set_address_book.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init()
-		</script>
-		<script type="text/javascript">
+			mui.init();
+			var root=[];
+				document.addEventListener("plusready", function(){
+				var items = $("#_downloads")[0];	
+				console.log(items);
+				plus.io.resolveLocalFileSystemURL("_downloads", function ( entry ) {
+					root.push( entry );
+					items.entry = entry;
+				}, function ( e ) {
+					console.log( "Update "+items.id+" information failed: "+e.message );
+				} );
+			}, false);
+			
 					function deleteRow(r)
 					{
 						var i=r.parentNode.parentNode.rowIndex

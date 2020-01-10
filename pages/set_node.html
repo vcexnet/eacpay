@@ -8,11 +8,12 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet"  href="../css/color.css"/>
+		<link rel="stylesheet"  href="../css/list.css"/>
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_node.js" type="text/javascript" charset="utf-8"></script>
+
 	    <style type="text/css">
 			body{
 				background-color: #FFFFFF;
@@ -37,26 +38,102 @@
 				<label style="font-size: 16px;">区块最新高度：<span id="block_hight"></span></label>
 			</div>
 		</div>
-		<div class="mui-input-row mui-select" style="position: relative; margin-left: 16px; margin-right: 16px;">
-			<select style="width: 100%;font-size: 15px; background-color: #F0F0F0; color: #999999;padding-left:20px; margin-right: 20px;margin-top: 5px;">
-				<option>切换可用API节点列表</option>
-				<option>42.164.234:35677</option>
-				<option>210.23.46:35677</option>
-				<option>40.223.46:35677</option>
-			</select>
+		<center>
+<!-- 			<div id="Ddlt" onclick="click_ul();">
+			    <input disabled="disabled" style="background-color: #F0F0F0;color: #999999; margin-right: 10px; " value="切换可用API节点列表" type="text" id="lite">
+			    <ul id="ul_list" style="text-align: left; position: fixed;  float:right; margin-top: 38px;">
+			        <li con_key="select2" onclick="s_li_click();">42.164.234:35677</li>
+			        <li con_key="select3" onclick="s_li_click();">210.23.46:35677</li>
+			        <li con_key="select4" onclick="s_li_click();">40.223.46:35677</li>
+			    </ul>
+			</div> -->
+				<div style="margin-top: 10px; width: 90%;">
+					<input style="background-image:url(../images/list_.png);background-position:right;    background-repeat:no-repeat; font-size: 13px; padding-left: 10px;  border-radius: 4px; height: 34px; border: none; background-color: #e6e6e6;" type="text" id="lang_b" class="input_b" placeholder="切换可用API节点列表" readonly="readonly"/>
+					<div style="float: left; border-radius: 20px; z-index: 99999; width:90%;margin-top: -27px; border-radius: 4px; position: absolute; display: none" id="huangbiao_b">
+						<ul style="padding-left: 4px; border: #999999 solid 1px; overflow-x: hidden;  overflow-y: auto; height: 100px; font-size: 12px; border-radius: 4px; background-color: #FFFFFF; list-style: none;">
+							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">42.164.234:35677</li>
+							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">210.23.46:35677</li>
+							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">40.223.46:35677</li>
+						</ul>
+					</div>
+				</div>
+		</center>
+		<br />
+		<div>
+			<label style="margin-left: 20px; font-size: 16px; margin: 15px;">自定义API节点</label>
 		</div>
-		<label style="margin-left: 20px; font-size: 16px; margin: 15px;">自定义API节点</label>
 		<div style="background-color: #ffffff; text-align:center;">
-			<input type="text" style="margin-top: 6px; border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" value="输入节点ip地址" onfocus="this.value=''"  onblur="this.value='输入节点ip地址'" />
-			<input type="text" style="border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" value="节点端口号" onfocus="this.value=''"  onblur="this.value='节点端口号'" />
-		    <input style="width: 30%; background-color: #2a82e4; color: #FFFFFF; border: none ;" type="button" value="添加" />
-			<br />
-			<br />
-		    <input style="width: 60%; background-color: #2a82e4; color: #FFFFFF; border: none ;" type="button" value="确认" />
+			<input id="node_ip" type="text" style="margin-top: 6px; border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" placeholder="输入节点ip地址(http://182.151.14.132)"   />
+			<input id="node_port" type="number" style="border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="节点端口号(8000)" />
+			<input id="act" type="text" style="border: none; width: 45%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="RPCuser(账户)"  />
+			<input id="pwd" type="text" style="border: none; width: 45%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="RPCpassword(密码)"  />
+
+			<button style="width: 45%; background-color: #2a82e4; color: #FFFFFF; " type="button">取消</button>
+			<button  style="width: 45%; background-color: #2a82e4; color: #FFFFFF;"type="button" onclick="">确认</button>
 		</div>
+		
+		<!-- 文件 -->
+		<div  hidden="hidden" id="_downloads" class="fitem" >
+			<img class="ficon" src="../img/fdisk.png"/>
+			<div>
+				<span class="fname">downloads</span><br/>
+				<span class="finf">...</span>
+			</div>
+		</div>
+		
 		<script src="../js/mui.min.js"></script>
+<!-- 		<script src="../js/list.js"></script> -->
+		<script src="../js/util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_node.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+			
+			var root=[];
+				document.addEventListener("plusready", function(){
+				var items = $("#_downloads")[0];	
+				console.log(items);
+				plus.io.resolveLocalFileSystemURL("_downloads", function ( entry ) {
+					root.push( entry );
+					items.entry = entry;
+				}, function ( e ) {
+					console.log( "Update "+items.id+" information failed: "+e.message );
+				} );
+			}, false);
+		</script>
+		<script>
+			$(
+				function(){
+					$("#lang_b").click(function(){
+						if("block" == $("#huangbiao_b").css("display")){
+							hideLi_b();
+						}else{
+							showLi_b();
+						}
+					});
+					
+					$(".asd").each(function(i,v){
+						$(this).click(function(){
+							$("#lang_b").val($(this).html());
+							hideLi_b();
+						});
+					});
+					
+					$("#lang_b").blur(function(){
+						setTimeout(hideLi_b,200);
+					});
+					
+				}
+				
+			);
+			 
+			 
+			 
+			function showLi_b(){
+				$("#huangbiao_b").show();
+			}
+			function hideLi_b(){
+				$("#huangbiao_b").hide();
+			}
 		</script>
 	</body>
 

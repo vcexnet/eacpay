@@ -10,6 +10,7 @@
 		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
 		<link href="../css/color.css" />
 		<link href="https://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
+		<script src="../js/jquery-3.3.1.js"></script>
 		<script type="text/javascript" charset="utf-8"></script>
 		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
 
@@ -44,10 +45,9 @@
 			}
 			.btn{
 				width: 80px; 
-				background:#50A3FD;
-				color: #FFFFFF;
-				border-radius: 30px;
-				border: none;
+			}
+			ul li:hover{
+				background-color:  #64B5F6;
 			}
 		</style>
 
@@ -62,45 +62,72 @@
 		
 		<div class="mui-content " style="margin-top: 10px;margin-left:5px; background-color: #FFFFFF;">
 				<form >
-					<div class="mui-input-row mui-select " style=" width:80%;" >						
+					<div class="mui-input-row " style=" width:80%;" >						
 						<label  style="font-size:15px; width:35%; padding-left: 8px;" >合作类别：</label>
-							<select required style="background-color: #F0F0F0; padding-left: 10px;font-size: 15px;  ">
-								<option value="" disabled selected>请选择合作类别</option>
-								<option value="1">矿机</option>
-								<option value="2">矿池</option>
-								<option value="3">钱包</option>
-								<option value="4">交易所</option>
-								<option value="4">区块浏览器</option>
-								<option value="4">其他</option>
-							</select>
+							<!-- <div id="ddlt" onclick="Qclick_ul();">
+							    <input disabled="disabled" style=" background-color: #F0F0F0;color: #505050; margin-right: 10px; " value="请选择合作类别" type="text" id="Lite">
+							    <ul id="ul_List" style="text-align: left; left: 50%; position: fixed;  float:right; margin-top: 38px;">
+							        <li con_key="select2" onclick="Q_li_click();">矿机</li>
+							        <li con_key="select3" onclick="Q_li_click();">矿池</li>
+							        <li con_key="select4" onclick="Q_li_click();">钱包</li>
+									<li con_key="select5" onclick="Q_li_click();">交易所</li>
+									<li con_key="select6" onclick="Q_li_click();">区块链浏览器</li>
+									<li con_key="select7" onclick="Q_li_click();">其他</li>
+							    </ul>
+							</div> -->
+							<div style="margin-left: 35%; width: 100%;">
+								<input style="background-image:url(../images/list_.png);background-position:right; background-repeat:no-repeat; font-size: 13px; padding-left: 10px; width: 65%; height: 40px; border: none; border-radius: 4px; background-color: #F0F0F0; " type="text" id="lang" class="input" placeholder="请选择合作类别" readonly="readonly"/>
+								<DIV style="z-index: 999; width: 70%;margin-top: -16px; border-radius: 4px; position: fixed; display: none" id="huangbiao">
+									<ul style="padding-left: 4px; background-color: #F4F5F6; width: 74%; list-style: none; ">
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">矿机</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">矿池</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">钱包</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">交易所</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">区块链浏览器</li>
+										<li style=" padding: 10px; " class="zxcv">其他</li>
+									</ul>
+								</DIV>
+							</div>
+							
 					</div>
 					
-					<div class="mui-input-row mui-select" style="margin-top: 10px;width: 80%;">
+					<div class="mui-input-row" style=" width: 80%;">
 						<label style="font-size:15px; padding-left: 8px; width: 35%;">合作模式：</label>
-						<select required  style="background-color: #F0F0F0; padding-left: 10px; font-size: 15px; " >
-							<option value="" disabled selected>请选择合作模式</option>
-							<option value="1">资源互换</option>
-							<option value="2">推广合作</option>
-						</select>
+						<!-- <div id="Ddlt" onclick="click_ul();">
+						    <input disabled="disabled" style=" background-color: #F0F0F0;color: #505050; margin-right: 10px; " value="请选择合作模式" type="text" id="lite">
+						    <ul id="ul_list" style="text-align: left; left: 50%; position: fixed;  float:right; margin-top: 38px;">
+						        <li con_key="select2" onclick="s_li_click();">资源互换</li>
+						        <li con_key="select3" onclick="s_li_click();">推广合作</li>
+						    </ul>
+						</div> -->
+						<div style="margin-left: 35%;">
+							<input style="background-image:url(../images/list_.png);background-position:right; background-repeat:no-repeat; font-size: 13px; padding-left: 10px;  border-radius: 4px; height: 40px; border: none; background-color: #F0F0F0;" type="text" id="lang_a" class="input_a" placeholder="请选择合作模式" readonly="readonly"/>
+							<DIV style="z-index: 999; width: 53%;margin-top: -16px; border-radius: 4px; position: fixed; display: none" id="huangbiao_a">
+								<ul style="padding-left: 4px; background-color: #F4F5F6; width: 98%; list-style: none;">
+									<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">资源互换</li>
+									<li style=" padding: 10px; " class="qwx">推广合作</li>
+								</ul>
+							</DIV>
+						</div>
 					</div>
 					
-					<div class="mui-input-row" style="margin-top: 10px;width: 90%;">
+					<div class="mui-input-row" style="margin-top: px;width: 90%;">
 						<label style="font-size:15px; padding-left: 8px; width: 30%;">合作方式：</label>
 						<textarea style="background-color: #F0F0F0; padding-left: 10px;margin-right: 12px; height: 100px;" type="text"></textarea>
 					</div>
 					
 					<div class="mui-input-row " style="margin-top: 10px; width: 90%; ">
 						<label style="font-size:15px; padding-left: 8px; width: 30%;">联系方式：</label>
-						<input required   type="text" placeholder="手机（必填）"  style="background: #F0F0F0;padding-left: 10px; margin-right:12px;">
-						<input  type="text" placeholder="微信（选填）" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; margin-right:12px; ">
-						<input  type="text" placeholder="email（选填）" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; margin-right:12px; ">
-						<input  type="text" placeholder="QQ(选填)" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; margin-right:12px; ">
+						<input required   type="text" placeholder="手机（必填）"  style="background: #F0F0F0;padding-left: 10px; font-size: 13px; margin-right:12px;">
+						<input  type="text" placeholder="微信（选填）" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
+						<input  type="text" placeholder="email（选填）" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
+						<input  type="text" placeholder="QQ(选填)" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
 					</div>
 
 
 					<div style="text-align:center; margin-top: 30px;">
-						<button style="background-color: #2a82e4" type="reset" class="btn">取消</button>
-						<button type="submit"  class="btn" style="background-color: #2a82e4; margin-left: 50px;">提交</button>
+						<button type="reset" class="btn" style="border-radius: 4px; color: #FFFFFF; border: none; background-color: #2a82e4">取消</button>
+						<button type="submit"  class="btn" style="border-radius: 4px; color: #FFFFFF; background-color: #2a82e4; margin-left: 50px;">提交</button>
 					</div>
 				</div>
 			</div>
@@ -110,6 +137,77 @@
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
+		</script>
+		
+		<script type="text/javascript">
+			$(
+				function(){
+					$("#lang").click(function(){
+						if("block" == $("#huangbiao").css("display")){
+							hideLi();
+						}else{
+							showLi();
+						}
+					});
+					
+					$(".zxcv").each(function(i,v){
+						$(this).click(function(){
+							$("#lang").val($(this).html());
+							hideLi();
+						});
+					});
+					
+					$("#lang").blur(function(){
+						setTimeout(hideLi,200);
+					});
+					
+				}
+				
+			);
+			 
+			 
+			 
+			function showLi(){
+				$("#huangbiao").show();
+			}
+			function hideLi(){
+				$("#huangbiao").hide();
+			}
+			 
+			 
+			 $(
+			 	function(){
+			 		$("#lang_a").click(function(){
+			 			if("block" == $("#huangbiao_a").css("display")){
+			 				hideLi_a();
+			 			}else{
+			 				showLi_a();
+			 			}
+			 		});
+			 		
+			 		$(".qwx").each(function(i,v){
+			 			$(this).click(function(){
+			 				$("#lang_a").val($(this).html());
+			 				hideLi_a();
+			 			});
+			 		});
+			 		
+			 		$("#lang_a").blur(function(){
+			 			setTimeout(hideLi_a,200);
+			 		});
+			 		
+			 	}
+			 	
+			 );
+			  
+			  
+			  
+			 function showLi_a(){
+			 	$("#huangbiao_a").show();
+			 }
+			 function hideLi_a(){
+			 	$("#huangbiao_a").hide();
+			 }
 		</script>
 	</body>
 
