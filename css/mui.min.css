@@ -4275,16 +4275,28 @@ body>.mui-progressbar {
 .mui-icon-phone:before {
     content: '\e200'
 }
-.mui-icon-money:before{
+.mui-icon-money1:before{
 	content: url(../images/money.png);
 }
-.mui-icon-yingyong:before{
-	content: url(../images/application.png);
+.mui-icon-money2:before{
+	content: url(../images/moneyZ.png);
 }
-.mui-icon-set:before{
+
+.mui-icon-yingyong1:before{
+	content: url(../images/application.png);
+	background-size: 20px 20px;
+}
+.mui-icon-yingyong2:before{
+	content: url(../images/Exhibition.png);
+
+}
+.mui-icon-set1:before{
 	content: url(../images/setUp.png);
-	width: 40px;
-	height: 40px;
+	
+}
+.mui-icon-set2:before{
+	content: url(../images/setUpZ.png);
+	
 }
 .mui-icon-scan:before{
 	content: url(../images/scan.png);

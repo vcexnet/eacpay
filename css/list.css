@@ -1,0 +1,201 @@
+#Ddlt {
+            width: 90%;
+			color: #999999;
+            height: 40px;
+            /*background: url("../images/qietu/module/xjt.png") right no-repeat;*/
+            /*下拉框的下拉图标*/
+            
+        }
+
+        #lite {
+            height: 40px;
+            font-size: 15px;
+            color: #727068;
+            font-weight: lighter;
+            float: left;
+            line-height: 26px;
+            position: relative;
+            z-index: 9999999;
+            background: white;
+            border: 0px;
+            cursor: pointer;
+        }
+
+        #lite:focus {
+            outline: none;
+        }
+
+        #Ddlt ul {
+			width: 90%;
+            list-style: none;
+            padding: 0px;
+            border: 1px solid #333333;
+            background-color: #fafaf9;
+            z-index: 9999;
+            position: relative;
+            border: 0px solid #333333;
+            box-shadow: 0px 10px 15px #e1dfda;
+        }
+
+        #Ddlt ul ::-moz-selection {
+            background: none;
+        }
+
+        #Ddlt ul ::selection {
+            background: none;
+        }
+
+        #Ddlt ul li {
+            /*border: 1px gray solid;*/
+            height: 36px;
+            line-height: 29px;
+            margin-left: 16px;
+            font-size: 15px;
+            color: #11100f;
+            font-weight: lighter;
+            border-top: #e7e5e2 1px solid;
+            cursor: pointer;
+        }
+
+        #Ddlt ul li:hover {
+            background: #cccccc;
+        }
+		
+		#Ddlt_t {
+		            width: 50%;
+					color: #999999;
+		            height: 30px;
+					margin-left: 25%;
+		            /*background: url("../images/qietu/module/xjt.png") right no-repeat;*/
+		            /*下拉框的下拉图标*/
+		            
+		        }
+		
+		        #lite_t {
+					top: -160%;
+					margin-left: 90%;
+					width: 50%;
+		            height: 30px;
+		            font-size: 15px;
+		            color: #727068;
+		            font-weight: lighter;
+		            float: left;
+		            line-height: 26px;
+		            position: relative;
+		            z-index: ;
+		            background: white;
+		            border: 0px;
+		            cursor: pointer;
+		        }
+		
+		        #lite_t:focus {
+		            outline: none;
+		        }
+		
+		        #Ddlt_t ul {
+					width: 24%;
+					margin-left: -79px;
+		            list-style: none;
+		            padding: 0px;
+		            border: 1px solid #333333;
+		            background-color: #fafaf9;
+		            z-index: 999;
+		            position: relative;
+		            border: 0px solid #333333;
+		            box-shadow: 0px 10px 15px #e1dfda;
+		        }
+		
+		        #Ddlt_t ul ::-moz-selection {
+		            background: none;
+		        }
+		
+		        #Ddlt_t ul ::selection {
+		            background: none;
+		        }
+		
+		        #Ddlt_t ul li {
+		            /*border: 1px gray solid;*/
+		            height: 30px;
+		            line-height: 29px;
+		            margin-left: 16px;
+		            font-size: 15px;
+		            color: #727068;
+		            font-weight: lighter;
+		            border-bottom: #e7e5e2 1px solid;
+		            cursor: pointer;
+		        }
+		
+		        #Ddlt_s ul li:hover {
+		            background: #cccccc;
+		        }
+				
+				#Ddlt_s {
+					margin-top: -34px;
+							position: relative;
+							color: #999999;
+				            height: 30px;
+							
+							width: 37%;
+				            /*background: url("../images/qietu/module/xjt.png") right no-repeat;*/
+				            /*下拉框的下拉图标*/
+				            margin-left: 58%;
+				        }
+				
+				        #lite_s {
+							
+							
+							
+							width: 100%;
+				            height: 30px;
+				            font-size: 15px;
+				            color: #727068;
+				            font-weight: lighter;
+				            float: left;
+				            line-height: 26px;
+				            position: relative;
+				            z-index: ;
+				            background: white;
+				            border: 0px;
+				            cursor: pointer;
+				        }
+				
+				        #lite_s:focus {
+				            outline: none;
+				        }
+				
+				        #Ddlt_s ul {
+							width: 36%;
+							margin-left: -116px;
+				            list-style: none;
+				            padding: 0px;
+				            border: 1px solid #333333;
+				            background-color: #fafaf9;
+				            z-index: 9999;
+				            position: relative;
+				            border: 0px solid #333333;
+				            box-shadow: 0px 10px 15px #e1dfda;
+				        }
+				
+				        #Ddlt_s ul ::-moz-selection {
+				            background: none;
+				        }
+				
+				        #Ddlt_s ul ::selection {
+				            background: none;
+				        }
+				
+				        #Ddlt_s ul li {
+				            /*border: 1px gray solid;*/
+				            height: 30px;
+				            line-height: 29px;
+				            margin-left: 16px;
+				            font-size: 15px;
+				            color: #727068;
+				            font-weight: lighter;
+				            border-bottom: #e7e5e2 1px solid;
+				            cursor: pointer;
+				        }
+				
+				        #Ddlt_s ul li:hover {
+				            background: #cccccc;
+				        }
