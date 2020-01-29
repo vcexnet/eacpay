@@ -17,7 +17,7 @@ eacpay 1.0.6版本发布，基本上可用
 
 目前使用的节点默认是eacpay官方节点，欢迎大家自己搭建节点。然后切换到自己的节点即可。这样用起来更放心。
 
-#捐赠EAC（donate）
-EAC地址：egSkEWfeMSkkWtPePsaUhaHLfVwTep4AHQ
+#捐赠EAC（donate）<br>
+EAC地址：egSkEWfeMSkkWtPePsaUhaHLfVwTep4AHQ<br>
 EAC address：egSkEWfeMSkkWtPePsaUhaHLfVwTep4AHQ
 
