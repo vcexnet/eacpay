@@ -1,15 +1,19 @@
 <!-- 交易记录 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="utf-8">
 		<title>交易记录</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
 		<link href="../css/color.css" />
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="UTF-8"></script>
 		<script src="../js/page/record.js" type="text/javascript" charset="utf-8"></script>
@@ -46,7 +50,12 @@
 				background-color: #f5fafe;
 			}
 
-			
+			.mui-content input {
+				background: none;
+				outline: none;
+				border: none;
+				font-weight: 600;
+			}
 			
 		</style>
 	</head>
@@ -54,16 +63,16 @@
 	<body style="background-color: #FFFFFF;">
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class="mui-icon mui-icon-left-nav mui-pull-left" href="e_wallet.html"></a>
-			<h1 class="mui-title">交易记录</h1>
+			<h1 class="record_title mui-title">交易记录</h1>
 		</header>
 		
 		<div class="mui-content" style="margin-top: 1px; background-color: #FFFFFF;">		
 				<center>
 					<table width="100%" class="table" id="tablevalue" style="font-size: 15px; text-align: center;">
 						<tr style="background-color:#FFFFFF;font-size: 13px; height: 35px;">
-							<th width=15% style=" border: solid #ccc 1px; border-top: none; ">状态</th>
-							<th width=60% style=" border: solid #ccc 1px; border-top: none; ">交易详情</th>
-							<th width=15% style=" border: solid #ccc 1px; border-top: none; ">金额</th>
+							<th class="state" width=15% style=" border: solid #ccc 1px; border-top: none; ">状态</th>
+							<th class="transaction_details" width=60% style=" border: solid #ccc 1px; border-top: none; ">交易详情</th>
+							<th class="money" width=15% style=" border: solid #ccc 1px; border-top: none; ">金额</th>
 						</tr>				
 						
 						<tbody id="showDatas">
@@ -73,19 +82,21 @@
 					</table>
 				</center>
 				
-				<div id="details" class="mui-popover mui-popover-action mui-popover-bottom" style="height: auto;">
-					<ul  class="mui-table-view">
-						<li class="mui-table-view-cell" style="font-size: 5vw;color: black;">
-							当前交易记录
-							<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeDetails()"></span>
+				<div id="details" class="mui-popover mui-popover-action mui-popover-bottom" style="height: auto;background-color: #f7f7f7;">
+					<ul class="" style="background-color: #f7f7f7;list-style-type:none">
+						<li  style="font-size: 5vw;color: black;">
+							<span class="details_tip"style="margin-left:25%"> 当前交易详情</span>
+							<span class="mui-icon mui-icon-closeempty" style="float: right;color: red;" onclick="closeDetails()"></span>
+							
 						</li>
-						<li class="mui-table-view-cell" style="height: 30vh; overflow: auto;">
-							<p>总额：<input style="border: none; background-color: rgb(247,247,247);" id="amount" value="" /></p>
-							<p>状态：<input style="border: none; background-color: rgb(247,247,247);" id="confirmations" value="" /></p>
-							<p>日期：<input style="border: none; background-color: rgb(247,247,247);" id="time" value="" /></p>
-							<p>交易ID：<input style="border: none; width: 70vw; background-color: rgb(247,247,247);" id="txid" value="" /></p>
-							<p>到：<input style="border: none; width: 70vw; background-color: rgb(247,247,247);" id="toaddress" value="" /></p>
-							<p>输出索引：<input style="border: none; background-color: rgb(247,247,247);" id="vout" value="" /></p>
+						<li class="" style=" height: 30vh;float:left;">
+							<!-- <p><span class="total_balance">总额:</span> <input id="amount" value=""/></p> -->
+							<p><span class="total_balance">总额:</span> <input id="amount" value=""/></p>
+							<p><span class="state">状态</span>：<input id="confirmations" value="" style="width:20%"/><span class="confirm">个确认</span></p>
+							<p><span class="received_date">日期</span>：<input id="time" value="" /></p>
+							<p><span class="datails_id" style="width: 30vw;">交易ID</span>：<input style="width: 60vw;" id="txid" value="" /></p>
+							<p><span class="datails_to">到</span>：<input style="width: 70vw;" id="toaddress" value="" /></p>
+							<p><span class="output_index">输出索引</span>：<input id="vout" value="" /></p>
 						</li>
 					</ul>
 				</div>

@@ -1,15 +1,20 @@
 <!-- 设置 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
 		<link rel="stylesheet" href="../css/color.css" />
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/page/e_set_password.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+
 		<style type="text/css">
 						.mui-popover .mui-popover-arrow:after {
 							width: 0px;
@@ -38,20 +43,20 @@
 			</aside>
 			<!-- 主页面标题 -->
 			<header class="mui-bar mui-bar-nav">
-				<h1 class="mui-title">设置</h1>
+				<h1 class="set_title mui-title">设置</h1>
 			</header>
 			<nav style="background-color: #FFFFFF;" class="mui-bar mui-bar-tab">
 				<a class="mui-tab-item " href="e_wallet.html">
 					<span class="mui-icon mui-icon-money1"></span>
-					<span class="mui-tab-label">钱包</span>
+					<span class="walleat mui-tab-label">钱包</span>
 				</a>
 				<a class="mui-tab-item" href="use_web_site.html">
 					<span class="mui-icon mui-icon-yingyong1"></span>
-					<span class="mui-tab-label">行情应用</span>
+					<span class="market_application mui-tab-label">行情应用</span>
 				</a>
 				<a class="mui-tab-item mui-active" href="">
 					<span class="mui-icon mui-icon-set2"></span>
-					<span class="mui-tab-label">设置</span>
+					<span class="set mui-tab-label">设置</span>
 				</a>
 			</nav>
 			<!-- 主页面内容容器 -->
@@ -61,38 +66,38 @@
 					<div class="mui-table-view-cell hong">
 						<a href="export_private_key.html">
 							<img src="../images/export.png" class="q" />
-							<table>导出私钥</table>
+							<span class="export_key">导出私钥</span>
 						</a>
 					</div>
 					<div class="mui-table-view-cell hong">
 						<a href="set_node.html">
 							<img src="../images/node.png" / class="q">
-							<table>设置节点</table>
+							<span class="set_node">设置节点</span>
 						</a>
 					</div>
 					<div class="mui-table-view-cell hong">
 						<a href="#password">
 							<img src="../images/password.png" class="q" />
-							<table>修改密码</table>
+							<span class="change_password">修改密码</span>
 						</a>
 					</div>
 					<div class="mui-table-view-cell hong" style="margin-bottom: 10px;">
 						<a href="e_set_language.html">
 							<img src="../images/language.png" class="q" />
-							<table>语言设置</table>
+							<span class="language_settings">语言设置</span>
 						</a>
 					</div>
 					<div>
 						<div class="mui-table-view-cell hong">
 							<a href="set_address_book.html">
 								<img src="../images/address.png" class="q" />
-								<table>地址本</table>
+								<span class="address_book">地址本</span>
 							</a>
 						</div>
 						<div class="mui-table-view-cell hong" style="margin-bottom:10px ;">
 							<a href="set_import_wallet.html">
 								<img  src="../images/qw.png" class="q" />
-								<table>导入钱包</table>
+								<span class="import_wallet">导入钱包</span>
 							</a>
 						</div>
 						<div>
@@ -102,55 +107,55 @@
 						<div class="mui-table-view-cell hong">
 							<a href="set_select_money.html">
 								<img src="../images/legal.png" class="q" />
-								<table>法币单位</table>
+								<span class="legal_tender_units">法币单位</span>
 							</a>
 						</div>
 						<div class="mui-table-view-cell hong">
 							<a href="set_fee.html">
 								<img src="../images/service.png" class="q" />
-								<table>默认手续费</table>
+								<span class="default_charge">默认手续费</span>
 							</a>
 						</div>
 						<div class="mui-table-view-cell hong">
 							<a href="set_default_ex.html">
 								<img src="../images/exchange.png" class="q" />
-								<table>默认交易场所</table>
+								<span class="default_place">默认交易场所</span>
 							</a>
 						</div>
 						<div class="mui-table-view-cell hong" style="margin-bottom: 10px;">
 							<a href="set_add_ex.html">
 								<img src="../images/add.png" class="q" />
-								<table>添加交易场所</table>
+								<span class="add_trading_venu">添加交易场所</span>
 							</a>
 						</div>
 						<div>
 							<div class="mui-table-view-cell hong">
 								<a href="set_cooperation.html">
 									<img src="../images/submission.png" class="q" />
-									<table>提交合作</table>
+									<span class="submit_cooperation">提交合作</span>
 								</a>
 							</div>
 							<div class="mui-table-view-cell hong">
 								<a href="e_help_center.html">
 								<img src="../images/help.png" class="q" />
-								<table>帮助中心</table>
+								<span class="help_center">帮助中心</span>
 								</a>
 							</div>
 							<div class="mui-table-view-cell hong">
 								<a href="set_connact.html">
 									<img src="../images/contact.png" class="q" />
-									<table>联系我们</table>
+									<span class="contact_us">联系我们</span>
 								</a>
 							</div>
 							<div class="mui-table-view-cell hong">
 								<a href="set_app_web.html">
 								<img src="../images/Exhibition.png" class="q" />
-								<table>网站或应用已支持EACPay，申请展示</table>
+								<span class="zhichi">网站或应用已支持EACPay，申请展示</span>
 								</a>
 							</div>
 							<div class="mui-table-view-cell hong" style="text-align: center;color: dimgray;">
 	
-								<table>版本信息：1.0.10</table>
+								<span class="version_information">版本信息： </span><span>1.0.15</span>
 								</a>
 							</div>
 						</div>
@@ -169,28 +174,28 @@
 			  <div style="background-color: #FFFFFF; border-radius: 10px;" class="mui-content"style="padding-top: 0%;">
 			  <div style="border-radius: 30px;" class="mui-content-padded" style="margin: 0px;margin-top: 0px">
 			  <form style="border-radius: 30px;"> -->
-			  <p style="color: red;">提示：密码指本应用密码，而非EAC区块链密码</p>
+			  <p class="hint" style="color: red;">提示：密码指本应用密码，而非EAC区块链密码</p>
 			<form action="#" method="#">
 			  <div>
-			  <label style="width: 30%;">原密码:</label>
+			  <label class="original_password" style="width: 30%;">原密码:</label>
 			  <input style="width:70%; background-color: #E6E6E6; border: none;border-radius: 10px; font-size: 13px;" type="password" class="mui-input-clear" placeholder="输入旧密码，首次设置密码请留空" id="oldpwd">
 			  </div>
 			  
 			  <div>
-			  <label style="width: 30%;">新密码:</label>
+			  <label class="new_password" style="width: 30%;">新密码:</label>
 			  <input style="width:70%; background-color: #E6E6E6; border: none;border-radius: 10px; font-size: 13px;" min="6"  type="password" class="mui-input-clear" placeholder="输入新密码，数字+字母，不少于6位" id="newpwd">
 			  </div>
 			 
 			 <div>
-			 <label style="width: 40%;">重复新密码:</label>
+			 <label class="repeat_password" style="width: 40%;">重复新密码:</label>
 			 <input style="width:60%; background-color: #E6E6E6; border: none;border-radius: 10px; font-size: 13px;" type="password" class="mui-input-clear" placeholder="重复输入一次上面的新密码" id="newpwdRepeat">
 			 </div>
 			 
 			</div> 
 			
 			<div style="margin-top: 6px;">
-			<button type="reset"  style=" width: 50%;height: 50px; float: left; color:grey ;font-size: 16px;" class="mui-btn mui-action-back" οnclick="submit()">取消</button>
-			 <button type="submit" style=" width: 50%; height: 50px;border-left: none; color: #0062CC; font-size: 16px;" class="mui-btn" onclick="set_pwd()">确定</button>
+			<button class="cancel" type="reset"  style=" width: 50%;height: 50px; float: left; color:grey ;font-size: 16px;" class="mui-btn mui-action-back" οnclick="submit()">取消</button>
+			 <button class="confirm" type="submit" style=" width: 50%; height: 50px;border-left: none; color: #0062CC; font-size: 16px;" class="mui-btn" onclick="set_pwd()">确定</button>
 			</div>
 		</form>
 		</div>

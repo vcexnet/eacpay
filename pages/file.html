@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/file.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			// document.addEventListener("plusready", function() {
+			// 	createFileAll();
+			// }, false);
+
+			function createFileAll1() {
+				var createFileAll = localStorage.getItem("createFileAll");
+				// FileUtil.removeFile('EAC');
+				// Common.saveLocalData("createFileAll",1);
+				alert(createFileAll + ":createFileAll");
+				if (createFileAll != "isCreate") {
+					FileUtil.creatDirectory('EAC');
+					setTimeout(function() {
+						FileUtil.creatFile('EAC/address');
+						FileUtil.creatFile('EAC/paymentAddress');
+						FileUtil.creatFile('EAC/nodeBook');
+						FileUtil.creatFile('EAC/addressKey');
+						Common.saveLocalData("createFileAll", "isCreate");
+					}, 500);
+				} else {
+					FileUtil.showData();
+				}
+			}
+
+
+
+			function showData() {
+				alert(window.plus);
+				FileUtil.showData();
+
+			}
+		</script>
+		
+	</head>
+	<body>
+					<p></p>
+					<span  onclick="createFileAll1()">点击创建文件</span><br />
+					<p></p>
+					<span  onclick="createFileAll()">点击创建wallet</span><br />
+					<p></p>
+					<span  onclick="showData()">点击查看文件</span><br />
+					<p></p>
+					<span  onclick="texting()">点击查看文件</span><br />
+	</body>
+</html>

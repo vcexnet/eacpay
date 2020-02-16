@@ -1,15 +1,18 @@
 <!-- 交易所&矿机&矿池 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
 		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
-		<link href="../css/color.css" />
 		<link href="https://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
 		<script type="text/javascript" charset="utf-8"></script>
 		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
@@ -18,67 +21,76 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
-			<h1 class="mui-title">交易所&矿机&矿池</h1>
+			<h1 class="excange_title mui-title">交易所&矿机&矿池</h1>
 		</header>
 		<div class="mui-content" style="background-color: #FFFFFF;height: 100%;">
-			<span style="text-align: center; background:#FFFFFF; height: 50%;">
-				<div style="border-bottom: solid 1px gainsboro;line-height: 50px;">
-					<button style="vertical-align: middle; width: 16%;" type="button" class="mui-btn mui-btn-primary">AEX</button>
+			<p style="text-align: center; background:#FFFFFF; height: 50%;">
+				<div style="border-bottom: solid 1px gainsboro;line-height: 20px;">
+					
+					<button style=" width:20%;background-color: #007AFF;color: white;border-radius: 8%;">AEX</button>
+					<!-- <button style="vertical-align: middle; width: 16%;" type="button" class="mui-btn mui-btn-primary">AEX</button> -->
 					<img style="width: 50%;" src="../images/five.png">
-					<a href="https://www.aex88.com/page/new_register.html#/register?invite_code=400735"><label style="width:25%;">注册买EAC</label></a>
+					<a  href="https://www.aex88.com/page/new_register.html#/register?invite_code=400735"><label class="excange_registration" style="width:25%;">注册买EAC</label></a>
 				</div>
 				
-				<div  style="border-bottom: solid 1px gainsboro;line-height: 50px;">
-					<button style="vertical-align: middle; width: 16%; margin-top: 5px;" type="button" class="mui-btn mui-btn-primary">CEO</button>
-					<img style="width: 50%;" src="../images/two.png" />
-					<label style="width:25%;">注册买EAC</label>
+				<div  style="border-bottom: solid 1px gainsboro;line-height: 20px;">
+					<button style=" width:20%;background-color: #007AFF;color: white;border-radius: 8%;margin-top: 0.625rem;">CEO</button>
+					<!-- <button style="vertical-align: middle; width: 16%; margin-top: 5px;" type="button" class="mui-btn mui-btn-primary">CEO</button> -->
+					<img style="width: 50%;" src="../images/one.png" />
+					<label class="excange_registration" style="width:25%;">注册买EAC</label>
 				</div>
 			
-				<div  style="border-bottom: solid 1px gainsboro;line-height: 50px;">
-					<button style="vertical-align: middle; width: 16%;height:80%; margin-top: 5px;;" type="button" class="mui-btn mui-btn-primary">趣币</button>
-					<img style="width: 50%;"  src="../images/three.png" />
-					<label style="width:25%;">注册买EAC</label>
+				<div  style="border-bottom: solid 1px gainsboro;line-height: 20px;">
+					<button class="interesting_currency" style="width:20%;background-color: #007AFF;padding: 0.65rem;color: white;border-radius: 8%;margin-top: 0.625rem;">趣币</button>
+					<!-- <button style="text-align: center; width: 18%;height:80%; margin-top: 5px;;" type="button" class="interesting_currency mui-btn mui-btn-primary">趣币</button> -->
+					<img style="width: 50%;"  src="../images/one.png" />
+					<label class="excange_registration" style="width:25%;">注册买EAC</label>
 				</div>
 				
-				<div  style="border-bottom: solid 1px gainsboro;line-height: 50px;">
-					<button style="vertical-align: middle; width: 16%;margin-top: 5px;" type="button" class="mui-btn mui-btn-primary">币蛋</button>
+				<div  style="border-bottom: solid 1px gainsboro;line-height: 20px;">
+					<button class="currency_egg" style="width:20%;background-color: #007AFF;padding: 0.65rem;color: white;border-radius: 8%;margin-top: 0.625rem;">币蛋</button>
+					<!-- <button style=" width: 18%;margin-top: 5px;" type="button" class="currency_egg mui-btn mui-btn-primary">币蛋</button> -->
 					<img style="width: 50%;" src="../images/one.png" />
-					<label style="width:25%;">注册买EAC</label>
+					<label class="excange_registration"  style="width:25%;">注册买EAC</label>
 				</div>
 
-				<div style="border-bottom: solid 1px gainsboro;line-height: 50px;">
-					<button style="vertical-align: middle; width: 16%;margin-top: 5px;" type="button" class="mui-btn mui-btn-primary">毕加索</button>
-					<img style="width: 50%;" src="../images/four.png" />
-					<label style="width:25%;">注册买EAC</label>
+				<div style="border-bottom: solid 1px gainsboro;line-height: 20px;">
+					<button class="bjs" style="width:20%;background-color: #007AFF;padding: 0.65rem;color: white;border-radius: 8%;margin-top: 0.625rem;">币蛋</button>
+					<!-- <button style=" width: 18%;margin-top: 5px;" type="button" class="bjs mui-btn mui-btn-primary">笔加索</button> -->
+					<img style="width: 50%;" src="../images/one.png" />
+					<label class="excange_registration" style="width:25%;">注册买EAC</label>
 				</div>
-			</span>
+			</p>
 			<div class="mui-input-row" style="background:#2a82e4;color: #FFFFFF;">
-				<label style="font-size: 16px;">矿机&矿池</label>
+				<label class="miner_pit" style="font-size: 16px;">矿机&矿池</label>
 			</div>
 			<div class="mui-input-row" style="background: #FFFFFF;height: 50%;">
 				<ul class="mui-table-view-cell mui-grid-view ">
 					<li class="mui-table-view-cell mui-media mui-col-xs-6" style=" float: left; width: 33%; text-decoration: none;">
-						<img src="../images/L3.png" />
-						<div class="mui-media-body">L3+504M 150元/台 </div>
+						<img src="../images/L3.png" style="height: 67px;"/>
+						<div class="lm mui-media-body">L3+504M 150元/台 </div>
 					</li>
 
 					<li class="mui-table-view-cell mui-media mui-col-xs-6" style="width: 33%; float: left;">
-						<img src="../images/zs.png" />
-						<div class="mui-media-body">宙斯X6 44M 5元/台</div>
+						<img src="../images/zs.png" style="height: 67px;"/>
+						<div class="Zeus mui-media-body">宙斯X6 44M 5元/台</div>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-6" style="width: 33%; float: left;">
+									<img src="../images/yy.png" style="height: 67px;"/>
+						<div class="Whitebait mui-media-body">银鱼 70M 10元/台</div>
+					</li>
+					<li class="mui-table-view-cell mui-media mui-col-xs-6" style="width: 33%; float: left;">
+
 					</li>
 
-					<li class="mui-table-view-cell mui-media mui-col-xs-6" style="width: 33%; float: left;">
-						<img src="../images/yy.png" />
-						<div class="mui-media-body">银鱼 70M 10元/台 </div>
-					</li>
 				</ul>	
 			</div>
 			</center>
 			<div class="mui-input-row" style="background: #FFFFFF; font-size: 18px;">
 				<ul style="list-style: none;">
-					<li>EAC矿池：eac.name</li>
-					<li>EAC矿池：f2pool.com</li>
-					<li>EAC矿池：f2pool.com</li>
+					<li>EAC <span class="ore_pool">矿池</span>：eac.name</li>
+					<li>EAC<span class="ore_pool">矿池</span>：f2pool.com</li>
+					<li>EAC<span class="ore_pool">矿池</span>：f2pool.com</li>
 				</ul>
 			</div>
 		</div>

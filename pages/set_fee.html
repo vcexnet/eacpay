@@ -1,19 +1,22 @@
 <!-- 设置默认手续费率 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link href="../css/color.css" rel="stylesheet" />
 		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>		
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/page/set_fee.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			body {
 				background-color: #FFFFFF;
@@ -24,25 +27,25 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
-			<h1 class="mui-title">设置手续费率</h1>
+			<h1 class="fee_title mui-title">设置手续费率</h1>
 		</header>
 		<div class="mui-content" style="background-color: #FFFFFF;">
 			
 			<div style="margin: 10px;">
-				<p style="font-size: 0.9em; color: red;">声明：为了EACPay良性可持续发展，请自愿支付一定手续费，非强制性。手续费率与转账速度无关。</p>
+				<p class="fee_Statement" style="font-size: 0.9em; color: red;">声明：为了EACPay良性可持续发展，请自愿支付一定手续费，非强制性。手续费率与转账速度无关。</p>
 			</div>
 			<div style="width: 100%; height: 8px; background-color: #F0F0F0;"></div>
 			<div style="text-decoration:none;sfont-size: 15px; margin-top:20px; margin-left: 20px;">
-					<span width=45%>当前手续费率：</span>
-					<span width=25% id="currentFee" style="width: 25%; font-size: 13px;">千分之五</span>
-					<button width=35% id="recoveryBtn" style="background-color: #2a82e4; color: #FFFFFF; margin-top: -6px; border: none; margin-left: 10%;" >恢复默认费率</button>
+					<span class="current_rate" width=45%>当前手续费率：</span>
+					<span  width=25% id="currentFee" style="width: 25%; font-size: 13px;">0.005</span>
+					<button class="default_rate" width=35% id="recoveryBtn" style="background-color: #2a82e4; color: #FFFFFF; margin-top: -6px; border: none; margin-left: 10%;" >恢复默认费率</button>
 			</div>
 				
 				<div style="text-decoration:none;font-size: 15px; margin-top:20px; margin-left: 20px;">
-					<span style="width: 40%;" >自定义手续费率：</span>
-					<input id="inputFee" type="number" class="mui-input-clear" placeholder="请输入费率！"style="border: solid 1px  #BDBDBD; width: 30%;height: 35px;  text-align: center; font-size: 13px; background: #F3F3F3;" >
+					<span class="custom_rate" style="width: 40%;" >自定义手续费率：</span>
+					<input id="inputFee" type="number" class="enter_rate mui-input-clear" placeholder="请输入费率！"style="border: solid 1px  #BDBDBD; width: 30%;height: 35px;  text-align: center; font-size: 13px; background: #F3F3F3;" >
 					%
-					<button id="determineBtn" type="button" style="background-color: #2a82e4; color: #FFFFFF; border: none; margin-left: 10%;">确定</button>
+					<button class="confirm" id="determineBtn" type="button" style="background-color: #2a82e4; color: #FFFFFF; border: none; margin-left: 10%;">确定</button>
 			</div>
 			
 		</div>

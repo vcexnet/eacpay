@@ -1,19 +1,23 @@
-<!-- 选择节点 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
-
+<!-- 选择节点 -->
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet"  href="../css/color.css"/>
 		<link rel="stylesheet"  href="../css/list.css"/>
-		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
-
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/common_1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_set_node.js" type="text/javascript" charset="utf-8"></script>
 	    <style type="text/css">
 			body{
 				background-color: #FFFFFF;
@@ -24,18 +28,18 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
-			<h1 class="mui-title">设置节点</h1>
+			<h1 class="node_title mui-title">设置节点</h1>
 		</header>
 		<div class="mui-content">
 			<div class="d">
-				<label>提示：为了您的EAC资产安全，请选择自己信任的节点连接，最佳方案是自建节点，自建节点教程参见EACPay.com</label>
+				<label class="node_tip">提示：为了您的EAC资产安全，请选择自己信任的节点连接，最佳方案是自建节点，自建节点教程参见EACPay.com</label>
 			</div>
 			<div class=" mui-table-view-cell" style="background-color: #ffffff;">
-				<label style="font-size: 16px;">当前API节点：182.151.14.132</label>
+				<label class="current_api" style="font-size: 16px;">当前API节点：</label>182.151.14.132
 				<br />
-				<label style="font-size: 16px;"> 该节点高度：<span id="node_hight"></span></label>
+				<label class="height_of_node" style="font-size: 16px;"> 该节点高度：</label><span id="node_hight"></span>
 				<br />
-				<label style="font-size: 16px;">区块最新高度：<span id="block_hight"></span></label>
+				<label class="block_height" style="font-size: 16px;">区块最新高度：</label><span id="block_hight"></span>
 			</div>
 		</div>
 		<center>
@@ -48,93 +52,39 @@
 			    </ul>
 			</div> -->
 				<div style="margin-top: 10px; width: 90%;">
-					<input style="background-image:url(../images/list_.png);background-position:right;    background-repeat:no-repeat; font-size: 13px; padding-left: 10px;  border-radius: 4px; height: 34px; border: none; background-color: #e6e6e6;" type="text" id="lang_b" class="input_b" placeholder="切换可用API节点列表" readonly="readonly"/>
+					<input style="background-image:url(../images/list_.png);background-position:right;    background-repeat:no-repeat; font-size: 13px; padding-left: 10px;  border-radius: 4px; height: 34px; border: none; background-color: #e6e6e6;" type="text" id="lang_b" class="switch_node input_b" placeholder="切换已添加的节点" readonly="readonly"/>
 					<div style="float: left; border-radius: 20px; z-index: 99999; width:90%;margin-top: -27px; border-radius: 4px; position: absolute; display: none" id="huangbiao_b">
-						<ul style="padding-left: 4px; border: #999999 solid 1px; overflow-x: hidden;  overflow-y: auto; height: 100px; font-size: 12px; border-radius: 4px; background-color: #FFFFFF; list-style: none;">
-							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">42.164.234:35677</li>
+						<ul id="showList" style="padding-left: 4px; border: #999999 solid 1px; overflow-x: hidden;  overflow-y: auto; height: 100px; font-size: 12px; border-radius: 4px; background-color: #FFFFFF; list-style: none;">
+<!-- 							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">42.164.234:35677</li>
 							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">210.23.46:35677</li>
-							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">40.223.46:35677</li>
+							<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="asd">40.223.46:35677</li> -->
 						</ul>
 					</div>
 				</div>
 		</center>
 		<br />
 		<div>
-			<label style="margin-left: 20px; font-size: 16px; margin: 15px;">自定义API节点</label>
+			<label class="custom_nodes" style="margin-left: 20px; font-size: 16px; margin: 15px;">自定义API节点</label>
 		</div>
 		<div style="background-color: #ffffff; text-align:center;">
-			<input id="node_ip" type="text" style="margin-top: 6px; border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" onkeyup="value=value.replace(/[\u4e00-\u9fa5]/ig,'')" placeholder="输入节点ip地址(http://182.151.14.132)"   />
-			<input id="node_port" type="number" style="border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="节点端口号(8000)" />
-			<input id="act" type="text" style="border: none; width: 45%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="RPCuser(账户)"  />
-			<input id="pwd" type="text" style="border: none; width: 45%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="RPCpassword(密码)"  />
+			<input class="node_ip" id="node_ip" type="text" style="margin-top: 6px; border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;"  placeholder="输入节点ip地址(http://182.151.14.132)"   />
+			<input class="node_port" id="node_port" type="number" style="border: none; width: 90%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="节点端口号(8000)" />
+			<input class="rpc_user" id="act" type="text" style="border: none; width: 45%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="RPCuser(账户)"  />
+			<input class="rpc_password" id="pwd" type="text" style="border: none; width: 45%;font-size: 15px; background-color: #F0F0F0; color: #999999;" placeholder="RPCpassword(密码)"  />
 
-			<button style="width: 45%; background-color: #2a82e4; color: #FFFFFF; " type="button">取消</button>
-			<button  style="width: 45%; background-color: #2a82e4; color: #FFFFFF;"type="button" onclick="">确认</button>
+			<button class="cancel" style="width: 45%; background-color: #2a82e4; color: #FFFFFF; " type="button">取消</button>
+			<button  class="confirm" style="width: 45%; background-color: #2a82e4; color: #FFFFFF;"type="button" onclick="addNode()">确认</button>
 		</div>
 		
-		<!-- 文件 -->
-		<div  hidden="hidden" id="_downloads" class="fitem" >
-			<img class="ficon" src="../img/fdisk.png"/>
-			<div>
-				<span class="fname">downloads</span><br/>
-				<span class="finf">...</span>
-			</div>
-		</div>
 		
-		<script src="../js/mui.min.js"></script>
-<!-- 		<script src="../js/list.js"></script> -->
-		<script src="../js/util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_node.js" type="text/javascript" charset="utf-8"></script>
-		<script type="text/javascript">
-			mui.init();
-			
-			var root=[];
-				document.addEventListener("plusready", function(){
-				var items = $("#_downloads")[0];	
-				console.log(items);
-				plus.io.resolveLocalFileSystemURL("_downloads", function ( entry ) {
-					root.push( entry );
-					items.entry = entry;
-				}, function ( e ) {
-					console.log( "Update "+items.id+" information failed: "+e.message );
-				} );
-			}, false);
-		</script>
-		<script>
-			$(
-				function(){
-					$("#lang_b").click(function(){
-						if("block" == $("#huangbiao_b").css("display")){
-							hideLi_b();
-						}else{
-							showLi_b();
-						}
-					});
-					
-					$(".asd").each(function(i,v){
-						$(this).click(function(){
-							$("#lang_b").val($(this).html());
-							hideLi_b();
-						});
-					});
-					
-					$("#lang_b").blur(function(){
-						setTimeout(hideLi_b,200);
-					});
-					
-				}
-				
-			);
-			 
-			 
-			 
-			function showLi_b(){
-				$("#huangbiao_b").show();
-			}
-			function hideLi_b(){
-				$("#huangbiao_b").hide();
-			}
-		</script>
+
+
 	</body>
+
+		<script src="../js/mui.js"></script>
+		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();		
+		</script>
 
 </html>

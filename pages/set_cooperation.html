@@ -1,18 +1,21 @@
 <!-- 提交合作 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
 		<link href="../css/color.css" />
 		<link href="https://how2j.cn/study/css/bootstrap/3.3.6/bootstrap.min.css" rel="stylesheet">
 		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
 
 		<style type="text/css">
 
@@ -57,13 +60,13 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
-			<h1 class="mui-title" style="font-size: 18px; text-emphasis-color: #ff333333;">提交合作</h1>
+			<h1 class="cooperatiopn_title mui-title" style="font-size: 18px; text-emphasis-color: #ff333333;">提交合作</h1>
 		</header>
 		
 		<div class="mui-content " style="margin-top: 10px;margin-left:5px; background-color: #FFFFFF;">
 				<form >
 					<div class="mui-input-row " style=" width:80%;" >						
-						<label  style="font-size:15px; width:35%; padding-left: 8px;" >合作类别：</label>
+						<label class="cooperation_categories" style="font-size:15px; width:35%; padding-left: 8px;" >合作类别：</label>
 							<!-- <div id="ddlt" onclick="Qclick_ul();">
 							    <input disabled="disabled" style=" background-color: #F0F0F0;color: #505050; margin-right: 10px; " value="请选择合作类别" type="text" id="Lite">
 							    <ul id="ul_List" style="text-align: left; left: 50%; position: fixed;  float:right; margin-top: 38px;">
@@ -76,15 +79,15 @@
 							    </ul>
 							</div> -->
 							<div style="margin-left: 35%; width: 100%;">
-								<input style="background-image:url(../images/list_.png);background-position:right; background-repeat:no-repeat; font-size: 13px; padding-left: 10px; width: 65%; height: 40px; border: none; border-radius: 4px; background-color: #F0F0F0; " type="text" id="lang" class="input" placeholder="请选择合作类别" readonly="readonly"/>
+								<input style="background-image:url(../images/list_.png);background-position:right; background-repeat:no-repeat; font-size: 13px; padding-left: 10px; width: 65%; height: 40px; border: none; border-radius: 4px; background-color: #F0F0F0; " type="text" id="lang" class="c_tip input" placeholder="请选择合作类别" readonly="readonly"/>
 								<DIV style="z-index: 999; width: 70%;margin-top: -16px; border-radius: 4px; position: fixed; display: none" id="huangbiao">
 									<ul style="padding-left: 4px; background-color: #F4F5F6; width: 74%; list-style: none; ">
-										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">矿机</li>
-										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">矿池</li>
-										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">钱包</li>
-										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">交易所</li>
-										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="zxcv">区块链浏览器</li>
-										<li style=" padding: 10px; " class="zxcv">其他</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="mill zxcv">矿机</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="ore_pool zxcv">矿池</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="wallet zxcv">钱包</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="exchange zxcv">交易所</li>
+										<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="blockchain_browser zxcv">区块链浏览器</li>
+										<li style=" padding: 10px; " class="other zxcv">其他</li>
 									</ul>
 								</DIV>
 							</div>
@@ -92,7 +95,7 @@
 					</div>
 					
 					<div class="mui-input-row" style=" width: 80%;">
-						<label style="font-size:15px; padding-left: 8px; width: 35%;">合作模式：</label>
+						<label class="cooperation_model" style="font-size:15px; padding-left: 8px; width: 35%;">合作模式：</label>
 						<!-- <div id="Ddlt" onclick="click_ul();">
 						    <input disabled="disabled" style=" background-color: #F0F0F0;color: #505050; margin-right: 10px; " value="请选择合作模式" type="text" id="lite">
 						    <ul id="ul_list" style="text-align: left; left: 50%; position: fixed;  float:right; margin-top: 38px;">
@@ -101,33 +104,33 @@
 						    </ul>
 						</div> -->
 						<div style="margin-left: 35%;">
-							<input style="background-image:url(../images/list_.png);background-position:right; background-repeat:no-repeat; font-size: 13px; padding-left: 10px;  border-radius: 4px; height: 40px; border: none; background-color: #F0F0F0;" type="text" id="lang_a" class="input_a" placeholder="请选择合作模式" readonly="readonly"/>
+							<input style="background-image:url(../images/list_.png);background-position:right; background-repeat:no-repeat; font-size: 13px; padding-left: 10px;  border-radius: 4px; height: 40px; border: none; background-color: #F0F0F0;" type="text" id="lang_a" class="cm_tip input_a" placeholder="请选择合作模式" readonly="readonly"/>
 							<DIV style="z-index: 999; width: 53%;margin-top: -16px; border-radius: 4px; position: fixed; display: none" id="huangbiao_a">
 								<ul style="padding-left: 4px; background-color: #F4F5F6; width: 98%; list-style: none;">
-									<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">资源互换</li>
-									<li style=" padding: 10px; " class="qwx">推广合作</li>
+									<li style=" padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="resources_swap qwx">资源互换</li>
+									<li style=" padding: 10px; " class="to_cooperation qwx">推广合作</li>
 								</ul>
 							</DIV>
 						</div>
 					</div>
 					
 					<div class="mui-input-row" style="margin-top: px;width: 90%;">
-						<label style="font-size:15px; padding-left: 8px; width: 30%;">合作方式：</label>
+						<label class="cooperation_model" style="font-size:15px; padding-left: 8px; width: 30%;">合作方式：</label>
 						<textarea style="background-color: #F0F0F0; padding-left: 10px;margin-right: 12px; height: 100px;" type="text"></textarea>
 					</div>
 					
 					<div class="mui-input-row " style="margin-top: 10px; width: 90%; ">
-						<label style="font-size:15px; padding-left: 8px; width: 30%;">联系方式：</label>
-						<input required   type="text" placeholder="手机（必填）"  style="background: #F0F0F0;padding-left: 10px; font-size: 13px; margin-right:12px;">
-						<input  type="text" placeholder="微信（选填）" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
-						<input  type="text" placeholder="email（选填）" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
-						<input  type="text" placeholder="QQ(选填)" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
+						<label class="contact_information" style="font-size:15px; padding-left: 8px; width: 30%;">联系方式：</label>
+						<input class="mobile_phone" required   type="text" placeholder="手机（必填）"  style="background: #F0F0F0;padding-left: 10px; font-size: 13px; margin-right:12px;">
+						<input class="wechat" type="text" placeholder="微信（选填）" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
+						<input class="email" type="text" placeholder="email（选填）" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
+						<input class="QQ" type="text" placeholder="QQ(选填)" style="background: #F0F0F0;margin-top: 10px; padding-left: 10px; font-size: 13px;  margin-right:12px; ">
 					</div>
 
 
 					<div style="text-align:center; margin-top: 30px;">
-						<button type="reset" class="btn" style="border-radius: 4px; color: #FFFFFF; border: none; background-color: #2a82e4">取消</button>
-						<button type="submit"  class="btn" style="border-radius: 4px; color: #FFFFFF; background-color: #2a82e4; margin-left: 50px;">提交</button>
+						<button class="cancel" type="reset" class="btn" style="border-radius: 4px; color: #FFFFFF; border: none; background-color: #2a82e4">取消</button>
+						<button class="submit" type="submit"  class="btn" style="border-radius: 4px; color: #FFFFFF; background-color: #2a82e4; margin-left: 50px;">提交</button>
 					</div>
 				</div>
 			</div>

@@ -1,18 +1,20 @@
 <!-- 网站或App展示申请 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>网站或App展示申请</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
 		<link href="../css/color.css" rel="stylesheet" />
-		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+				<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
-		</script>
 		<style type="text/css">
 			body {
 				background-color: #FFFFFF;
@@ -112,58 +114,58 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class=" mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
-			<h1 class="mui-title" style="font-size: 18px; text-emphasis-color: #ff333333;">网站或App展示申请</h1>
+			<h1 class="web_title mui-title" style="font-size: 18px; text-emphasis-color: #ff333333;">网站或App展示申请</h1>
 		</header>
 		<div class="mui-content" style="background: #FFFFFF; ">
 			<form>
 				<div class="mui-input-row" style="margin-top: 2%;">
-					<label style="font-size: 13px; width:35%;">网站/app类别:</label>
+					<label class="category_website" style="font-size: 13px; width:35%;">网站/app类别:</label>
 						<div id="Ddlt" onclick="click_ul();">
-						    <input disabled="disabled" style="background-image:url(../images/list_.png);background-position:right;    background-repeat:no-repeat; background-color: #F0F0F0; margin-right: 10px; " placeholder="请选择网站/app类别" type="text" id="lite">
+						    <input class="category_website_tip" disabled="disabled" style="background-image:url(../images/list_.png);background-position:right;    background-repeat:no-repeat; background-color: #F0F0F0; margin-right: 10px; " placeholder="请选择网站/app类别" type="text" id="lite">
 						    <ul id="ul_list" style="overflow-x: hidden; overflow-y: auto; height: 108px; text-align: left; left: 50%; position: fixed;  float:right; margin-top: 38px;">
-						        <li con_key="select2" onclick="s_li_click();">棋牌</li>
-						        <li con_key="select3" onclick="s_li_click();">影视</li>
-						        <li con_key="select4" onclick="s_li_click();">动漫</li>
-								<li con_key="select4" onclick="s_li_click();">游戏</li>
-								<li con_key="select5" onclick="s_li_click();">破解</li>
-								<li con_key="select6" onclick="s_li_click();">直播</li>
-								<li con_key="select7" onclick="s_li_click();">小说</li>
-								<li con_key="select8" onclick="s_li_click();">播客</li>
-								<li con_key="select9" onclick="s_li_click();">开发</li>
-								<li con_key="select10" onclick="s_li_click();">服务</li>
+						        <li class="select2" onclick="s_li_click();">棋牌</li>
+						        <li class="select3" onclick="s_li_click();">影视</li>
+						        <li class="select4" onclick="s_li_click();">动漫</li>
+								<li class="select5" onclick="s_li_click();">游戏</li>
+								<li class="select6" onclick="s_li_click();">破解</li>
+								<li class="select7" onclick="s_li_click();">直播</li>
+								<li class="select8" onclick="s_li_click();">小说</li>
+								<li class="select9" onclick="s_li_click();">播客</li>
+								<li class="select10" onclick="s_li_click();">开发</li>
+								<li class="select11" onclick="s_li_click();">服务</li>
 						    </ul>
 						</div>
 				</div>
 
 				<div class="mui-input-row" style=" margin-top: -36px; margin-right: 8%; padding-top: ;">
-					<label style="font-size: 13px;">网站名/app名:</label>
-					<input class="mui-input-clear" type="text" maxlength="5" placeholder="输入网站名称或APP名称,不超过5个字" style="background: #F0F0F0; font-size:12px; padding-left: 16px; height: 45px;">
+					<label class="name_website" style="font-size: 13px;">网站名/app名:</label>
+					<input class="name_website_tip mui-input-clear" type="text" maxlength="5" placeholder="输入网站名称或APP名称,不超过5个字" style="background: #F0F0F0; font-size:12px; padding-left: 16px; height: 45px;">
 				</div>
 
 				<div class="mui-input-row" style=" margin-right: 8%; padding-top:15px; margin-bottom: 15px;">
-					<label style="font-size: 13px;width: 45%;">网址/app下载地址:</label>
-					<input class="mui-input-clear" type="text" placeholder="输入网址或App下载地址" style="font-size: 12px; padding-left: 16px; background: #F0F0F0; height: 45px;width: 55%;">
+					<label class="website_download" style="font-size: 13px;width: 45%;">网址/app下载地址:</label>
+					<input class="website_download_tip mui-input-clear" type="text" placeholder="输入网址或App下载地址" style="font-size: 12px; padding-left: 16px; background: #F0F0F0; height: 45px;width: 55%;">
 				</div>
 
 				<div class="mui-input-row change">
-					<label style="font-size: 13px; width:40%;">是否支持EACPay</label>
+					<label class="whether_supported" style="font-size: 13px; width:40%;">是否支持EACPay</label>
 					<span style="float: left; width: 30%; font-size: 13px;" class=" mui-radio mui-left">
 						<input id="Gender_male" name="gender" class="gender" type="radio" checked />
-						<label>已支持</label>
+						<label class="have_support">已支持</label>
 					</span>
 					<span style="float: left; width: 30% ; font-size: 11px;" class="mui-radio mui-left">
 						<input id="Gender_female" name="gender" class="gender" type="radio">
-						<label>不支持</label>
-					</span> 
-				</div>  
-				<div class="mui-button-row" style="margin-top: -30px;">
-					<input  type="reset" value="取消" style="background:#2a82e4; border-radius: 4px; border:none; color:#FFFFFF;  width: 80px;"/>
-					<input  type="submit" value="提交" style="background:#2a82e4; border-radius:4px; border: none; width: 80px; margin-left: 50px;"/>
+						<label class="nonsupport">不支持</label>
+					</span> 
+				</div>  
+				<div class="mui-button-row" style="">
+					<button  class="cancel" type="reset"  style="background:#2a82e4; border-radius: 4px; border:none; color:#FFFFFF;  width: 80px;"/>取消</button>
+					<button  class="submit" type="submit"  style="background:#2a82e4; border-radius:4px; border: none; width: 80px; margin-left: 50px;"/>提交</button>
 				</div>
 		</form>
 		</div>
 		<div style="margin-top: 20px;">
-			<p style="margin: 10px;">
+			<p class="web_tip" style="margin: 10px;">
 				提示：申请的前提条件是贵站或者app支持EACPay支付，因为我们只展示支持EACPay支付的网站，展示排名与网站和app的大小规模影响力无关。但是如果贵站支持EACPay审核展示后，取消EACPay支付，将用不收录展示，请勿侥幸！
 			</p>
 		</div>

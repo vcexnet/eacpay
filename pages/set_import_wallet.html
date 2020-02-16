@@ -1,17 +1,21 @@
 <!-- 导入私钥 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<script src="../js/jquery-3.3.1.js"></script>
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
+	
 		<script src="../js/page/set_import_wallet.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			body{
 				background: #FFFFFF;
@@ -28,7 +32,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav title">
 			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
-			<h1 class="mui-title">导入私钥</h1>
+			<h1 class="import_title mui-title">导入私钥</h1>
 		</header>
 		<div class="mui-content" style="background-color: #FFFFFF;">
 			<div style="height: 33px; position: absolute; margin-top: 70px; width: 100%; ">
@@ -37,9 +41,9 @@
 				</div>
 			</div>
 			<div  style="margin: 10px;">
-					<p style="margin-top: 10px;" class="font_Tips">导入EAC私钥</p>
+					<p style="margin-top: 10px;" class="import_EAC font_Tips">导入EAC私钥</p>
 				<div  style="height: 100px;">
-					<textarea id="myKey" class="output" style="width:80%;height: 100%; text-align: center; " placeholder="粘贴或输入EAC私钥" onfocus="this.placeholder=''" onblur="this.placeholder='粘贴或输入EAC私钥'"></textarea>
+					<textarea id="myKey" class="paste_enter output" style="width:80%;height: 100%; text-align: center; " placeholder="粘贴或输入EAC私钥" onfocus="this.placeholder=''" onblur="this.placeholder='粘贴或输入EAC私钥'"></textarea>
 				</div>
 
 			<br />
@@ -47,11 +51,11 @@
 		</div>
 	
 		<div style="margin: 10px; font-size: 16px; color: #999999;">
-			<p>友情提示：EACPay.com不保存您的私钥(私钥保存在你本机EACPay上)，请自行妥善保管私钥，私钥是您资产的证明和钥匙，请勿丢失或者交由他人保管。EACPay是一款真正的去中心化并完全由使用者掌控的支付工具。可以做到完全脱离开发者，即使我们不再对其提供支持了，依然能够自我运行（自建节点即可）。</p>
+			<p class="warning">友情提示：EACPay.com不保存您的私钥(私钥保存在你本机EACPay上)，请自行妥善保管私钥，私钥是您资产的证明和钥匙，请勿丢失或者交由他人保管。EACPay是一款真正的去中心化并完全由使用者掌控的支付工具。可以做到完全脱离开发者，即使我们不再对其提供支持了，依然能够自我运行（自建节点即可）。</p>
 		</div>
 		<div style="text-align:center; margin-top: 20px;">
-			<button id="cancle1" type="reset" class="mui-btn mui-btn-blue mui-btn-outlined"  style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px;">取消</button>
-			<button id="import1"  class="key mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px; margin-left: 20px;" onclick="ImportSecretKey()">导入</button>
+			<button class="cancel" id="cancle1" type="reset" class="mui-btn mui-btn-blue mui-btn-outlined"  style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px;">取消</button>
+			<button class="to_lead" id="import1"  class="key mui-btn mui-btn-blue mui-btn-outlined" style="background-color: #2a82e4; color: #FFFFFF; width: 110px; height: 40px; margin-left: 20px;" onclick="ImportSecretKey()">导入</button>
 		</div>
 		
 		<script src="../js/mui.min.js"></script>

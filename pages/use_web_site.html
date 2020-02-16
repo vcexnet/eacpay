@@ -1,17 +1,21 @@
 <!-- EAC行情应用 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
 		<title>EAC行情应用</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/jquery-3.3.1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/page/use_web_site.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		
 		<style type="text/css">
 			body {
 				background-color: #FFFFFF;
@@ -55,20 +59,20 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav">
-			<h1 class="mui-title">EAC行情应用</h1>
+			<h1 class="uws_title mui-title">EAC行情应用</h1>
 		</header>
 		<nav style="background-color: #FFFFFF;" class="mui-bar mui-bar-tab">
 			<a class="mui-tab-item " href="e_wallet.html">
 				<span class="mui-icon mui-icon-money1"></span>
-				<span class="mui-tab-label">钱包</span>
+				<span class="walleat mui-tab-label">钱包</span>
 			</a>
 			<a class="mui-tab-item mui-active" href="use_web_site.html">
 				<span class="mui-icon mui-icon-yingyong2"></span>
-				<span class="mui-tab-label">行情应用</span>
+				<span class="market_application mui-tab-label">行情应用</span>
 			</a>
 			<a class="mui-tab-item" href="set.html">
 				<span class="mui-icon mui-icon-set1"></span>
-				<span class="mui-tab-label">设置</span>
+				<span class="set mui-tab-label">设置</span>
 			</a>
 		</nav>
 		<div style="background-color: #FFFFFF;" class="mui-content ">
@@ -78,20 +82,20 @@
 					<p style="color: #FFFFFF; font-size: 16px; position: absolute; left: 64%; top: 16%;  padding-left: 10px;">¥<span id="eacMoney"></span></p>
 					<p style="color: #FFFFFF; font-size: 16px; position: absolute; left: 20%; top: 40%;  padding-left: 10px;">24h</p>
 					<p style="color: #FFFFFF; font-size: 16px; position: absolute; left: 68%; top: 40%;  padding-left: 10px;">￥<span id="eacNumebr">AEX</span></p>
-					<p style="color: #FFFFFF; font-size:16px; position: absolute; left: 0%; top: 60%;  padding-left: 10px;">卖一：￥<span id="buy1"></span></p>
-					<p style="color: #FFFFFF; font-size: 16px; position: absolute; left: 52%; top: 60%;  padding-left: 10px;">买一：￥<span id="buy2"></span></p>
-					<p style="color: #FFFFFF; font-size: 16px; position: absolute; left: 0%; top: 80%;  padding-left: 10px;">卖二：￥<span id="buy_1"></span></p>
-					<p style="color: #FFFFFF; font-size: 16px; position: absolute; left: 52%; top: 80%;  padding-left: 10px;">买二：￥<span id="buy_2"></span></p>
+					<p  style="color: #FFFFFF; font-size:16px; position: absolute; left: 0%; top: 60%;  padding-left: 10px;"> <span class="buy1">卖一：￥</span> <span id="buy1"></span></p>
+					<p  style="color: #FFFFFF; font-size: 16px; position: absolute; left: 52%; top: 60%;  padding-left: 10px;"><span class="buy2">买一：￥</span><span id="buy2"></span></p>
+					<p  style="color: #FFFFFF; font-size: 16px; position: absolute; left: 0%; top: 80%;  padding-left: 10px;"><span class="buy3">卖二：￥</span><span id="buy_1"></span></p>
+					<p style="color: #FFFFFF; font-size: 16px; position: absolute; left: 52%; top: 80%;  padding-left: 10px;"><span class="buy4">买二：￥</span><span id="buy_2"></span></p>
 				</div>
 			</div>
 			<div style="margin-top: 20px; margin-bottom: 20px;">
 				<center>
 					<table style="width: 100%;">
 						<tr>
-							<th style=" border: solid #ccc 1px; ">名称</th>
-							<th style=" border: solid #ccc 1px; ">交易对</th>
-							<th style=" border: solid #ccc 1px; ">价格</th>
-							<th style=" border: solid #ccc 1px; ">单笔成交金额(元)</th>
+							<th class="t_name" style=" border: solid #ccc 1px; ">名称</th>
+							<th class="trading_on" style=" border: solid #ccc 1px; ">交易对</th>
+							<th class="price" style=" border: solid #ccc 1px; ">价格</th>
+							<th class="unit_price" style=" border: solid #ccc 1px; ">单笔成交金额(元)</th>
 						</tr>
 						<tbody id="showExchanges">
 							
@@ -125,7 +129,7 @@
 			</div>
 			<div style="margin-bottom: 20px; border: #000000;">
 				<div class="mui-table-view-cell" style="background-color: rgba(42, 130, 228, 1); color: #FFFFFF;">
-					<b style="font-size: 20px; margin-left: -6px;">EACPay支持系统</b>
+					<b class="support_system" style="font-size: 20px; margin-left: -6px;">EACPay支持系统</b>
 				</div>
 				<div>
 					<ul class="mui-table-view mui-grid-view mui-grid-6" style="background-color: #FFFFFF;">
@@ -164,22 +168,22 @@
 			</div>
 			<div style="margin-bottom: 20px; border: #000000;">
 				<div class="mui-table-view-cell" style="background-color: rgba(42, 130, 228, 1); color: #FFFFFF; text-align: none;">
-					<b style="font-size: 20px; margin-left: -6px;">已支持EACPay的网站和APP(部分)</b>
+					<b class="support_app" style="font-size: 20px; margin-left: -6px;">已支持EACPay的网站和APP(部分)</b>
 				</div>
 				<div>
 					<ul class="mui-table-view mui-grid-view mui-grid-6" style="background-color: #FFFFFF;">
 						<li class="mui-table-view-cell  mui-col-xs-4 mui-col-sm-3 ">
-							<button style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">51棋牌</button></li>
+							<button class="chess_card" style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">51棋牌</button></li>
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<button style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">吾爱破解</button></li>
+							<button class="love_crack" style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">我爱破解</button></li>
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<button style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">经典传奇</button></li>
+							<button class="classic_legend" style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">经典传奇</button></li>
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<button style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">互赞源码</button></li>
+							<button class="praised_source" style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">互赞源码</button></li>
+ 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
+							<button class="romantic_fiction" style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">言情小说</button></li>
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<button style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">言情小说</button></li>
-						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
-							<button style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">澳门金沙</button></li>
+							<button class="sands_macao" style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">澳门金沙</button></li>
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">
 							<button style="width: 90px; background: rgba(42, 130, 228, 1); color: #FFFFFF;">草溜社区</button></li>
 						<li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3">

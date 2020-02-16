@@ -1,15 +1,18 @@
 <!-- 语言设置 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<script src="../js/jquery-3.3.1.js" type="text/javascript"></script>
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
 		<script src="" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
 		<style type="text/css">
 			body{
 				background-color: #FFFFFF;
@@ -25,41 +28,41 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"href="set.html"></a>
-			<h1 class="mui-title">语言设置</h1>
+			<h1 class="language_title mui-title">语言设置</h1>
 		</header>
 		<div class="mui-content">
 			<ul style="margin-top: 0px;" class="mui-table-view mui-table-view-radio">
-				<li class="mui-table-view-cell mui-selected" onclick="zh_tran('s');">
+				<li class="mui-table-view-cell mui-selected" >
 					<label class="mui-navigate-right" >
 						简体中文
 					</label>
 				</li>
-				<li class="mui-table-view-cell" onclick="zh_tran('t');">
+				<li class="mui-table-view-cell" >
 					<label class="mui-navigate-right">
 						繁体中文
 					</label>
 				</li>
-				<li class="mui-table-view-cell" onclick="#">
+				<li class="mui-table-view-cell" >
 					<label class="mui-navigate-right">
 						English
 					</label>
 				</li>
-				<li class="mui-table-view-cell" onclick="#">
+				<li class="mui-table-view-cell" >
 					<label class="mui-navigate-right">
 						日本语
 					</label>
 				</li>
-				<li class="mui-table-view-cell" onclick="#">
+				<li class="mui-table-view-cell" >
 					<label class="mui-navigate-right">
 						한국어
 					</label>
 				</li>
-				<li class="mui-table-view-cell" onclick="#">
+				<li class="mui-table-view-cell" >
 					<label class="mui-navigate-right">
 						русский язык
 					</label>
 				</li>
-				<li class="mui-table-view-cell" onclick="#">
+				<li class="mui-table-view-cell" >
 					<label class="mui-navigate-right">
 						Espanha
 					</label>
@@ -68,7 +71,7 @@
 			<div class="font_Tips"  id="text"></div>
 			<div style="background-color: #FFFFFF;">
 				<center>
-				<button  onclick="set_lang()" type="button" style="margin-top: 20px; background-color:#2a82e4; border: none; width:250px;height:35px;color: #FFFFFF;">保存</button>
+				<button class="save" onclick="set_lang()" type="button" style="margin-top: 20px; background-color:#2a82e4; border: none; width:250px;height:35px;color: #FFFFFF;">保存</button>
 				</center>
 			</div>
 			
@@ -80,10 +83,35 @@
 					swipeBack:true
 				}
 			);
+			var newText="";
 			var text=document.getElementById("text");
+			text.innerHTML="当前选定的为：简体中文";
 			document.querySelector('.mui-table-view.mui-table-view-radio').addEventListener('selected',function(e){
 				text.innerHTML="当前选定的为："+e.detail.el.innerText;
+				newText=e.detail.el.innerText;
 			});
+			function set_lang(){
+				if(newText){
+				if(newText=="English"){
+					 Common.saveLocalData("language", "en_US");
+					 mui.alert("Language setting successful!", function() {
+					 window.location.href="set.html";
+					 });
+				}else if(newText=="简体中文"){
+					Common.saveLocalData("language", "zh_CN");
+					mui.alert("语言设置成功!", function() {
+					window.location.href="set.html";
+					});
+				}else if(newText=="繁体中文"){
+					Common.saveLocalData("language", "ft_CN");
+					mui.alert("语言设置成功!", function() {
+					window.location.href="set.html";
+					});
+				}
+				
+
+			}  
+			}
 		</script>
 	</body>
 

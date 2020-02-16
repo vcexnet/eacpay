@@ -1,19 +1,22 @@
-<!-- 付款地址本 -->
-<!doctype html>
-<html>
 
+<!DOCTYPE HTML>
+<html>
+<!-- 付款地址本 -->
 	<head>
 		<meta charset="UTF-8">
 		<title>付款地址本</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../css/color.css" />
 		<script src="../js/jquery-3.3.1.js"></script>
-		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
-		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
-
-		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
-		<script sr></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="UTF-8"></script>
+		<script src="../js/Util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/set_address_book.js" type="text/javascript" charset="UTF-8"></script>
 		<style type="text/css">
 			 *{
 			    -webkit-user-select:all;
@@ -62,26 +65,26 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
-			<h1 class="mui-title">付款地址本</h1>
+			<h1 class="address_title mui-title">付款地址本</h1>
 		</header>
 		<div class="mui-content" style="background-color: #FFFFFF;">
 			
 				<div>
-					<p class="d" style="color: red;">提示：这些是你要付款过去的地球币地址，在付款前，务必要检查金额和地址是否正确，区块链是不可逆交易！</p>
+					<p class="address_tip d" style="color: red;">提示：这些是你要付款过去的地球币地址，在付款前，务必要检查金额和地址是否正确，区块链是不可逆交易！</p>
 				</div>
 			    <div style="width: 100%; height: 8px; background-color: #E6E6E6;"></div>
 			<div class="mui-content-padded" style="margin: 20px;">
 				<div class="mui-button-row" style="margin-top: 10px;">
-					<div class="mui-input-row mui-search">
-						<input type="search" class="mui-input-clear" placeholder="输入地址或者标签来搜索">
+					<div class="mui-input-row ">
+						<input type="search" class="enter_the_address mui-input-clear" placeholder="输入地址或者标签来搜索">
 					</div>
 			<center>
 			<div style="margin-top: 20px;">
 					<table id="tbUser" width="100%" class="table" >
 						<tr>
-							<th  width=15% style=" ">标签</th>
-							<th  width=60% style=" " >地址</th>
-							<th  width=15% style=" " >操作</th>
+							<th  class="send_label" width=15% style=" ">标签</th>
+							<th class="address"  width=60% style=" " >地址</th>
+							<th class="address_operation" width=15% style=" " >操作</th>
 							<!-- <th  width=10% style=" border: solid #ccc 1px; border-right: none;" >编辑</th> -->
 						</tr>
 
@@ -94,28 +97,28 @@
 				</div>
 				</center>
 				<div style="text-align: center; margin-top: 20px; word-spacing:20px;">
-						<button id="promptBtn" type="button" style="border: none; background-color: #2a82e4; color: #FFFFFF;" id="btn1" onclick="huoqu()">新建地址</button>
+						<button class="new_address" id="promptBtn" type="button" style="border: none; background-color: #2a82e4; color: #FFFFFF;" id="btn1" onclick="huoqu()">新建地址</button>
 						<!-- <button id="" type="button" class="mui-btn mui-btn-grey" onclick="return false;">复制</button> -->
-						<button id="removeBtn" type="button" style="background-color: #2a82e4; border: none; color: #FFFFFF;"  >全部删除</button>
+						<button class="delete_all" id="removeBtn" type="button" style="background-color: #2a82e4; border: none; color: #FFFFFF;"  >全部删除</button>
 						<!-- <button id="choiceBtn"  type="button" class="mui-btn mui-btn-primary" >选择</button> -->
 					</div>
 						
 		</div>
 		<div id="tiShi" class="mui-popover mui-popover-action mui-popover-bottom" style="width: 94%; margin-left: -9px; height: auto; margin-bottom: 8px; border-radius: 10px;">
 				<div style="background-color: #FFFFFF; border-radius: 10px 10px 10px 10px;">
-					<p style="text-align: center; padding-top: 10px; font-size: 5vw;color: black;">
+					<p class="new_address" style="text-align: center; padding-top: 10px; font-size: 5vw;color: black;">
 						新建地址
 <!-- 						<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeTiShi()"></span> -->					</p>
 					<div style="text-align: center;">
 						
-						<label>标签:</label>
+						<label class="send_label">标签:</label>
 						<input id="lable_1" type="text" style="background-color: #E6E6E6;border: none; padding: 0rem;height: 5vh;width: 80%;font-size: 1.0rem;"  >
 						<br />
-						<label>地址:</label>
+						<label class="address">地址:</label>
 						<input id="address_1" type="text" id="newaddress" style="background-color: #E6E6E6;border: none; padding: 0rem;height: 5vh;width: 80%;font-size: 1.0rem;"  >
 					<div style="margin-top: 6px;">
-					<button type="button"  style=" border-left: none; width: 50%;height: 44px; float: left; color:grey ;font-size: 16px; border-radius: 0 0 0 10px;"  onclick="copyUrl()">复制</button>
-					 <button type="button" style=" border-right: none; width: 50%; height: 44px;border-left: none; color: #0062CC; font-size: 16px; border-radius: 0 0 10px 0;" onclick="closeTiShi();">确定</button>
+					<button class="export_copy" type="button"  style=" border-left: none; width: 50%;height: 44px; float: left; color:grey ;font-size: 16px; border-radius: 0 0 0 10px;"  onclick="copyUrl()">复制</button>
+					 <button class="confirm" type="button" style=" border-right: none; width: 50%; height: 44px;border-left: none; color: #0062CC; font-size: 16px; border-radius: 0 0 10px 0;" onclick="closeTiShi();">确定</button>
 					</div>
 					</div>
 					
@@ -126,31 +129,14 @@
 					
 				</div>
 			</div>
-			<!-- 文件 -->
-			<div  hidden="hidden" id="_downloads" class="fitem" >
-				<img class="ficon" src="../img/fdisk.png"/>
-				<div>
-					<span class="fname">downloads</span><br/>
-					<span class="finf">...</span>
-				</div>
-			</div>
-		<script src="../js/mui.min.js"></script>
-		<script src="../js/page/set_address_book.js" type="text/javascript" charset="UTF-8"></script>
-		<script src="../js/util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
+
+		
+		
+	</body>
+		<script src="../js/mui.js"></script>
+				<script src="../js/mui.min.js" type="text/javascript" charset="utf-8"></script>
 		<script type="text/javascript">
-			mui.init();
-			var root=[];
-				document.addEventListener("plusready", function(){
-				var items = $("#_downloads")[0];	
-				console.log(items);
-				plus.io.resolveLocalFileSystemURL("_downloads", function ( entry ) {
-					root.push( entry );
-					items.entry = entry;
-				}, function ( e ) {
-					console.log( "Update "+items.id+" information failed: "+e.message );
-				} );
-			}, false);
-			
+			mui.init();		
 					function deleteRow(r)
 					{
 						var i=r.parentNode.parentNode.rowIndex
@@ -165,7 +151,7 @@
 					
 					});
 				</script>
+
 		
-	</body>
 
 </html>

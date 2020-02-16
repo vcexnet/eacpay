@@ -1,248 +1,237 @@
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
+		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
+		<link href="../css/color.css" />
+		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Common.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/common_1.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/Util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/page/e_received.js" type="text/javascript" charset="UTF-8"></script>
+		<style type="text/css">
+			body {
+				background-color: #FFFFFF;
+			}
 
-<head>
-    <meta charset="UTF-8">
-    <title>接收（收款）</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
-    <link href="../css/color.css" />
-    <script src="../js/mui.min.js"></script>
-    <script src="../js/jquery-3.3.1.js"></script>
-    <script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
-    <script src="../js/Common.js" type="text/javascript" charset="UTF-8"></script>
+			.table {
+				color: #666;
+				text-align: center;
+			}
 
-	<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
+			.table td {
+				font-size: 0.8rem;
+				text-align: center;
+			}
 
-    <style type="text/css">
-		body{
-			background-color: #FFFFFF;
-		}
-        .table {
-            color: #666;
-            text-align: center;
-        }
-         
-        .table td {
-            font-size: 0.8rem;
-            text-align: center;
-        }
-        
-        .table th {
-            background-repeat: repeat-x;
-            height: 30px;
-            font-size: 0.8rem;
-            border-right: 1px solid #cad9ea;
-            padding: 0 1em 0;
-        }
-        
-        .table tr {
-            /*把table标签的行高设定为固定值*/
-            border-bottom: 1px solid #3333;
-			height: 1.5rem;
-			font-size: 0.725rem;
-        }
-        
-        .table tr.alter {
-            background-color: #f5fafe;
-        }
-        
+			.table th {
+				background-repeat: repeat-x;
+				height: 30px;
+				font-size: 0.8rem;
+				border-right: 1px solid #cad9ea;
+				padding: 0 1em 0;
+			}
 
-        .bgcolor {
-            margin-top: 0px;
-            background-color: #FEFEFE;
-        }
-        
-        .styles{
-            background-color: #FEFEFE;
-            color: #8F8F94;
-            font-size: 16px;
-        }
-        
-        table tr td {
-            font-size: 0.8rem;
-        }
-        
-        .inps {
-            font-size: 12px;
-            width: 80%;
-            position: absolute;
-            left: 20%;
-            top: 2%;
-        }
-		.input{
-			border:none;
-		}
+			.table tr {
+				/*把table标签的行高设定为固定值*/
+				border-bottom: 1px solid #3333;
+				height: 1.5rem;
+				font-size: 0.725rem;
+			}
 
-    </style>
-</head>
+			.table tr.alter {
+				background-color: #f5fafe;
+			}
 
-<body>
-    <header class="mui-bar mui-bar-nav title">
-        <a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="e_wallet.html"></a>
-        <h1 class="mui-title">接收（收款）</h1>
-    </header>
-    <div class="mui-content ">
-        <div class=" styles" style=" margin-top: -8px;">
-            <p style=" padding: 10px; padding-top: 16px; font-size: 14px;">提示：这里请求一次就是生成一个地址，所以选项都可以选填。如无特殊要求，不建议生成多个收款地址，每一个地址对应唯一一个私钥，管理备份工作量比较多。</p>
 
-        </div>
-	<!-- 	<form> -->
-        <div class="bgcolor">
-            <div>
-                <div class="mui-input-group">
-                    <div name="form1" class="mui-input-row text">
-                        <label style="font-size: 18px;">标签：</label>
-                        <input id="lable_1" size="30" style="font-size: 12px;width: 80%; position: absolute; left: 20%; top: 2%;" class="inps mui-icon mui-input-clear" type="text"   placeholder="输入该笔款项是支付给自己的，仅用于识别，可不填" placeholder="输入该笔款项是谁支付给自己的，仅用于识别，可不填" onfocus="this.placeholder=''"  onblur="this.placeholder='输入该笔款项是谁支付给自己的，仅用于识别，可不填'"  />
-                    </div>
-					<div class="mui-input-row text">
-					    <label style="font-size: 18px;">消息：</label>
-					    <input class="mui-input-clear" id="message_1" size="30" style="font-size: 12px;width: 70%; position: absolute; left: 20%; top: 2%;" type="text"  placeholder="输入希望对方付款时看到的消息，可不填" onfocus="this.placeholder=''"  onblur="this.placeholder='输入希望对方付款时看到的消息，可不填'">
+			.bgcolor {
+				margin-top: 0px;
+				background-color: #FEFEFE;
+			}
 
-					</div>
-                    <div style="width: 70%;"  class="mui-input-row text">
-                        <label style=" font-size: 18px; ">总额：</label>
-                        <input class="mui-input-clear" id="amount_1" size="30" style="font-size: 12px;width: 74%; position: absolute; left: 28%; top: 2%;" type="number"  placeholder="输入请求对方付款金额，可不填" onfocus="this.placeholder=''"  onblur="this.placeholder='输入请求对方付款金额，可不填'"/>
-					</div>
-					<div style="margin-bottom: 24px; margin-top: -37px;">
-						<div style="height:34px ;  margin-left: 72%; width: 23%;">
-							<input style="z-index: 1000000; font-size: 13px; padding-left: 10px; color: #007AFF; border-radius: 20px; height: 34px; border: none; background-color: #e6e6e6;" type="text" id="lang_a" class="input_a" placeholder="EAC" readonly="readonly"/>
-							<DIV style="border-radius: 20px; z-index: 1000000; width: 23%;margin-top: -12px; border-radius: 4px; position: absolute; display: none" id="huangbiao_a">
-								<ul style="overflow-x: hidden; z-index: 1000; overflow-y: auto; height: 101px; font-size: 12px; padding-left: 4px; border-radius: 20px; background-color: #F4F5F6; width: 100%; list-style: none;">
-									<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">EAC</li>
-									<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">miliEAC</li>
-									<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">microEAC</li>
-									<li style="height: 34px; padding: 10px;" class="qwx">satoEAC</li>
-								</ul>
-							</DIV>
+			.styles {
+				background-color: #FEFEFE;
+				color: #8F8F94;
+				font-size: 16px;
+			}
+
+			table tr td {
+				font-size: 0.8rem;
+			}
+
+			.inps {
+				font-size: 12px;
+				width: 80%;
+				position: absolute;
+				left: 20%;
+				top: 2%;
+			}
+
+			.input {
+				border: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav title">
+			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="e_wallet.html"></a>
+			<h1 class="received_title mui-title">接收（收款）</h1>
+		</header>
+		<div class="mui-content ">
+			<div class=" styles" style=" margin-top: -8px;">
+				<p class="tip" style=" padding: 10px; padding-top: 16px; font-size: 14px;">提示：这里请求一次就是生成一个地址，所以选项都可以选填。如无特殊要求，不建议生成多个收款地址，每一个地址对应唯一一个私钥，管理备份工作量比较多。</p>
+
+			</div>
+			<!-- 	<form> -->
+			<div class="bgcolor">
+				<div>
+					<div class="mui-input-group">
+						<div name="form1" class="mui-input-row text">
+							<label class="received_label" style="font-size: 18px;">标签：</label>
+							<input id="lable_1" size="30" style="font-size: 12px;width: 80%; position: absolute; left: 20%; top: 2%;" class="tip_label inps mui-icon mui-input-clear"
+							 type="text" placeholder="输入该笔款项是谁支付给自己的，仅用于识别，可不填" />
 						</div>
-					</div>
-					<div>
-                            <center>
-                                <span>
-                        		<button class="btn" type="reset" style=" height: 40px; margin-left: px; margin-bottom: 0px;" onclick="funClear()"><img src="../images/Reset.png" width="16px" height="16px" />&nbsp;重填</button>
-                        		<button class=" mui-btn-primary" style="border: none; width: 50%; height: 40px;" onclick="huoqu()">生成请求付款地址</button>
-                        </span>
-                            </center>
-                            <br />
-                        </div>	
-					
-                </div>
-				
-                
-            </div>
-        </div>
-	
-        <div class="bgcolor" style="margin-top: 10px;">
-            <div class="mui-input-row ">
-                <label style="font-size: 0.8rem;">请求付款历史:</label>
-                <center>
-                    <table width="100%" class="table" id="tablevalue" style="text-align: center;">
-                        <tr style="height:34px;">
-                        <th width=32% style=" border: solid #ccc 1px; <!-- border-top: none; -->">日期</th>
-                        <th width=22% style=" border: solid #ccc 1px; <!-- border-top: none; -->">标签</th>
-                        <th width=22% style=" border: solid #ccc 1px; <!-- border-top: none; -->">消息</th>
-						<th width=24% style=" border: solid #ccc 1px; <!-- border-top: none; -->">总额</th>
-                        </tr>
-                        </tr>
-                        <tbody id="showDatas">
+						<div class="mui-input-row text">
+							<label class="received_message" style="font-size: 18px;">消息：</label>
+							<input class="tip_news mui-input-clear" id="message_1" size="30" style="font-size: 12px;width: 70%; position: absolute; left: 20%; top: 2%;"
+							 type="text" placeholder="输入希望对方付款时看到的消息，可不填">
 
-                        </tbody>
-                    </table>
-                </center>
-            </div>
-	
-		</div>
-		<!-- 生成请求付款地址弹出层页面 -->
-		<div id="tiShi" class="mui-popover mui-popover-action mui-popover-bottom" style="height:auto;">
+						</div>
+						<div style="width: 70%;" class="mui-input-row text">
+							<label class="money" style=" font-size: 18px; ">总额：</label>
+							<input class="tip_money mui-input-clear" id="amount_1" size="30" style="font-size: 12px;width: 74%; position: absolute; left: 28%; top: 2%;"
+							 type="number" placeholder="输入请求对方付款金额，可不填" />
+						</div>
+						<div style="margin-bottom: 24px; margin-top: -37px;">
+							<div style="height:34px ;  margin-left: 72%; width: 23%;">
+								<input style="z-index: 1000000; font-size: 13px; padding-left: 10px; color: #007AFF; border-radius: 20px; height: 34px; border: none; background-color: #e6e6e6;"
+								 type="text" id="lang_a" class="input_a" placeholder="EAC" readonly="readonly" />
+								<DIV style="border-radius: 20px; z-index: 1000000; width: 23%;margin-top: -12px; border-radius: 4px; position: absolute; display: none"
+								 id="huangbiao_a">
+									<ul style="overflow-x: hidden; z-index: 1000; overflow-y: auto; height: 101px; font-size: 12px; padding-left: 4px; border-radius: 20px; background-color: #F4F5F6; width: 100%; list-style: none;">
+										<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">EAC</li>
+										<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">miliEAC</li>
+										<li style="height: 34px; padding: 10px; border-bottom: 1px #e7e5e2 solid;" class="qwx">microEAC</li>
+										<li style="height: 34px; padding: 10px;" class="qwx">satoEAC</li>
+									</ul>
+								</DIV>
+							</div>
+						</div>
+						<div>
+							<center>
+								<span>
+									<button class="refill btn" type="reset" style=" height: 40px; margin-left: px; margin-bottom: 0px;" onclick="funClear()"><img
+										 src="../images/Reset.png" width="16px" height="16px" />&nbsp;重填</button>
+									<button class="generate_address mui-btn-primary" style="border: none; width: 50%; height: 40px;" onclick="huoqu()">生成请求付款地址</button>
+								</span>
+							</center>
+							<br />
+						</div>
+
+					</div>
+
+
+				</div>
+			</div>
+
+			<div class="bgcolor" style="margin-top: 10px;">
+				<div class="mui-input-row ">
+					<label class="payment_history" style="font-size: 0.8rem;width: 60%;">请求付款历史:</label>
+					<center>
+						<table width="100%" class="table" id="tablevalue" style="text-align: center;">
+							<tr style="height:34px;">
+								<th class="received_date" width=32% style=" border: solid #ccc 1px; <!-- border-top: none; -->">日期</th>
+								<th class="received_label" width=22% style=" border: solid #ccc 1px; <!-- border-top: none; -->">标签</th>
+								<th class="received_message" width=22% style=" border: solid #ccc 1px; <!-- border-top: none; -->">消息</th>
+								<th class="money" width=24% style=" border: solid #ccc 1px; <!-- border-top: none; -->">总额</th>
+							</tr>
+							</tr>
+							<tbody id="showDatas">
+
+							</tbody>
+						</table>
+					</center>
+				</div>
+
+			</div>
+			<!-- 生成请求付款地址弹出层页面 -->
+			<div id="tiShi" class="mui-popover mui-popover-action mui-popover-bottom" style="height:auto;">
 				<div style="background: #FFFFFF;">
 					<p class="mui-table-view-cell" style="font-size:16px;color: black;">
 						请复制你的地址发给您的付款方
-					<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeTiShi()"></span>
+						<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeTiShi()"></span>
 					</p>
-					<div style="margin-left: 10px;" >
+					<div style="margin-left: 10px;">
 						<p id="qrcode" style="margin-top:15px;text-align: center;"></p>
 						<p style="color: #007aff;font-size: 1.25rem;">付款信息</p>
 						<p style="color: #000000;">URL:<span id="url_0"></span> </p>
 						<p style="color: #000000;">地址:<input id="newaddress" style="border: none;" /> </p>
-						<p style="color: #000000;">金额:<input class="input" id="money" readonly="readonly"/> </p>
-						<p style="color: #000000;">标签:<input class="input" id="lable" readonly="readonly"/></p>
-						<p style="color: #000000;">消息:<input class="input" id="messages" readonly="readonly"/> </p>
-					</div>	
+						<p style="color: #000000;">金额:<input class="input" id="money" readonly="readonly" /> </p>
+						<p style="color: #000000;">标签:<input class="input" id="lable" readonly="readonly" /></p>
+						<p style="color: #000000;">消息:<input class="input" id="messages" readonly="readonly" /> </p>
+					</div>
 
-					
+
 					<div class="modal-footer" style="text-align: center; ">
-						<button type="button" class="btn mui-btn-grey" style="border-radius: 20px; margin-bottom: 10px; width: 100px;" onclick="copyUrl();">复制</button>
+						<button type="button" class="btn mui-btn-grey" style="border-radius: 20px; margin-bottom: 10px; width: 100px;"
+						 onclick="copyUrl();">复制</button>
 
-						<button type="button" class="btn mui-btn-blue" style="border-radius: 20px; margin-left: 30px; margin-bottom: 10px; width: 100px;" onclick="closeTiShi();">确认</button>
+						<button type="button" class="btn mui-btn-blue" style="border-radius: 20px; margin-left: 30px; margin-bottom: 10px; width: 100px;"
+						 onclick="closeTiShi();">确认</button>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		
-		<!-- 文件 -->
-		<div  hidden="hidden" id="_downloads" class="fitem" >
-			<img class="ficon" src="../img/fdisk.png"/>
-			<div>
-				<span class="fname">downloads</span><br/>
-				<span class="finf">...</span>
-			</div>
-		</div>
-		
-		<!-- <button type="button" onclick="showData()">点击</button> -->
-</body>
 
-		<script type="text/javascript"src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
-		<script src="../js/util/FileUtil.js" type="text/javascript" charset="utf-8"></script>
-		
-		<script type="text/javascript">
-	var root=[];
-	document.addEventListener("plusready", function(){
-	var items = $("#_downloads")[0];	
-	console.log(items);
-	plus.io.resolveLocalFileSystemURL("_downloads", function ( entry ) {
-		root.push( entry );
-		items.entry = entry;
-	}, function ( e ) {
-		console.log( "Update "+items.id+" information failed: "+e.message );
-	} );
-}, false);
 
-		</script>
-		 <script src="../js/page/e_received.js" type="text/javascript" charset="UTF-8"></script>
-		 <script>
-						
-						$(
-							function(){
-								$("#lang_a").click(function(){
-									if("block" == $("#huangbiao_a").css("display")){
-										hideLi_a();
-									}else{
-										showLi_a();
-									}
-								});
-								
-								$(".qwx").each(function(i,v){
-									$(this).click(function(){
-										$("#lang_a").val($(this).html());
-										hideLi_a();
-									});
-								});
-								
-								$("#lang_a").blur(function(){
-									setTimeout(hideLi_a,200);
-								});
-								
-							}
-							
-						);
 
-						function showLi_a(){
-							$("#huangbiao_a").show();
-						}
-						function hideLi_a(){
-							$("#huangbiao_a").hide();
-						}
-				 </script>
+		<!-- <button type="button" onclick="texting()">点击</button> -->
+	</body>
+
+	<script type="text/javascript" src="http://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+	<script src="../js/mui.js"></script>
+	<script src="../js/mui.min.js"></script>
+	<script>
+		mui.init();
+		$(
+			function() {
+				$("#lang_a").click(function() {
+					if ("block" == $("#huangbiao_a").css("display")) {
+						hideLi_a();
+					} else {
+						showLi_a();
+					}
+				});
+
+				$(".qwx").each(function(i, v) {
+					$(this).click(function() {
+						$("#lang_a").val($(this).html());
+						hideLi_a();
+					});
+				});
+
+				$("#lang_a").blur(function() {
+					setTimeout(hideLi_a, 200);
+				});
+
+			}
+
+		);
+
+		function showLi_a() {
+			$("#huangbiao_a").show();
+		}
+
+		function hideLi_a() {
+			$("#huangbiao_a").hide();
+		}
+	</script>
 </html>

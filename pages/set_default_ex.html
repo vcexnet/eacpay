@@ -1,15 +1,19 @@
 <!-- 选择默认交易所 -->
-<!doctype html>
+<!DOCTYPE HTML>
 <html>
 
 	<head>
 		<meta charset="utf-8">
 		<title>选择默认交易所</title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta name="HandheldFriendly" content="true" />
+		<meta name="MobileOptimized" content="320" />
 		<link href="../css/mui.min.css" rel="stylesheet" type="text/css" />
 		<link href="../css/color.css" />
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/jquery-3.3.1.js"></script>
+		<script src="../js/libs/jquery.i18n.properties-1.0.x.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../js/language.js" type="text/javascript" charset="utf-8"></script>	
 		<script src="../js/ChangeEnv.js" type="text/javascript" charset="utf-8"></script>
 		<script src="../js/Common.js" type="text/javascript" charset="UTF-8"></script>
 		<script src="../js/page/e_set_language.js" type="text/javascript" charset="utf-8"></script>
@@ -22,8 +26,8 @@
 				line-height: 20px;
 				
 			}
-			tr{
-				border-top: #E6E6E6 1px solid;
+			tr th{
+				border: #E6E6E6 1px solid;
 			}
 			/*//换个样式*/
 			/* .change .mui-radio1 input[type='radio']:checked:before {
@@ -60,7 +64,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav">
 			<a style="color: #FFFFFF;" class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" href="set.html"></a>
-			<h1 class="mui-title" style="font-size: 18px; text-emphasis-color: #ff333333;">选择默认交易所</h1>
+			<h1 class="ex_title mui-title" style="font-size: 18px; text-emphasis-color: #ff333333;">选择默认交易所</h1>
 		</header>
 
 		<div class="mui-content">
@@ -68,10 +72,10 @@
 		<div style="width: 100%;" >		
 		<table class="mui-table-view change" style="line-height: 50px; width: 100%; height: 360px; background-color: #FFFFFF; text-align: center;">
 			<tr style="font-size: 16px; ">
-				<th>交易所名称</th>
-				<th>价格(1min)</th>
-				<th>成交量(24h)</th>
-				<th>选择</th>
+				<th class="ex_name">交易所名称</th>
+				<th class="ex_price">价格(1min)</th>
+				<th class="ex_turnover">成交量(24h)</th>
+				<th class="ex_choose">选择</th>
 			</tr>
 			<tr class="radio" id="aex_data">
 
@@ -84,50 +88,29 @@
 				<td>6436245</td>
 				<td ><input type="radio" name="radio" style="" ></td>
 			</tr>
-			<tr>
-				<td style="color: red;">趣币</td>
-				<td>0.002</td>
-				<td>5246724</td>
-				<td><input type="radio" name="radio"></td>
-			</tr>
-			<tr>
-				<td style="color: red;">币蛋</td>
-				<td>0.002</td>
-				<td>4325632</td>
-				<td><input type="radio" name="radio"></td>
-			</tr>
+
 			<tr>
 				<td style="color: #15D655;">CEO</td>
 				<td>0.002</td>
 				<td>3423334</td>
 				<td><input type="radio" name="radio"></td>
 			</tr>
-			<tr>
-				<td style="color: #15D655;">U网</td>
-				<td>0.002</td>
-				<td>3248824</td>
-				<td><input type="radio" name="radio"></td>
-			</tr>
+
 			<tr>
 				<td style="color: red;">Nova</td>
 				<td>0.002</td>
 				<td>2387423</td>
 				<td><input type="radio" name="radio"></td>
 			</tr>
-			<tr style="border-bottom: 1px #E6E6E6 solid;">
-				<td style="color: #15D655;">BTS内盘</td>
-				<td>0.002</td>
-				<td>8876424</td>
-				<td><input type="radio" name="radio"></td>
-			</tr>
+
 		</table>
 			<div class="mui-button-row" style="height: 60px; background: #FFFFFF;">
-				<button type="submit" style="background-color: #2a82e4; color: #FFFFFF; width: 200px; margin-top: 10px;" >保存</button>
+				<button class="save" type="submit" style="background-color: #2a82e4; color: #FFFFFF; width: 200px; margin-top: 10px;" >保存</button>
 			</div>
 
 		</div>
 		<div style="background: #FFFFFF;">
-			<p style="margin-left: 10px; margin-right: 10px;">
+			<p class="ex_explanation" style="margin-left: 10px; margin-right: 10px;">
 				说明：交易所价格存在一定差异，且价格瞬息万变，是特定时间段的价格，仅供参考，真实价格，请以交易价为准。
 				绿色名称表示交易所可以正常充提EAC，相对可信赖；
 				红色表示该交易所不能充提，可能是假EAC，请注意！

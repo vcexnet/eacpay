@@ -1,10 +1,11 @@
 <!-- EACPay使用协议 -->
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-    <title></title>
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="MobileOptimized" content="320" />
 	<link href="../css/mui.min.css" rel="stylesheet"/>
     <script src="../js/mui.min.js"></script>
 	<script src="../js/jquery-3.3.1.js"></script>
@@ -121,19 +122,19 @@
 		<div id="inputWalletName" class="mui-popover mui-popover-action mui-popover-bottom" style="height: auto;">
 				<div class="mui-table-view">
 					<p class="mui-table-view-cell" style="font-size: 5vw;color: black;">
-						导入或者输入你的钱包地址
+						粘贴或者输入你的钱包地址
 						<span class="mui-icon mui-icon-closeempty" style="float: right;" onclick="closeInputWalletName()"></span>
 					</p>
 					<input type="text" class="" style="background-color: #f1f1f1;border: 0.0625rem #295bb1 solid;padding: 0rem;height: 5vh;width: 90vw;font-size: 1.0rem;" id="walletName" >
-					<div id="changeFile" style="display: none;">
+<!-- 					<div id="changeFile" style="display: none;">
 						<input type="file" id="files" name="files[]" multiple />
 						<output id="list"></output>
-					</div>
+					</div> -->
 					
 					<div class="modal-footer">
 						
-						<button type="button" style="background-color: #2a82e4;" class="btn btn-default" onclick="closeInputWalletName()">取消</button>
-						<button type="button" style="background-color: #2a82e4;" class="btn btn-default" onclick="confirmName();">确认</button>
+						<button type="button" style="background-color: #2a82e4;color: white;" class="btn btn-default" onclick="closeInputWalletName()">新建</button>
+						<button type="button" style="background-color: #2a82e4;color: white;" class="btn btn-default" onclick="confirmName();">确认</button>
 					</div>
 				</div>
 			</div>
