@@ -6,9 +6,9 @@ $(function() {
 // gerPivKey("epEzad8LMjBBn4jFpAaDTF1ZNXDYuy4xSA");
  setTimeout(function(){  
 	 FileUtil.readFile("EAC/address");
-	  }, 200);
+	  }, 500);
 setTimeout(function(){  
-	 showaddressInfo(); }, 400);
+	 showaddressInfo(); }, 800);
 });
 /* 生成请求二维码 */
 function makeCode(address){
@@ -288,7 +288,7 @@ function gerPivKey(address){
 			
 		writeContent=address+":"+prvKey+"|";
 		console.log(writeContent);
-		 FileUtil.writeFile("EAC/nodeBook",writeContent);//地址以及对应私钥添加记录
+		 FileUtil.writeFile("EAC/addressKey",writeContent);//地址以及对应私钥添加记录
 	
 		},
 		error: function(jqXHR) {
@@ -296,4 +296,9 @@ function gerPivKey(address){
 		}
 	});
 	
+}
+
+
+function texting(){
+	FileUtil.showData();
 }

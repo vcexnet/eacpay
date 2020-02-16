@@ -103,7 +103,8 @@ function creatWallet(name) {
 			console.log(data);
 			Common.saveLocalData("walletName", name);
 			Common.saveLocalData("oneTime", 0);
-			exportRaw('wallet_name.txt',name);
+			//下载文件 本方法只适用浏览器所以注释
+			// exportRaw('wallet_name.txt',name);
 			window.location.href="../pages/e_wallet.html";
 		},
 		error: function(jqXHR) {

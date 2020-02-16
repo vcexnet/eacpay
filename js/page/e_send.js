@@ -8,11 +8,8 @@ var isWrite=0;
 //付款
 $(function() {
 
-		setTimeout(function(){FileUtil.readFile("EAC/paymentAddress"); }, 200); 
+		setTimeout(function(){FileUtil.readFile("EAC/paymentAddress"); },400); 
 		
-		// setTimeout(function(){
-			
-		// 	FileUtil.showData(); }, 300);
 		if (url) {
 			if (url.split(":")[1]) {
 
@@ -156,7 +153,7 @@ $(function() {
 				}
 
 			},
-			error: function(jqXHR) {
+			error: function(jqXHR) { 
 					mui.alert('请输入人正确的地址!', function() {
 										console.log("发生错误：" + jqXHR.status);
 					});
