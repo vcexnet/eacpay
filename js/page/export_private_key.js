@@ -1,5 +1,5 @@
 var walletName = localStorage.getItem("walletName");
-
+var adress="";
 //导出私钥
 $(function() {
 	showPerivateKey();
@@ -45,9 +45,9 @@ function showPerivateKey() {
 }
 
 function fuzhi(){
-	var address=$("#lang_b").val();
-	// console
-	$("#copy").val(address);
+	adress="";
+	address=$("#lang_b").val();
+
 }
 function gerPivKey(address) {
 	var datadata = {
@@ -99,30 +99,29 @@ function copyUrl() {
 	}
 
 }
-//导出私钥提示
-function fakeClick(obj) {
-	var ev = document.createEvent("MouseEvents");
-	ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-	obj.dispatchEvent(ev);
-	console.log(ev);
-	mui.toast("私钥导出成功")
-}
+// //导出私钥提示
+// function fakeClick(obj) {
+// 	var ev = document.createEvent("MouseEvents");
+// 	ev.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+// 	obj.dispatchEvent(ev);
+// 	console.log(ev);
+// 	mui.toast("私钥导出成功")
+// }
 
-function exportRaw(name, data) {
-	var urlObject = window.URL || window.webkitURL || window;
-	var export_blob = new Blob([data]);
-	var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
-	save_link.href = urlObject.createObjectURL(export_blob);
-	save_link.download = name;
-	console.log("导出成功" + save_link);
-	fakeClick(save_link);
-};
+// function exportRaw(name, data) {
+// 	var urlObject = window.URL || window.webkitURL || window;
+// 	var export_blob = new Blob([data]);
+// 	var save_link = document.createElementNS("http://www.w3.org/1999/xhtml", "a")
+// 	save_link.href = urlObject.createObjectURL(export_blob);
+// 	save_link.download = name;
+// 	console.log("导出成功" + save_link);
+// 	fakeClick(save_link);
+// };
 //导出文本框的地址 
 function exportFile() {
-	var private_key = $("#copy").val();
-	console.log($("#copy").val());
-	if (private_key) {
-		exportRaw('private_key.txt', private_key)
+
+	if (address) {
+		gerPivKey(address);
 	} else {
 		mui.alert('请选择您要导出的私钥', function() {
 

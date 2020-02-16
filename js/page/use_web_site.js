@@ -78,8 +78,9 @@ function showDanDu() {
 			"coinname": "eac"
 		},
 		success: function(datas) {
-			console.log(datas);
+
 			var dataList = datas.data;
+						console.log(dataList.asks[0][0]);
 			$("#buy1").text(dataList.asks[0][0]);
 			$("#buy_2").text(dataList.asks[1][0]);
 			$("#buy_1").text(dataList.bids[0][0]);

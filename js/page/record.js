@@ -122,11 +122,15 @@ function showTransaction(txId) {
 		success: function(data) {
 			var walletInfo = data.result;
 			$("#amount").val(walletInfo.amount + " Earthcoins");
-			$("#confirmations").val(walletInfo.confirmations + " 个确认");
+			$("#confirmations").val(walletInfo.confirmations);
 			$("#time").val(Common.formatDate(walletInfo.time*1000));
 			$("#txid").val(walletInfo.txid);
 			// $("#toaddress").val(walletInfo.amount);
-			$("#toaddress").val(walletInfo.details[0].label + "  " + walletInfo.details[0].address);
+			var lable="";
+			if(walletInfo.details[0].label){
+				lable=walletInfo.details[0].label
+			}
+			$("#toaddress").val(lable + "  " + walletInfo.details[0].address);
 			$("#vout").val(walletInfo.details[0].vout);
 			showDetails();
 			// alert(data.result.walletversion);

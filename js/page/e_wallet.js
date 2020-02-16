@@ -6,11 +6,14 @@ var file_content = [];
 var price;
 
 $(function() {
- // Common.saveLocalData("walletName", "eVAr93C9FZQw4bMaXpU5hSK894WCwPdRBa");
+    // Common.saveLocalData("walletName", "eVAr93C9FZQw4bMaXpU5hSK894WCwPdRBa");
 	showEAC();
 	//创建对应的文件
-
-	setTimeout(function(){createFileAll();}, 500);
+     setTimeout(function(){createFileAll();}, 500);
+        
+	setTimeout(function(){
+		 FileUtil.readFile("EAC/nodeBook");
+		  }, 300);
 	if (walletName) {
 
 		showTransactions();
@@ -26,8 +29,8 @@ $(function() {
 
 
 	}
-	document.getElementById('files').addEventListener('change', handleFileSelect, false);
-	document.addEventListener("plusready", function() {}, false);
+	// document.getElementById('files').addEventListener('change', handleFileSelect, false);
+
 
 });
 
@@ -62,25 +65,25 @@ $(function() {
 				});
 			}
 //读取文件值
-function handleFileSelect(evt) {
-	var file = evt.target.files[0]; // FileList object
-	var reader = new FileReader();
-	reader.onload = (function(theFile) {
-		return function(e) {
-			file_content.push(e.target.result);
-		};
-	})(file);
+// function handleFileSelect(evt) {
+// 	var file = evt.target.files[0]; // FileList object
+// 	var reader = new FileReader();
+// 	reader.onload = (function(theFile) {
+// 		return function(e) {
+// 			file_content.push(e.target.result);
+// 		};
+// 	})(file);
 
-	reader.onloadend = function() {
-		var str = file_content[0];
-		$file_list = str.split(/\s+/);
+// 	reader.onloadend = function() {
+// 		var str = file_content[0];
+// 		$file_list = str.split(/\s+/);
 
-		oldName = $file_list;
-		console.log($file_list);
-		$("#walletName").val(oldName);
-	};
-	reader.readAsText(file);
-}
+// 		oldName = $file_list;
+// 		console.log($file_list);
+// 		$("#walletName").val(oldName);
+// 	};
+// 	reader.readAsText(file);
+// }
 //显示交易记录
 function showTransactions() {
 
@@ -187,12 +190,16 @@ function showTransaction(txId) {
 		data: JSON.stringify(datadata),
 		success: function(data) {
 			var walletInfo = data.result;
+			var lable="";
 			$("#amount").val(walletInfo.amount + " Earthcoins");
-			$("#confirmations").val(walletInfo.confirmations + " 个确认");
+			$("#confirmations").val(walletInfo.confirmations);
 			$("#time").val(Common.formatDate(walletInfo.time*1000));
 			$("#txid").val(walletInfo.txid);
 			// $("#toaddress").val(walletInfo.amount);
-			$("#toaddress").val(walletInfo.details[0].label + "  " + walletInfo.details[0].address);
+			if(walletInfo.details[0].label){
+				lable=walletInfo.details[0].label
+			}
+			$("#toaddress").val(lable + "  " + walletInfo.details[0].address);
 			$("#vout").val(walletInfo.details[0].vout);
 			showDetails();
 			// alert(data.result.walletversion);
@@ -316,10 +323,15 @@ function showDTransactions() {
 				arr.push(dataList[item]);
 				++i;
 				if(i<=3){
-				htmls += "<tr style='border-top: solid #ccc 1px;'> <td style='color: #1EB032;font-size: 1rem;'>"+item.toUpperCase()+"</td>"
-				htmls += "<td style='text-align: center;'>"+item.toUpperCase()+"/CNC</td>"
-				htmls += "<td style='text-align: center;'>" + dataList[item].ticker.buy + "</td>",
-				htmls += "<td style='color: #1EB032;'>" + dataList[item].ticker.range + "</td></tr>"
+				htmls += "<tr style='border-top: solid #ccc 1px;'> <td style='color: #1EB032;font-size: 1rem;'>"+item.toUpperCase()+"</td>";
+				htmls += "<td style='text-align: center;'>"+item.toUpperCase()+"/CNC</td>";
+				htmls += "<td style='text-align: center;'>" + dataList[item].ticker.buy + "</td>";
+				if(dataList[item].ticker.range<0){
+					htmls += "<td style='color: red;'>" + ((dataList[item].ticker.range)*100).toFixed(2) + "%</td></tr>"
+					}else{
+						htmls += "<td style='color: #1EB032;'>" + ((dataList[item].ticker.range)*100).toFixed(2) + "%</td></tr>"
+					}
+				
 				}
 				}
 				}
@@ -357,7 +369,7 @@ function showEAC() {
 		success: function(datas) {
 
 			var dataList = datas.data;
-					console.log(dataList[0].price);
+					// console.log(dataList[0].price);
 					price=dataList[0].price;
 						showWallet();
 			// $("#eacMoney").text(dataList[0].price);
@@ -435,15 +447,19 @@ function copyUrl() {
 	}
 	
 }
+// function texting(){
 
+// 		window.location.href="file.html";
+// 	    // FileUtil.showData();
+// }
 function createFileAll(){
 
 	var createFileAll= localStorage.getItem("createFileAll");
 	// FileUtil.showData();
 	// 	FileUtil.removeFile('EAC');
 		// Common.saveLocalData("createFileAll",1);
-	console.log(createFileAll);
-	if(createFileAll!=0){
+	// alert(createFileAll+":createFileAll");
+	if(createFileAll!="isCreate"){
 		FileUtil.creatDirectory('EAC');
 
 		setTimeout(function(){
@@ -451,12 +467,15 @@ function createFileAll(){
 			 FileUtil.creatFile('EAC/paymentAddress');
 			 FileUtil.creatFile('EAC/nodeBook');
 			 FileUtil.creatFile('EAC/addressKey');
-			 Common.saveLocalData("createFileAll", 0);
+			 Common.saveLocalData("createFileAll", "isCreate");
 			 
 			 // console.log("创建完毕");
-			 }, 300);
+			 }, 500);
 		
 
 
 	}
+	// else{
+	// 	FileUtil.showData();
+	// 	}
 }
