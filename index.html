@@ -1,21 +1,63 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title></title>
-    <script type="text/javascript">
-    	
-   		document.addEventListener('plusready', function(){
-   			//console.log("所有plus api都应该在此事件发生后调用，否则会出现plus is undefined。"
-   			
-   		});
-   		
-    </script>
-</head>
-<body>
-	<a href="pages/e_agreement.html">
-	<button style="width: 100%;">打开</button>
-	</a>
-</body>
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		
+		<meta name="misapplication-tap-highlight" content="no"/>
+		<meta name="HandheldFriendly" content="true"/>
+		<meta name="MobileOptimized" content="320"/>
+
+		<script type="text/javascript" src="js/update.js"></script>
+		<script type="text/javascript" charset="utf-8">
+//取消浏览器的所有事件，使得active的样式在手机上正常生效
+document.addEventListener('touchstart',function(){
+    return false;
+},true);
+// 禁止选择
+document.oncontextmenu=function(){
+	return false;
+};
+// H5 plus事件处理
+function plusReady(){
+	// Android处理返回键
+	plus.key.addEventListener('backbutton',function(){
+		('iOS'==plus.os.name)?plus.nativeUI.confirm('确认退出？', function(e){
+			if(e.index>0){
+				plus.runtime.quit();
+			}
+		}, 'HelloH5', ['取消','确定']):(confirm('确认退出？')&&plus.runtime.quit());
+	},false);
+	// 关闭启动界面
+	plus.navigator.setStatusBarBackground('#D74B28');
+	setTimeout(function(){
+		plus.navigator.closeSplashscreen();
+	},200);
+}
+if(window.plus){
+	alert(windo3plus);
+	plusReady();
+}else{
+	document.addEventListener('plusready',plusReady,false);
+}
+		</script>
+	</head>
+	<body>
+		<form>  
+			 <select class="lan_select">  
+				 <option class="lan_zh">中文</option>  
+				 <option class="lan_en">英文</option>  
+			 </select>
+		 </form>  
+		  
+		<label class="username"><!--用户名：--></label><input type="text">  
+		<label class="password"><!--密码：--></label><input type="password">  
+
+		
+		
+		
+	</body>
+	
 </html>
+
